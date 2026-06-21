@@ -45,7 +45,7 @@ public class FrmDonatur extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableDonatur = new javax.swing.JTable();
         lblId1 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
@@ -122,8 +122,8 @@ public class FrmDonatur extends javax.swing.JFrame {
         btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDelete.setText("Delete");
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableDonatur.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
+        tableDonatur.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -134,7 +134,8 @@ public class FrmDonatur extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tableDonatur.setFocusable(false);
+        jScrollPane1.setViewportView(tableDonatur);
 
         lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblId1.setText("Data Donatur");
@@ -309,9 +310,8 @@ public class FrmDonatur extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cbJenis;
+    public javax.swing.JComboBox<String> cbJenis;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFrmDonatur;
@@ -321,10 +321,11 @@ public class FrmDonatur extends javax.swing.JFrame {
     private javax.swing.JLabel lblLokasi;
     private javax.swing.JLabel lblNama;
     private javax.swing.JLabel lblNoHP;
-    private javax.swing.JTextField txtFieldEmail;
-    private javax.swing.JTextField txtFieldId;
-    private javax.swing.JTextField txtFieldLokasi;
-    private javax.swing.JTextField txtFieldNama;
-    private javax.swing.JTextField txtFieldNoHP;
+    public static javax.swing.JTable tableDonatur;
+    public javax.swing.JTextField txtFieldEmail;
+    public javax.swing.JTextField txtFieldId;
+    public javax.swing.JTextField txtFieldLokasi;
+    public javax.swing.JTextField txtFieldNama;
+    public javax.swing.JTextField txtFieldNoHP;
     // End of variables declaration//GEN-END:variables
 }
