@@ -29,6 +29,11 @@ public class DonaturController implements ActionListener, MouseListener {
     public DonaturController(DonaturModel data, FrmDonatur frm) {
         this.data = data;
         this.frm = frm;
+        
+        this.frm.btnSimpan.addActionListener(this);
+        this.frm.btnUpdate.addActionListener(this);
+        this.frm.btnDelete.addActionListener(this);
+        this.frm.tableDonatur.addMouseListener(this);
     }
 
     public void KosongFormDonatur() {
@@ -78,10 +83,14 @@ public class DonaturController implements ActionListener, MouseListener {
         if (ae.getSource() == frm.btnSimpan) {
             data.setId(frm.txtFieldId.getText());
             data.setNama(frm.txtFieldNama.getText());
-            data.setJurusan(frm.cbJenis.getText());
+            String jenis = "" + frm.cbJenis.getSelectedItem();
+            data.setJenis(jenis);
+            data.setLokasi(frm.txtFieldLokasi.getText());
+            data.setEmail(frm.txtFieldEmail.getText());
+            data.setNo_hp(frm.txtFieldNoHP.getText());
 
             try {
-                if (data.SimpanMahasiswa(data)) {
+                if (data.SimpanDonatur(data)) {
                     JOptionPane.showMessageDialog(null, "Simpan Data Baru Berhasil");
                     KosongFormDonatur();
                     TampilDataDonatur();
@@ -89,57 +98,87 @@ public class DonaturController implements ActionListener, MouseListener {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
-        } else if (ae.getSource() == frm.btnEdit) {
-            data.setId(frm.txtIdMhs.getText());
-            data.setNama(frm.txtNamaMhs.getText());
-            data.setJurusan(frm.txtJurMhs.getText());
+        } else if (ae.getSource() == frm.btnUpdate) {
+            data.setId(frm.txtFieldId.getText());
+            data.setNama(frm.txtFieldNama.getText());
+            String jenis = "" + frm.cbJenis.getSelectedItem();
+            data.setJenis(jenis);
+            data.setLokasi(frm.txtFieldLokasi.getText());
+            data.setEmail(frm.txtFieldEmail.getText());
+            data.setNo_hp(frm.txtFieldNoHP.getText());
 
             try {
-                if (data.UpdateMahasiswa(data)) {
+                if (data.UpdateDonatur(data)) {
                     JOptionPane.showMessageDialog(null, "Update Data Baru Berhasil");
-                    KosongFormMhs();
-                    TampilDataMhs();
+                    KosongFormDonatur();
+                    TampilDataDonatur();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        } else if (ae.getSource() == frm.btnDelete) {
+            data.setId(frm.txtFieldId.getText());
+
+            try {
+                if (data.HapusDonatur(data)) {
+                    JOptionPane.showMessageDialog(null, "Hapus Data Baru Berhasil");
+                    KosongFormDonatur();
+                    TampilDataDonatur();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
         } else {
-            data.setId(frm.txtIdMhs.getText());
-
-            try {
-                if (data.HapusMahasiswa(data)) {
-                    JOptionPane.showMessageDialog(null, "Hapus Data Baru Berhasil");
-                    KosongFormMhs();
-                    TampilDataMhs();
-                }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
+            // jasper report
         }
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mouseClicked(MouseEvent me) {
+        if (me.getSource()==frm.tableDonatur) {
+            //frm.txtFieldId.setEditable(false);
+            
+            int baris=frm.tableDonatur.rowAtPoint(me.getPoint());
+            String id=frm.tableDonatur.getValueAt(baris, 1).toString();
+            frm.txtFieldId.setText(id);
+            String nama=frm.tableDonatur.getValueAt(baris, 2).toString();
+            frm.txtFieldNama.setText(nama);
+            String jenis=frm.tableDonatur.getValueAt(baris, 3).toString();
+            if (jenis.equalsIgnoreCase("katering")) { 
+                frm.cbJenis.setSelectedIndex(0);
+            } else if (jenis.equalsIgnoreCase("restoran")) { 
+                frm.cbJenis.setSelectedIndex(1);
+            } else if (jenis.equalsIgnoreCase("kafe")) { 
+                frm.cbJenis.setSelectedIndex(2);
+            } else {
+                frm.cbJenis.setSelectedIndex(3);
+            }
+            String lokasi=frm.tableDonatur.getValueAt(baris, 4).toString();
+            frm.txtFieldLokasi.setText(lokasi);
+            String email=frm.tableDonatur.getValueAt(baris, 5).toString();
+            frm.txtFieldEmail.setText(email);
+            String nohp=frm.tableDonatur.getValueAt(baris, 6).toString();
+            frm.txtFieldNoHP.setText(nohp);
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //
     }
 }
