@@ -127,7 +127,7 @@ public class FrmDonatur extends javax.swing.JFrame {
         btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDelete.setText("Delete");
 
-        tableDonatur.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
+        tableDonatur.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tableDonatur.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -185,16 +185,16 @@ public class FrmDonatur extends javax.swing.JFrame {
                         .addComponent(txtFieldNama, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtFieldId, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblId1)
-                        .addGap(230, 230, 230))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnDashboard)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblId1)
+                        .addGap(386, 386, 386))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(402, 402, 402)
                 .addComponent(lblFrmDonatur)
@@ -315,11 +315,11 @@ public class FrmDonatur extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCetak;
+    public javax.swing.JButton btnCetak;
     private javax.swing.JButton btnDashboard;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnSimpan;
-    private javax.swing.JButton btnUpdate;
+    public javax.swing.JButton btnDelete;
+    public javax.swing.JButton btnSimpan;
+    public javax.swing.JButton btnUpdate;
     public javax.swing.JComboBox<String> cbJenis;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDonatur;
