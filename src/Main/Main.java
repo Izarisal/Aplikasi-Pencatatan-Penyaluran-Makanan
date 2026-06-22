@@ -7,6 +7,7 @@ package Main;
 
 import Controller.DonaturController;
 import Model.DonaturModel;
+import View.Dashboard;
 import View.FrmDonatur;
 
 /**
@@ -18,9 +19,11 @@ public class Main {
         DonaturModel data = new DonaturModel();
         FrmDonatur frm = new FrmDonatur();
         DonaturController ctrl = new DonaturController(data, frm);
-
+        
         ctrl.KosongFormDonatur();
         ctrl.TampilDataDonatur();
-        frm.setVisible(true);
+        
+        Dashboard db = new Dashboard();
+        db.setVisible(true);
     }
 }
