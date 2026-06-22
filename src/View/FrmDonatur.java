@@ -115,6 +115,11 @@ public class FrmDonatur extends javax.swing.JFrame {
 
         btnSimpan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnUpdate.setText("Update");
@@ -266,8 +271,13 @@ public class FrmDonatur extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldNoHPActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        // TODO add your handling code here:
+        new Dashboard().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnDashboardActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
     /**
      * @param args the command line arguments

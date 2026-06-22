@@ -44,15 +44,35 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnDonatur.setText("Data Donatur");
+        btnDonatur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonaturActionPerformed(evt);
+            }
+        });
 
         btnMakanan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnMakanan.setText("Data Makanan");
+        btnMakanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMakananActionPerformed(evt);
+            }
+        });
 
         btnPenerima.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnPenerima.setText("Data Penerima");
+        btnPenerima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerimaActionPerformed(evt);
+            }
+        });
 
         btnPenyaluran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnPenyaluran.setText("Data Penyaluran");
+        btnPenyaluran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenyaluranActionPerformed(evt);
+            }
+        });
 
         lblDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblDonatur.setText("Jumlah Donatur : ");
@@ -115,6 +135,26 @@ public class Dashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDonaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonaturActionPerformed
+        new FrmDonatur().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDonaturActionPerformed
+
+    private void btnMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakananActionPerformed
+        new FrmMakanan().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMakananActionPerformed
+
+    private void btnPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaActionPerformed
+        new FrmPenerima().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPenerimaActionPerformed
+
+    private void btnPenyaluranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyaluranActionPerformed
+        new FrmPenyaluran().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPenyaluranActionPerformed
 
     /**
      * @param args the command line arguments

@@ -91,6 +91,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Data Donatur"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDonaturActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnMakanan">
       <Properties>
@@ -99,6 +102,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Data Makanan"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMakananActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPenerima">
       <Properties>
@@ -107,6 +113,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Data Penerima"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPenerimaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPenyaluran">
       <Properties>
@@ -115,6 +124,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Data Penyaluran"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPenyaluranActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDonatur">
       <Properties>
