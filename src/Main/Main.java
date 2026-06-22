@@ -16,13 +16,6 @@ import View.FrmDonatur;
  */
 public class Main {
     public static void main(String[] args) {
-        DonaturModel data = new DonaturModel();
-        FrmDonatur frm = new FrmDonatur();
-        DonaturController ctrl = new DonaturController(data, frm);
-        
-        ctrl.KosongFormDonatur();
-        ctrl.TampilDataDonatur();
-        
         Dashboard db = new Dashboard();
         db.setVisible(true);
     }
