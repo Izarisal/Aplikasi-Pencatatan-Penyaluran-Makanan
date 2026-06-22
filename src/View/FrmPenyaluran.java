@@ -362,7 +362,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldStokActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        // TODO add your handling code here:
+        new Dashboard().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnDashboardActionPerformed
 
     private void txtFieldNamaMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNamaMakananActionPerformed
@@ -374,7 +375,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldIdPenyaluranActionPerformed
 
     private void btnDashboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboard1ActionPerformed
-        // TODO add your handling code here:
+        new Dashboard().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnDashboard1ActionPerformed
 
     /**

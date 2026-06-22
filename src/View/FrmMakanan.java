@@ -250,7 +250,8 @@ public class FrmMakanan extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldEmailActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        // TODO add your handling code here:
+        new Dashboard().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnDashboardActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
