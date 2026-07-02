@@ -24,6 +24,7 @@ public class FrmDonatur extends javax.swing.JFrame {
     private static Connection MySQLConfig;
     /**
      * Creates new form FrmDonatur
+     * @throws java.sql.SQLException
      */
     public FrmDonatur() throws SQLException {
         initComponents();

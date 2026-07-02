@@ -6,7 +6,12 @@
 package View;
 
 import Controller.DonaturController;
+import Controller.PenyaluranController;
 import Model.DonaturModel;
+import Model.PenyaluranModel;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -140,17 +145,25 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDonaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonaturActionPerformed
-        DonaturModel data = new DonaturModel();
-        FrmDonatur frm = new FrmDonatur();
-        DonaturController ctrl = new DonaturController(data, frm);
-        ctrl.TampilDataDonatur();
-        frm.setVisible(true);
-        dispose();
+        try {
+            DonaturModel data = new DonaturModel();
+            FrmDonatur frm = new FrmDonatur();
+            DonaturController ctrl = new DonaturController(data, frm);
+            ctrl.TampilDataDonatur();
+            frm.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDonaturActionPerformed
 
     private void btnMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakananActionPerformed
-        new FrmMakanan().setVisible(true);
-        dispose();
+        try {
+            new FrmMakanan().setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnMakananActionPerformed
 
     private void btnPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaActionPerformed
@@ -159,7 +172,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPenerimaActionPerformed
 
     private void btnPenyaluranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyaluranActionPerformed
-        new FrmPenyaluran().setVisible(true);
+        PenyaluranModel data = new PenyaluranModel();
+        FrmPenyaluran frm = new FrmPenyaluran();
+        PenyaluranController ctrl = new PenyaluranController(data, frm);
+        ctrl.TampilDataPenyaluran();
+        frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPenyaluranActionPerformed
 
