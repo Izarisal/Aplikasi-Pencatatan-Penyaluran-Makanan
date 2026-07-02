@@ -5,17 +5,40 @@
  */
 package View;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author User
  */
 public class FrmPenerima extends javax.swing.JFrame {
 
+    private static Connection MySQLConfig;
+
     /**
      * Creates new form FrmDonatur
      */
     public FrmPenerima() {
         initComponents();
+
+        try {
+            String url = "jdbc:mysql://localhost:3306/projekpbo";
+            String user = "root";
+            String pass = "";
+
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            MySQLConfig = DriverManager.getConnection(url, user, pass);
+
+        } catch (SQLException e) {
+            System.err.println("koneksi gagal " + e.getMessage());
+        }
     }
 
     /**
@@ -268,7 +291,17 @@ public class FrmPenerima extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDashboardActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        // TODO add your handling code here:
+        try {
+            JasperPrint print = JasperFillManager.fillReport(
+                    "src/Jasper/laporanPenerima.jasper",
+                    null,
+                    MySQLConfig
+            );
+            new JasperViewer(print, false).setVisible(true);
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(this, "Gagal Mencetak Laporan: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnCetakActionPerformed
 
     private void txtFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEmailActionPerformed
