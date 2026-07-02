@@ -5,17 +5,39 @@
  */
 package View;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author User
  */
 public class FrmPenyaluran extends javax.swing.JFrame {
-
+    private static Connection MySQLConfig;
+    private PreparedStatement pst;
+    private ResultSet rst;
     /**
      * Creates new form FrmDonatur
      */
     public FrmPenyaluran() {
         initComponents();
+        
+        try {
+            String url = "jdbc:mysql://localhost:3306/projekpbo";
+            String user = "root";
+            String pass = "";
+
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            MySQLConfig = DriverManager.getConnection(url, user, pass);
+
+        } catch (SQLException e) {
+            System.err.println("koneksi gagal " + e.getMessage());
+        }
     }
 
     /**
@@ -48,17 +70,24 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         txtFieldNamaMakanan = new javax.swing.JTextField();
         lblId2 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        lblId5 = new javax.swing.JLabel();
-        dateKadaluarsa2 = new com.toedter.calendar.JDateChooser();
-        lblId6 = new javax.swing.JLabel();
-        dateKadaluarsa3 = new com.toedter.calendar.JDateChooser();
-        dateKadaluarsa = new com.toedter.calendar.JDateChooser();
-        lblId3 = new javax.swing.JLabel();
-        lblId4 = new javax.swing.JLabel();
-        btnTambah1 = new javax.swing.JButton();
-        btnDashboard1 = new javax.swing.JButton();
-        dateKadaluarsa4 = new com.toedter.calendar.JDateChooser();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablePenyaluran = new javax.swing.JTable();
+        lblLokasi = new javax.swing.JLabel();
+        lblPenyaluran = new javax.swing.JLabel();
+        btnDashboard2 = new javax.swing.JButton();
+        btnCetak = new javax.swing.JButton();
+        lblFrmPenyaluran2 = new javax.swing.JLabel();
+        lblId8 = new javax.swing.JLabel();
+        cbPenerima = new javax.swing.JComboBox<>();
+        btnSimpan = new javax.swing.JButton();
+        lblNama = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        lblJenis = new javax.swing.JLabel();
+        jDatePenyaluran = new com.toedter.calendar.JDateChooser();
+        cbMakanan = new javax.swing.JComboBox<>();
+        txtFieldIdPenyaluranCRUD = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +96,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         lblFrmDonatur.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblFrmDonatur.setText("Form Penyaluran");
 
-        tableProsesPenyaluran.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
+        tableProsesPenyaluran.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tableProsesPenyaluran.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -109,8 +138,13 @@ public class FrmPenyaluran extends javax.swing.JFrame {
 
         btnCari.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
-        tableMakanan.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
+        tableMakanan.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tableMakanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -168,56 +202,60 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(475, 475, 475)
+                .addComponent(lblFrmDonatur)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblId2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(lblFrmDonatur))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnDashboard)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblId2)
-                                        .addGap(344, 344, 344))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblId)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtFieldNamaMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblId1)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblStok)
-                                .addGap(283, 283, 283)
-                                .addComponent(lblIdPenyaluran)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(26, 26, 26))
+                        .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtFieldNamaMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblId)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStok))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblId1)
+                        .addGap(187, 187, 187))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnDashboard)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblIdPenyaluran)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblFrmDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblId)
-                        .addGap(12, 12, 12)
+                        .addGap(59, 59, 59)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblId)
+                            .addComponent(lblId1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFrmDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtFieldNamaMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,112 +263,209 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                         .addComponent(lblId2)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
+                        .addGap(18, 18, 18)
                         .addComponent(lblStok))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblId1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblIdPenyaluran)
-                    .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblIdPenyaluran)
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Form", jPanel1);
 
-        lblId5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId5.setText("Penyaluran Antara Tanggal");
+        tablePenyaluran.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tablePenyaluran.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablePenyaluran.setFocusable(false);
+        jScrollPane3.setViewportView(tablePenyaluran);
 
-        dateKadaluarsa2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblLokasi.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblLokasi.setText("Tanggal Penyaluran");
 
-        lblId6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId6.setText("Penyaluran Sesudah Tanggal");
+        lblPenyaluran.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblPenyaluran.setText("Data Penyaluran");
 
-        dateKadaluarsa3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        dateKadaluarsa.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        lblId3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblId3.setText("Laporan");
-
-        lblId4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId4.setText("Penyaluran Sebelum Tanggal");
-
-        btnTambah1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnTambah1.setText("Cari");
-
-        btnDashboard1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnDashboard1.setText("Dashboard");
-        btnDashboard1.addActionListener(new java.awt.event.ActionListener() {
+        btnDashboard2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnDashboard2.setText("Dashboard");
+        btnDashboard2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDashboard1ActionPerformed(evt);
+                btnDashboard2ActionPerformed(evt);
             }
         });
 
-        dateKadaluarsa4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCetak.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCetak.setText("Cetak");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDashboard1)
-                    .addComponent(dateKadaluarsa4, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(192, 192, 192)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblId5, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(lblId6, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(455, 455, 455)
-                            .addComponent(lblId3))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(193, 193, 193)
-                            .addComponent(dateKadaluarsa, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(dateKadaluarsa2, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateKadaluarsa3, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(216, Short.MAX_VALUE))
+        lblFrmPenyaluran2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblFrmPenyaluran2.setText("Form Penyaluran");
+
+        lblId8.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblId8.setText("Id Penyaluran");
+
+        cbPenerima.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cbPenerima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPenerimaActionPerformed(evt);
+            }
+        });
+
+        btnSimpan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        lblNama.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblNama.setText("Id Makanan");
+
+        btnUpdate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnDelete.setText("Delete");
+
+        lblJenis.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblJenis.setText("Id Penerima");
+
+        jDatePenyaluran.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        cbMakanan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cbMakanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMakananActionPerformed(evt);
+            }
+        });
+
+        txtFieldIdPenyaluranCRUD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtFieldIdPenyaluranCRUD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldIdPenyaluranCRUDActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDatePenyaluran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cbMakanan, javax.swing.GroupLayout.Alignment.LEADING, 0, 396, Short.MAX_VALUE)
+                                    .addComponent(lblLokasi, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFieldIdPenyaluranCRUD, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 4, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblPenyaluran)
+                                .addGap(285, 285, 285))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnDashboard2)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(lblFrmPenyaluran2)
+                                .addGap(441, 441, 441))))))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblJenis)
+                        .addComponent(lblNama)
+                        .addComponent(lblId8)
+                        .addComponent(cbPenerima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(701, Short.MAX_VALUE)))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lblId3)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFrmPenyaluran2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblId4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateKadaluarsa, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblId5)
-                .addGap(18, 18, 18)
-                .addComponent(dateKadaluarsa4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dateKadaluarsa2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblId6)
-                .addGap(18, 18, 18)
-                .addComponent(dateKadaluarsa3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDashboard1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblPenyaluran)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtFieldIdPenyaluranCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(cbMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLokasi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDatePenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(171, 171, 171)))
+                .addComponent(btnDashboard2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(56, 56, 56)
+                    .addComponent(lblId8)
+                    .addGap(37, 37, 37)
+                    .addComponent(lblNama)
+                    .addGap(37, 37, 37)
+                    .addComponent(lblJenis)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(cbPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(186, 186, 186)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(56, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Laporan", jPanel2);
+        jTabbedPane1.addTab("CRUD", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -339,27 +474,37 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDonatur))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(lblDonatur)
-                .addContainerGap(455, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(lblDonatur))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFieldStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldStokActionPerformed
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldStokActionPerformed
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
+        
+    }//GEN-LAST:event_btnCetakActionPerformed
+
+    private void btnDashboard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboard2ActionPerformed
+        new Dashboard().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDashboard2ActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
         new Dashboard().setVisible(true);
@@ -370,14 +515,40 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldNamaMakananActionPerformed
 
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        try {
+            String sql = "select * from makanan where nama LIKE '%" + txtFieldNamaMakanan.getText() + "%'";
+            pst = MySQLConfig.prepareStatement(sql);
+            rst = pst.executeQuery();
+            tableMakanan.setModel(DbUtils.resultSetToTableModel(rst));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void txtFieldStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldStokActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldStokActionPerformed
+
     private void txtFieldIdPenyaluranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldIdPenyaluranActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldIdPenyaluranActionPerformed
 
-    private void btnDashboard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboard1ActionPerformed
-        new Dashboard().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnDashboard1ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtFieldIdPenyaluranCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldIdPenyaluranCRUDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldIdPenyaluranCRUDActionPerformed
+
+    private void cbPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPenerimaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbPenerimaActionPerformed
+
+    private void cbMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMakananActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMakananActionPerformed
 
     /**
      * @param args the command line arguments
@@ -424,34 +595,41 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnCari;
+    public javax.swing.JButton btnCetak;
     private javax.swing.JButton btnDashboard;
-    private javax.swing.JButton btnDashboard1;
+    private javax.swing.JButton btnDashboard2;
+    public javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDonasi;
+    public javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnTambah;
-    private javax.swing.JButton btnTambah1;
-    private com.toedter.calendar.JDateChooser dateKadaluarsa;
-    private com.toedter.calendar.JDateChooser dateKadaluarsa2;
-    private com.toedter.calendar.JDateChooser dateKadaluarsa3;
-    private com.toedter.calendar.JDateChooser dateKadaluarsa4;
+    public javax.swing.JButton btnUpdate;
+    public javax.swing.JComboBox<String> cbMakanan;
+    public javax.swing.JComboBox<String> cbPenerima;
+    public com.toedter.calendar.JDateChooser jDatePenyaluran;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblFrmDonatur;
+    private javax.swing.JLabel lblFrmPenyaluran2;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblId2;
-    private javax.swing.JLabel lblId3;
-    private javax.swing.JLabel lblId4;
-    private javax.swing.JLabel lblId5;
-    private javax.swing.JLabel lblId6;
+    private javax.swing.JLabel lblId8;
     private javax.swing.JLabel lblIdPenyaluran;
+    private javax.swing.JLabel lblJenis;
+    private javax.swing.JLabel lblLokasi;
+    private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblPenyaluran;
     private javax.swing.JLabel lblStok;
     private javax.swing.JTable tableMakanan;
+    public static javax.swing.JTable tablePenyaluran;
     private javax.swing.JTable tableProsesPenyaluran;
     private javax.swing.JTextField txtFieldIdPenyaluran;
+    public javax.swing.JTextField txtFieldIdPenyaluranCRUD;
     private javax.swing.JTextField txtFieldNamaMakanan;
     private javax.swing.JTextField txtFieldStok;
     // End of variables declaration//GEN-END:variables

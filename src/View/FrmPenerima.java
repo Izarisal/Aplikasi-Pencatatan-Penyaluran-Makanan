@@ -125,7 +125,7 @@ public class FrmPenerima extends javax.swing.JFrame {
         btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDelete.setText("Delete");
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
