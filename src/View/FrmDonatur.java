@@ -5,17 +5,40 @@
  */
 package View;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author User
  */
 public class FrmDonatur extends javax.swing.JFrame {
-
+    private static Connection MySQLConfig;
     /**
      * Creates new form FrmDonatur
      */
-    public FrmDonatur() {
+    public FrmDonatur() throws SQLException {
         initComponents();
+        
+        try {
+            String url = "jdbc:mysql://localhost:3306/projekpbo"; 
+            String user = "root"; 
+            String pass = ""; 
+
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            MySQLConfig = DriverManager.getConnection(url, user, pass);
+
+        } catch (SQLException e) {
+            System.err.println("koneksi gagal " + e.getMessage()); 
+        }
     }
 
     /**
@@ -155,6 +178,11 @@ public class FrmDonatur extends javax.swing.JFrame {
 
         btnCetak.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCetak.setText("Cetak");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,6 +307,20 @@ public class FrmDonatur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed
 
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
+        try {
+            JasperPrint print = JasperFillManager.fillReport(
+                    "src/Jasper/laporanDonatur.jasper",
+                    null,
+                    MySQLConfig
+            );
+            new JasperViewer(print, false).setVisible(true);
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(this, "Gagal Mencetak Laporan: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnCetakActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -293,23 +335,35 @@ public class FrmDonatur extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmDonatur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDonatur.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmDonatur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDonatur.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmDonatur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDonatur.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmDonatur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmDonatur.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmDonatur().setVisible(true);
+                try {
+                    new FrmDonatur().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FrmDonatur.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
