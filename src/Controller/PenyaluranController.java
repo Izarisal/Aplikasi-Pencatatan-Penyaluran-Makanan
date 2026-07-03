@@ -11,7 +11,7 @@ import Model.MakananModel;
 import Model.PenerimaModel;
 import Model.PenyaluranModel;
 import View.FrmPenyaluran;
-import View.Laporan;
+import View.Popup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -56,7 +56,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
         this.frm.btnTambah.addActionListener(this);
         this.frm.btnHapus.addActionListener(this);
         this.frm.btnDonasi.addActionListener(this);
-        this.frm.btnCetak.addActionListener(this);
+        this.frm.btnLaporan.addActionListener(this);
 
         this.frm.tablePenyaluran.addMouseListener(this);
         this.frm.tableMakanan.addMouseListener(this);
@@ -464,8 +464,8 @@ public class PenyaluranController implements ActionListener, MouseListener {
             for (int i = 0; i < modelKeranjang.getRowCount(); i++) {
                 modelKeranjang.setValueAt(i + 1, i, 0);
             }
-        } else if (ae.getSource() == frm.btnCetak) {
-            Laporan frmLaporan = new Laporan();
+        } else if (ae.getSource() == frm.btnLaporan) {
+            Popup frmLaporan = new Popup();
             PenyaluranModel penyaluranData = new PenyaluranModel();
             DonaturModel donaturData = new DonaturModel();
             MakananModel makananData = new MakananModel();
