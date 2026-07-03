@@ -194,11 +194,6 @@ public class PenyaluranController implements ActionListener, MouseListener {
     }
 
     private boolean isInputValid(int stokSekarang) {
-        if (frm.cbPenerimaPenyaluran.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Silakan pilih ID Penerima terlebih dahulu!");
-            return false;
-        }
-
         String stokDisalurkan = frm.txtFieldStok.getText();
         if (stokDisalurkan.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Masukkan jumlah stok yang ingin disalurkan!");
@@ -231,7 +226,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
         frm.tableMakanan.setValueAt(stokSekarang - jumlahDisalurkan, baris, 4);
         frm.txtFieldStok.setText("");
     }
-    
+
     public void KosongFormPenyaluran() {
         frm.txtFieldIdPenyaluranCRUD.setText(null);
         frm.cbMakanan.setSelectedItem(null);
@@ -329,6 +324,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     JOptionPane.showMessageDialog(null, "Simpan Data Baru Berhasil");
                     KosongFormPenyaluran();
                     TampilDataPenyaluran();
+                    OtomatisIdPenyaluran();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
@@ -354,6 +350,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     JOptionPane.showMessageDialog(null, "Update Data Baru Berhasil");
                     KosongFormPenyaluran();
                     TampilDataPenyaluran();
+                    OtomatisIdPenyaluran();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
@@ -366,6 +363,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     JOptionPane.showMessageDialog(null, "Hapus Data Baru Berhasil");
                     KosongFormPenyaluran();
                     TampilDataPenyaluran();
+                    OtomatisIdPenyaluran();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
@@ -392,74 +390,6 @@ public class PenyaluranController implements ActionListener, MouseListener {
             cari();
         } else if (ae.getSource() == frm.btnTambah) {
             int baris = frm.tableMakanan.getSelectedRow();
-            if (baris == -1) {
-                JOptionPane.showMessageDialog(null, "Silakan pilih makanan terlebih dahulu!");
-                return;
-            }
-
-            String id_makanan = frm.tableMakanan.getValueAt(baris, 1).toString();
-
-            String nama_makanan = frm.tableMakanan.getValueAt(baris, 3).toString();
-            String id_donatur = frm.tableMakanan.getValueAt(baris, 2).toString();
-            
-
-            // ambil nama donatur dari tabel donatur berdasarkan id_donatur di table makanan
-            String nama_donatur = "";
-            try {
-                String sqlDonatur = "SELECT nama FROM donatur WHERE id_donatur = '" + id_donatur + "'";
-                java.sql.Connection conn = (Connection) Connector.configDB();
-                java.sql.Statement stm = conn.createStatement();
-                java.sql.ResultSet resDonatur = stm.executeQuery(sqlDonatur);
-                if (resDonatur.next()) {
-                    nama_donatur = resDonatur.getString("nama");
-                } 
-            } catch (SQLException e) {
-                System.out.println("Gagal mengambil nama donatur: " + e.getMessage());
-                nama_donatur = id_donatur; 
-            }
-
-            int stokSekarang = Integer.parseInt(frm.tableMakanan.getValueAt(baris, 4).toString());
-
-            String id_penerima = "" + frm.cbPenerimaPenyaluran.getSelectedItem();
-            if (frm.cbPenerimaPenyaluran.getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(null, "Silakan pilih ID Penerima terlebih dahulu!");
-                return;
-            }
-
-            String stokDisalurkan = frm.txtFieldStok.getText();
-            if (stokDisalurkan.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Masukkan jumlah stok yang ingin disalurkan!");
-                return;
-            }
-
-            try {
-                int jumlahDisalurkan = Integer.parseInt(stokDisalurkan);
-
-                if (jumlahDisalurkan > stokSekarang) {
-                    JOptionPane.showMessageDialog(null, "Stok Makanan Kurang!");
-                    return;
-                }
-
-                int no = modelKeranjang.getRowCount() + 1;
-                modelKeranjang.addRow(new Object[]{
-                    no,
-                    id_makanan,
-                    nama_makanan,
-                    nama_donatur,
-                    jumlahDisalurkan
-                });
-                frm.tableMakanan.setValueAt(stokSekarang - jumlahDisalurkan, baris, 4);
-                frm.txtFieldStok.setText("");
-
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Input jumlah disalurkan harus berupa angka!");
-            }
-        } else if (ae.getSource() == frm.btnTambah) {
-            int baris = frm.tableMakanan.getSelectedRow();
-            if (baris == -1) {
-                JOptionPane.showMessageDialog(null, "Silakan pilih makanan terlebih dahulu!");
-                return;
-            }
 
             String id_makanan = frm.tableMakanan.getValueAt(baris, 1).toString();
             String id_donatur = frm.tableMakanan.getValueAt(baris, 2).toString();
@@ -476,7 +406,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
         } else if (ae.getSource() == frm.btnDonasi) {
             int totalBaris = modelKeranjang.getRowCount();
             if (totalBaris == 0) {
-                JOptionPane.showMessageDialog(null, "Daftar salur masih kosong!");
+                JOptionPane.showMessageDialog(null, "Daftar donasi masih kosong!");
                 return;
             }
 
@@ -487,7 +417,6 @@ public class PenyaluranController implements ActionListener, MouseListener {
 
             try {
                 java.sql.Connection MySQLConfig = (Connection) Model.Connector.configDB();
-                MySQLConfig.setAutoCommit(false);
 
                 java.util.Date tanggalSekarang = new java.util.Date();
                 java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
@@ -508,20 +437,16 @@ public class PenyaluranController implements ActionListener, MouseListener {
 
                     pstUpdate.setInt(1, jumlahSalur);
                     pstUpdate.setString(2, id_makanan);
-                    pstUpdate.addBatch();
+                    pstUpdate.execute();
 
                     pstInsert.setString(1, id_penyaluran);
                     pstInsert.setString(2, id_makanan);
                     pstInsert.setString(3, id_penerima);
                     pstInsert.setInt(4, jumlahSalur);
                     pstInsert.setString(5, tgl_penyaluran);
-                    pstInsert.addBatch();
-                }
-
-                pstUpdate.executeBatch();
-                pstInsert.executeBatch();
-
-                MySQLConfig.commit();
+                    pstInsert.execute();
+                }                
+                
                 JOptionPane.showMessageDialog(null, "Donasi penyaluran berhasil diproses!");
 
                 modelKeranjang.setRowCount(0);
@@ -529,9 +454,27 @@ public class PenyaluranController implements ActionListener, MouseListener {
                 TampilDataMakanan();
                 TampilDataPenyaluran();
                 OtomatisIdPenyaluran();
-
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error Transaksi: " + ex.getMessage());
+            }
+        } else if (ae.getSource() == frm.btnHapus) {
+            int barisTerpilih = frm.tableProsesPenyaluran.getSelectedRow();
+
+            String idMakananBatal = modelKeranjang.getValueAt(barisTerpilih, 1).toString();
+            int jmlKembali = Integer.parseInt(modelKeranjang.getValueAt(barisTerpilih, 4).toString());
+
+            for (int i = 0; i < frm.tableMakanan.getRowCount(); i++) {
+                if (frm.tableMakanan.getValueAt(i, 1).toString().equals(idMakananBatal)) {
+                    int stokTabelKiri = Integer.parseInt(frm.tableMakanan.getValueAt(i, 4).toString());
+                    frm.tableMakanan.setValueAt(stokTabelKiri + jmlKembali, i, 4);
+                    break;
+                }
+            }
+
+            modelKeranjang.removeRow(barisTerpilih);
+
+            for (int i = 0; i < modelKeranjang.getRowCount(); i++) {
+                modelKeranjang.setValueAt(i + 1, i, 0);
             }
         }
     }
