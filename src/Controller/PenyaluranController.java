@@ -56,7 +56,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
         this.frm.btnTambah.addActionListener(this);
         this.frm.btnHapus.addActionListener(this);
         this.frm.btnDonasi.addActionListener(this);
-        this.frm.btnCetak.addActionListener(this);
+        this.frm.btnLaporan.addActionListener(this);
 
         this.frm.tablePenyaluran.addMouseListener(this);
         this.frm.tableMakanan.addMouseListener(this);
@@ -464,7 +464,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
             for (int i = 0; i < modelKeranjang.getRowCount(); i++) {
                 modelKeranjang.setValueAt(i + 1, i, 0);
             }
-        } else if (ae.getSource() == frm.btnCetak) {
+        } else if (ae.getSource() == frm.btnLaporan) {
             Popup frmLaporan = new Popup();
             PenyaluranModel penyaluranData = new PenyaluranModel();
             DonaturModel donaturData = new DonaturModel();
