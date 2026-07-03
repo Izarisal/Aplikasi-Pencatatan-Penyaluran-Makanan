@@ -47,11 +47,13 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
+        lblId9 = new javax.swing.JLabel();
+        txtFieldStokCRUD = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         lblFrmDonatur = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableProsesPenyaluran = new javax.swing.JTable();
-        btnBatal = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
         lblIdPenyaluran = new javax.swing.JLabel();
         txtFieldIdPenyaluran = new javax.swing.JTextField();
         btnDonasi = new javax.swing.JButton();
@@ -66,6 +68,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         txtFieldNamaMakanan = new javax.swing.JTextField();
         lblId2 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
+        lblStok1 = new javax.swing.JLabel();
+        cbPenerimaPenyaluran = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -175,6 +179,16 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
+        lblId9.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblId9.setText("Stok");
+
+        txtFieldStokCRUD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtFieldStokCRUD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldStokCRUDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -206,8 +220,10 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                                     .addComponent(jDatePenyaluran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbPenerima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbMakanan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtFieldIdPenyaluranCRUD))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFieldIdPenyaluranCRUD)
+                                    .addComponent(lblId9)
+                                    .addComponent(txtFieldStokCRUD))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -242,7 +258,11 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                         .addComponent(lblJenis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblId9)
+                        .addGap(2, 2, 2)
+                        .addComponent(txtFieldStokCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
                         .addComponent(lblLokasi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDatePenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,8 +303,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableProsesPenyaluran);
 
-        btnBatal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnBatal.setText("Hapus");
+        btnHapus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnHapus.setText("Hapus");
 
         lblIdPenyaluran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblIdPenyaluran.setText("ID Penyaluran");
@@ -371,6 +391,16 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
+        lblStok1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblStok1.setText("ID Penerima (Yang akan Disalurkan)");
+
+        cbPenerimaPenyaluran.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cbPenerimaPenyaluran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPenerimaPenyaluranActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -379,40 +409,43 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblId2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtFieldNamaMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblId)
                     .addComponent(lblStok)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblIdPenyaluran)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                        .addComponent(lblId1)
+                        .addGap(187, 187, 187))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblId1)
-                                .addGap(187, 187, 187))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblStok1)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbPenerimaPenyaluran, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnDashboard)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblIdPenyaluran)
-                                        .addGap(81, 81, 81)
-                                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(40, 40, 40))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 29, Short.MAX_VALUE))))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 29, Short.MAX_VALUE))))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(461, 461, 461)
                 .addComponent(lblFrmDonatur)
@@ -429,6 +462,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                     .addComponent(lblId1))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFieldNamaMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -439,22 +473,23 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                         .addComponent(lblId2)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblStok))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblIdPenyaluran)
-                        .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFieldIdPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblIdPenyaluran))))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStok)
+                    .addComponent(lblStok1)
+                    .addComponent(cbPenerimaPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Penyaluran", jPanel1);
@@ -543,6 +578,14 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCetakActionPerformed
 
+    private void cbPenerimaPenyaluranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPenerimaPenyaluranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbPenerimaPenyaluranActionPerformed
+
+    private void txtFieldStokCRUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldStokCRUDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldStokCRUDActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -586,19 +629,20 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBatal;
-    private javax.swing.JButton btnCari;
+    public javax.swing.JButton btnCari;
     public javax.swing.JButton btnCetak;
     public javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDashboard;
+    public javax.swing.JButton btnDashboard;
     private javax.swing.JButton btnDashboard2;
     public javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnDonasi;
+    public javax.swing.JButton btnDonasi;
+    public javax.swing.JButton btnHapus;
     public javax.swing.JButton btnSimpan;
-    private javax.swing.JButton btnTambah;
+    public javax.swing.JButton btnTambah;
     public javax.swing.JButton btnUpdate;
     public javax.swing.JComboBox<String> cbMakanan;
     public javax.swing.JComboBox<String> cbPenerima;
+    public javax.swing.JComboBox<String> cbPenerimaPenyaluran;
     public com.toedter.calendar.JDateChooser jDatePenyaluran;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -613,18 +657,21 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblId2;
     private javax.swing.JLabel lblId8;
+    private javax.swing.JLabel lblId9;
     private javax.swing.JLabel lblIdPenyaluran;
     private javax.swing.JLabel lblJenis;
     private javax.swing.JLabel lblLokasi;
     private javax.swing.JLabel lblNama;
     private javax.swing.JLabel lblPenyaluran;
     private javax.swing.JLabel lblStok;
-    private javax.swing.JTable tableMakanan;
+    private javax.swing.JLabel lblStok1;
+    public javax.swing.JTable tableMakanan;
     public static javax.swing.JTable tablePenyaluran;
-    private javax.swing.JTable tableProsesPenyaluran;
-    private javax.swing.JTextField txtFieldIdPenyaluran;
+    public javax.swing.JTable tableProsesPenyaluran;
+    public javax.swing.JTextField txtFieldIdPenyaluran;
     public javax.swing.JTextField txtFieldIdPenyaluranCRUD;
-    private javax.swing.JTextField txtFieldNamaMakanan;
-    private javax.swing.JTextField txtFieldStok;
+    public javax.swing.JTextField txtFieldNamaMakanan;
+    public javax.swing.JTextField txtFieldStok;
+    public javax.swing.JTextField txtFieldStokCRUD;
     // End of variables declaration//GEN-END:variables
 }

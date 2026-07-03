@@ -103,8 +103,10 @@
                                           <Component id="cbPenerima" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cbMakanan" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtFieldIdPenyaluranCRUD" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblId9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtFieldStokCRUD" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="18" max="32767" attributes="0"/>
                                       <Component id="jScrollPane3" min="-2" pref="754" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -149,7 +151,11 @@
                               <Component id="lblJenis" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cbPenerima" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblId9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="txtFieldStokCRUD" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="lblLokasi" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jDatePenyaluran" min="-2" max="-2" attributes="0"/>
@@ -393,6 +399,27 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblId9">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Stok"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFieldStokCRUD">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldStokCRUDActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel1">
@@ -411,49 +438,52 @@
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblId2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="txtFieldStok" min="-2" pref="380" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnTambah" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="btnTambah" min="-2" pref="96" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="txtFieldNamaMakanan" min="-2" pref="380" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnCari" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="btnCari" min="-2" pref="96" max="-2" attributes="0"/>
                           </Group>
                           <Component id="lblId" min="-2" max="-2" attributes="0"/>
                           <Component id="lblStok" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="502" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="txtFieldIdPenyaluran" min="-2" pref="144" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblIdPenyaluran" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="224" max="32767" attributes="0"/>
+                              <Component id="lblId1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblId1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblStok1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="cbPenerimaPenyaluran" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnHapus" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnDonasi" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="btnDashboard" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="txtFieldIdPenyaluran" min="-2" pref="144" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="lblIdPenyaluran" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                              <Component id="btnBatal" min="-2" pref="84" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnDonasi" min="-2" pref="84" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="btnDashboard" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane2" min="-2" pref="562" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="61" max="32767" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="562" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -476,7 +506,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Component id="jScrollPane2" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtFieldNamaMakanan" min="-2" pref="34" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -488,27 +519,28 @@
                               <Component id="lblId2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="162" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblStok" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane2" min="-2" pref="290" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtFieldStok" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="lblIdPenyaluran" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnTambah" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="txtFieldIdPenyaluran" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="btnDonasi" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="btnBatal" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtFieldIdPenyaluran" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="lblIdPenyaluran" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnDashboard" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnDonasi" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="btnHapus" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="lblStok" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStok1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbPenerimaPenyaluran" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnDashboard" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="btnTambah" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="txtFieldStok" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -543,16 +575,22 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btnBatal">
+            <Component class="javax.swing.JButton" name="btnHapus">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hapus"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblIdPenyaluran">
               <Properties>
@@ -571,6 +609,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldIdPenyaluranActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btnDonasi">
               <Properties>
@@ -579,6 +620,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Donasi"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblId">
               <Properties>
@@ -597,6 +641,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldStokActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btnCari">
               <Properties>
@@ -608,6 +655,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -657,6 +707,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -683,6 +736,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tambah"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtFieldNamaMakanan">
               <Properties>
@@ -693,6 +749,9 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldNamaMakananActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblId2">
               <Properties>
@@ -712,6 +771,34 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDashboardActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblStok1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="16" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="ID Penerima (Yang akan Disalurkan)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbPenerimaPenyaluran">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbPenerimaPenyaluranActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
