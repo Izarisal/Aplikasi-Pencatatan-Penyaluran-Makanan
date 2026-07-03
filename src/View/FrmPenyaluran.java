@@ -46,7 +46,6 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         btnSimpan = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnCetak = new javax.swing.JButton();
         lblId9 = new javax.swing.JLabel();
         txtFieldStokCRUD = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -171,14 +170,6 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
-        btnCetak.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnCetak.setText("Cetak");
-        btnCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCetakActionPerformed(evt);
-            }
-        });
-
         lblId9.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblId9.setText("Stok");
 
@@ -206,18 +197,16 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lblLokasi)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(btnClear)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
                                         .addComponent(btnSimpan)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(26, 26, 26)
                                         .addComponent(btnUpdate)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnDelete)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnCetak))
+                                        .addGap(26, 26, 26)
+                                        .addComponent(btnDelete))
                                     .addComponent(lblNama)
                                     .addComponent(lblJenis)
-                                    .addComponent(jDatePenyaluran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jDatePenyaluran, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                                     .addComponent(cbPenerima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbMakanan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtFieldIdPenyaluranCRUD)
@@ -247,7 +236,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPenyaluran)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtFieldIdPenyaluranCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -266,17 +255,16 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                         .addComponent(lblLokasi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDatePenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(btnDashboard2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(56, 56, 56)
@@ -574,10 +562,6 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCetakActionPerformed
-
     private void cbPenerimaPenyaluranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPenerimaPenyaluranActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbPenerimaPenyaluranActionPerformed
@@ -630,7 +614,6 @@ public class FrmPenyaluran extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCari;
-    public javax.swing.JButton btnCetak;
     public javax.swing.JButton btnClear;
     public javax.swing.JButton btnDashboard;
     private javax.swing.JButton btnDashboard2;

@@ -12,7 +12,7 @@ import Model.PenyaluranModel;
 import Model.PenerimaModel;
 import View.Dashboard;
 import View.FrmPenyaluran;
-import View.Laporan;
+import View.Popup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -36,13 +36,13 @@ public class LaporanController implements ActionListener, MouseListener {
     private DonaturModel donaturData;
     private MakananModel makananData;
     private PenerimaModel penerimaData;
-    private Laporan frm;
+    private Popup frm;
 
     public LaporanController() {
 
     }
 
-    public LaporanController(PenyaluranModel penyaluranData, DonaturModel donaturData, MakananModel makananData, PenerimaModel penerimaData, Laporan frm) {
+    public LaporanController(PenyaluranModel penyaluranData, DonaturModel donaturData, MakananModel makananData, PenerimaModel penerimaData, Popup frm) {
         this.penyaluranData = penyaluranData;
         this.donaturData = donaturData;
         this.makananData = makananData;
