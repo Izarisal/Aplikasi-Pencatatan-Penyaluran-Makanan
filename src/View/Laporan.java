@@ -28,31 +28,27 @@ public class Laporan extends javax.swing.JFrame {
     private void initComponents() {
 
         lblDonatur = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablePenyaluran = new javax.swing.JTable();
         lblId1 = new javax.swing.JLabel();
-        btnDashboard = new javax.swing.JButton();
+        btnKembali = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableDonatur = new javax.swing.JTable();
         lblId2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tableMakanan = new javax.swing.JTable();
         lblId3 = new javax.swing.JLabel();
         lblId4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tablePenerima = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnDelete.setText("Delete");
-
-        jTable1.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablePenyaluran.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tablePenyaluran.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,16 +59,16 @@ public class Laporan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablePenyaluran);
 
         lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblId1.setText("Data Penyaluran");
 
-        btnDashboard.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnDashboard.setText("Kembali");
-        btnDashboard.addActionListener(new java.awt.event.ActionListener() {
+        btnKembali.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnKembali.setText("Kembali");
+        btnKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDashboardActionPerformed(evt);
+                btnKembaliActionPerformed(evt);
             }
         });
 
@@ -84,8 +80,8 @@ public class Laporan extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tableDonatur.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tableDonatur.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -96,13 +92,13 @@ public class Laporan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tableDonatur);
 
         lblId2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblId2.setText("Data Donatur");
 
-        jTable3.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tableMakanan.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tableMakanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -113,7 +109,7 @@ public class Laporan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tableMakanan);
 
         lblId3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblId3.setText("Data Makanan");
@@ -121,8 +117,8 @@ public class Laporan extends javax.swing.JFrame {
         lblId4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblId4.setText("Data Penerima");
 
-        jTable4.setFont(new java.awt.Font("Arial", 0, 1314)); // NOI18N
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tablePenerima.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tablePenerima.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -133,7 +129,7 @@ public class Laporan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tablePenerima);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,18 +138,15 @@ public class Laporan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(lblId1))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(lblDonatur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(lblId1)))
+                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -167,7 +160,7 @@ public class Laporan extends javax.swing.JFrame {
                         .addGap(237, 237, 237))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnDashboard)
+                            .addComponent(btnKembali)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3)
@@ -201,25 +194,19 @@ public class Laporan extends javax.swing.JFrame {
                                 .addComponent(lblId4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(btnKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDashboardActionPerformed
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         // TODO add your handling code here:
@@ -292,21 +279,20 @@ public class Laporan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCetak;
-    private javax.swing.JButton btnDashboard;
-    private javax.swing.JButton btnDelete;
+    public javax.swing.JButton btnCetak;
+    public javax.swing.JButton btnKembali;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblId2;
     private javax.swing.JLabel lblId3;
     private javax.swing.JLabel lblId4;
+    public javax.swing.JTable tableDonatur;
+    public javax.swing.JTable tableMakanan;
+    public javax.swing.JTable tablePenerima;
+    public javax.swing.JTable tablePenyaluran;
     // End of variables declaration//GEN-END:variables
 }
