@@ -5,40 +5,17 @@
  */
 package View;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
-
 /**
  *
  * @author User
  */
 public class FrmPenerima extends javax.swing.JFrame {
 
-    private static Connection MySQLConfig;
-
     /**
      * Creates new form FrmDonatur
      */
     public FrmPenerima() {
         initComponents();
-
-        try {
-            String url = "jdbc:mysql://localhost:3306/projekpbo";
-            String user = "root";
-            String pass = "";
-
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            MySQLConfig = DriverManager.getConnection(url, user, pass);
-
-        } catch (SQLException e) {
-            System.err.println("koneksi gagal " + e.getMessage());
-        }
     }
 
     /**
@@ -60,18 +37,19 @@ public class FrmPenerima extends javax.swing.JFrame {
         lblStok = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
         txtFieldLokasi = new javax.swing.JTextField();
-        btnSimpan = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         lblId1 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
-        btnCetak = new javax.swing.JButton();
         cbJenis = new javax.swing.JComboBox<>();
         txtFieldEmail = new javax.swing.JTextField();
         lblJenis1 = new javax.swing.JLabel();
         txtFieldNoHP = new javax.swing.JTextField();
+        btnClear = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnCetak = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,15 +94,6 @@ public class FrmPenerima extends javax.swing.JFrame {
             }
         });
 
-        btnSimpan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnSimpan.setText("Simpan");
-
-        btnUpdate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnUpdate.setText("Update");
-
-        btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnDelete.setText("Delete");
-
         jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,14 +119,6 @@ public class FrmPenerima extends javax.swing.JFrame {
             }
         });
 
-        btnCetak.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnCetak.setText("Cetak");
-        btnCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCetakActionPerformed(evt);
-            }
-        });
-
         cbJenis.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bank Makanan", "Orang Kurang Mampu", "Panti Asuhan", "Lainnya" }));
 
@@ -178,6 +139,46 @@ public class FrmPenerima extends javax.swing.JFrame {
             }
         });
 
+        btnClear.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        btnSimpan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnCetak.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCetak.setText("Cetak");
+        btnCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCetakActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,22 +194,26 @@ public class FrmPenerima extends javax.swing.JFrame {
                         .addComponent(txtFieldLokasi, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtFieldNoHP, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblStatus)
-                            .addComponent(lblStok)
-                            .addComponent(lblNama)
-                            .addComponent(lblId)
-                            .addComponent(lblDonatur)
-                            .addComponent(lblJenis)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblStatus)
+                                .addComponent(lblStok)
+                                .addComponent(lblNama)
+                                .addComponent(lblId)
+                                .addComponent(lblDonatur)
+                                .addComponent(lblJenis))
+                            .addGap(312, 312, 312)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSimpan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUpdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCetak)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblId1)
@@ -235,7 +240,7 @@ public class FrmPenerima extends javax.swing.JFrame {
                     .addComponent(lblId)
                     .addComponent(lblId1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -258,16 +263,17 @@ public class FrmPenerima extends javax.swing.JFrame {
                         .addComponent(lblJenis1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFieldNoHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -290,20 +296,6 @@ public class FrmPenerima extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnDashboardActionPerformed
 
-    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        try {
-            JasperPrint print = JasperFillManager.fillReport(
-                    "src/Jasper/laporanPenerima.jasper",
-                    null,
-                    MySQLConfig
-            );
-            new JasperViewer(print, false).setVisible(true);
-        } catch (JRException e) {
-            JOptionPane.showMessageDialog(this, "Gagal Mencetak Laporan: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnCetakActionPerformed
-
     private void txtFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldEmailActionPerformed
@@ -311,6 +303,26 @@ public class FrmPenerima extends javax.swing.JFrame {
     private void txtFieldNoHPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNoHPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldNoHPActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCetakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,11 +363,12 @@ public class FrmPenerima extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCetak;
+    public javax.swing.JButton btnCetak;
+    public javax.swing.JButton btnClear;
     private javax.swing.JButton btnDashboard;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnSimpan;
-    private javax.swing.JButton btnUpdate;
+    public javax.swing.JButton btnDelete;
+    public javax.swing.JButton btnSimpan;
+    public javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbJenis;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

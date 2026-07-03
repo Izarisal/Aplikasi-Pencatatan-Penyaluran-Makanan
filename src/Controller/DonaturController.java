@@ -16,6 +16,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -33,6 +37,7 @@ public class DonaturController implements ActionListener, MouseListener {
         this.frm.btnSimpan.addActionListener(this);
         this.frm.btnUpdate.addActionListener(this);
         this.frm.btnDelete.addActionListener(this);
+        this.frm.btnClear.addActionListener(this);
         this.frm.tableDonatur.addMouseListener(this);
     }
 
@@ -128,8 +133,24 @@ public class DonaturController implements ActionListener, MouseListener {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
-        } else {
-            // jasper report
+        } else if (ae.getSource() == frm.btnCetak) {
+            try {
+                java.sql.Connection MySQLConfig = (Connection) Connector.configDB();
+                
+                String reportPath = "src/Jasper/laporanDonatur.jasper";
+                
+                JasperPrint print = JasperFillManager.fillReport(reportPath, null, MySQLConfig);
+                
+                new JasperViewer(print, false).setVisible(true);
+                
+            } catch (JRException ex) {
+                JOptionPane.showMessageDialog(null, "Gagal Mencetak Laporan: " + ex.getMessage());
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Koneksi Database Gagal: " + ex.getMessage());
+            }
+        } else if (ae.getSource() == frm.btnClear) {
+            KosongFormDonatur();
         }
     }
 

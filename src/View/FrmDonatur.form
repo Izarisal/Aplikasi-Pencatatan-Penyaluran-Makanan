@@ -26,37 +26,42 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnSimpan" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnUpdate" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnDelete" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnCetak" min="-2" pref="90" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="txtFieldNoHP" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblNoHP" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblLokasi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblNama" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblDonatur" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFieldLokasi" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cbJenis" alignment="0" pref="396" max="32767" attributes="0"/>
-                      <Component id="txtFieldNama" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtFieldId" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtFieldEmail" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtFieldLokasi" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cbJenis" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtFieldNama" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtFieldId" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtFieldNoHP" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtFieldEmail" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btnClear" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnCetak" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblNoHP" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLokasi" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNama" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDonatur" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="btnDashboard" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="760" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="736" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
@@ -111,13 +116,14 @@
                       <Component id="txtFieldNoHP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnSimpan" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="btnUpdate" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="btnDelete" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="btnCetak" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="btnSimpan" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="btnUpdate" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="btnDelete" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="btnCetak" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="btnClear" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="371" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnDashboard" min="-2" pref="36" max="-2" attributes="0"/>
@@ -288,28 +294,6 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="btnUpdate">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Update"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDelete">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Delete"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -356,6 +340,48 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDashboardActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUpdate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Update"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDelete">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Delete"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnClear">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Clear"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnCetak">
       <Properties>

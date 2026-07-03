@@ -4,42 +4,19 @@
  * and open the template in the editor.
  */
 package View;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
-
 /**
  *
  * @author User
  */
 public class FrmDonatur extends javax.swing.JFrame {
-    private static Connection MySQLConfig;
+
     /**
      * Creates new form FrmDonatur
+     *
      * @throws java.sql.SQLException
      */
-    public FrmDonatur() throws SQLException {
+    public FrmDonatur()  {
         initComponents();
-        
-        try {
-            String url = "jdbc:mysql://localhost:3306/projekpbo"; 
-            String user = "root"; 
-            String pass = ""; 
-
-            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            MySQLConfig = DriverManager.getConnection(url, user, pass);
-
-        } catch (SQLException e) {
-            System.err.println("koneksi gagal " + e.getMessage()); 
-        }
     }
 
     /**
@@ -66,12 +43,13 @@ public class FrmDonatur extends javax.swing.JFrame {
         txtFieldNoHP = new javax.swing.JTextField();
         cbJenis = new javax.swing.JComboBox<>();
         btnSimpan = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDonatur = new javax.swing.JTable();
         lblId1 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,12 +123,6 @@ public class FrmDonatur extends javax.swing.JFrame {
             }
         });
 
-        btnUpdate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnUpdate.setText("Update");
-
-        btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnDelete.setText("Delete");
-
         tableDonatur.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tableDonatur.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,6 +149,30 @@ public class FrmDonatur extends javax.swing.JFrame {
             }
         });
 
+        btnUpdate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnClear.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
         btnCetak.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnCetak.setText("Cetak");
         btnCetak.addActionListener(new java.awt.event.ActionListener() {
@@ -192,34 +188,38 @@ public class FrmDonatur extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFieldLokasi)
+                    .addComponent(cbJenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtFieldNama)
+                    .addComponent(txtFieldId)
+                    .addComponent(txtFieldNoHP)
+                    .addComponent(txtFieldEmail)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtFieldNoHP, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblNoHP, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblLokasi, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblJenis, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblNama, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblId, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblDonatur, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtFieldLokasi, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cbJenis, javax.swing.GroupLayout.Alignment.LEADING, 0, 396, Short.MAX_VALUE)
-                        .addComponent(txtFieldNama, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtFieldId, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnClear)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSimpan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnUpdate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnDelete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCetak))
+                            .addComponent(lblNoHP)
+                            .addComponent(lblEmail)
+                            .addComponent(lblLokasi)
+                            .addComponent(lblJenis)
+                            .addComponent(lblNama)
+                            .addComponent(lblId)
+                            .addComponent(lblDonatur))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnDashboard)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblId1)
@@ -266,11 +266,12 @@ public class FrmDonatur extends javax.swing.JFrame {
                         .addComponent(txtFieldNoHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -308,18 +309,20 @@ public class FrmDonatur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSimpanActionPerformed
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearActionPerformed
+
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
-        try {
-            JasperPrint print = JasperFillManager.fillReport(
-                    "src/Jasper/laporanDonatur.jasper",
-                    null,
-                    MySQLConfig
-            );
-            new JasperViewer(print, false).setVisible(true);
-        } catch (JRException e) {
-            JOptionPane.showMessageDialog(this, "Gagal Mencetak Laporan: " + e.getMessage());
-            e.printStackTrace();
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnCetakActionPerformed
 
     /**
@@ -360,17 +363,14 @@ public class FrmDonatur extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new FrmDonatur().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FrmDonatur.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new FrmDonatur().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCetak;
+    public javax.swing.JButton btnClear;
     private javax.swing.JButton btnDashboard;
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnSimpan;
