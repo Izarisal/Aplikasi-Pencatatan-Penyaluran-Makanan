@@ -10,6 +10,7 @@ import Controller.MakananController;
 import Controller.PenyaluranController;
 import Model.DonaturModel;
 import Model.MakananModel;
+import Model.PenerimaModel;
 import Model.PenyaluranModel;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -165,7 +166,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMakananActionPerformed
 
     private void btnPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaActionPerformed
-        new FrmPenerima().setVisible(true);
+        PenerimaModel data = new PenerimaModel();
+        FrmPenerima frm = new FrmPenerima();
+//        PenerimaController ctrl = new PenerimaController(data, frm);
+//        ctrl.TampilDataPenerima();
+        frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPenerimaActionPerformed
 

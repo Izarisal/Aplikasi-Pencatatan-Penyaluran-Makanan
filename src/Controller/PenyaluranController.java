@@ -6,8 +6,12 @@
 package Controller;
 
 import Model.Connector;
+import Model.DonaturModel;
+import Model.MakananModel;
+import Model.PenerimaModel;
 import Model.PenyaluranModel;
 import View.FrmPenyaluran;
+import View.Laporan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -50,19 +54,19 @@ public class PenyaluranController implements ActionListener, MouseListener {
         this.frm.btnDelete.addActionListener(this);
         this.frm.btnCari.addActionListener(this);
         this.frm.btnTambah.addActionListener(this);
-
         this.frm.btnHapus.addActionListener(this);
         this.frm.btnDonasi.addActionListener(this);
+        this.frm.btnCetak.addActionListener(this);
 
         this.frm.tablePenyaluran.addMouseListener(this);
         this.frm.tableMakanan.addMouseListener(this);
         this.frm.tableProsesPenyaluran.addMouseListener(this);
-
+        
+        TampilDataPenyaluran();
         cari();
         LoadComboMakanan();
         LoadComboPenerima();
         OtomatisIdPenyaluran();
-
         InisialisasiTabelKanan();
     }
 
@@ -368,22 +372,6 @@ public class PenyaluranController implements ActionListener, MouseListener {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
-        } else if (ae.getSource() == frm.btnCetak) {
-            try {
-                java.sql.Connection MySQLConfig = (Connection) Connector.configDB();
-
-                String reportPath = "src/Jasper/laporanDonatur.jasper";
-
-                JasperPrint print = JasperFillManager.fillReport(reportPath, null, MySQLConfig);
-
-                new JasperViewer(print, false).setVisible(true);
-
-            } catch (JRException ex) {
-                JOptionPane.showMessageDialog(null, "Gagal Mencetak Laporan: " + ex.getMessage());
-                ex.printStackTrace();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Koneksi Database Gagal: " + ex.getMessage());
-            }
         } else if (ae.getSource() == frm.btnClear) {
             KosongFormPenyaluran();
         } else if (ae.getSource() == frm.btnCari) {
@@ -445,8 +433,8 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     pstInsert.setInt(4, jumlahSalur);
                     pstInsert.setString(5, tgl_penyaluran);
                     pstInsert.execute();
-                }                
-                
+                }
+
                 JOptionPane.showMessageDialog(null, "Donasi penyaluran berhasil diproses!");
 
                 modelKeranjang.setRowCount(0);
@@ -476,6 +464,16 @@ public class PenyaluranController implements ActionListener, MouseListener {
             for (int i = 0; i < modelKeranjang.getRowCount(); i++) {
                 modelKeranjang.setValueAt(i + 1, i, 0);
             }
+        } else if (ae.getSource() == frm.btnCetak) {
+            Laporan frmLaporan = new Laporan();
+            PenyaluranModel penyaluranData = new PenyaluranModel();
+            DonaturModel donaturData = new DonaturModel();
+            MakananModel makananData = new MakananModel();
+            PenerimaModel penerimaData = new PenerimaModel();
+            LaporanController ctrl = new LaporanController(penyaluranData, donaturData, makananData, penerimaData, frmLaporan);
+            frmLaporan.setVisible(true);
+
+            frm.dispose();
         }
     }
 
