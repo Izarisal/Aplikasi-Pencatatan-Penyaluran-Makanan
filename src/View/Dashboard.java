@@ -145,16 +145,12 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDonaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonaturActionPerformed
-        try {
             DonaturModel data = new DonaturModel();
             FrmDonatur frm = new FrmDonatur();
             DonaturController ctrl = new DonaturController(data, frm);
             ctrl.TampilDataDonatur();
             frm.setVisible(true);
             dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_btnDonaturActionPerformed
 
     private void btnMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakananActionPerformed
