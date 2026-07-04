@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Connector;
 import Model.DonaturModel;
+import View.Dashboard;
 import View.FrmDonatur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,6 +39,8 @@ public class DonaturController implements ActionListener, MouseListener {
         this.frm.btnUpdate.addActionListener(this);
         this.frm.btnDelete.addActionListener(this);
         this.frm.btnClear.addActionListener(this);
+        this.frm.btnCetak.addActionListener(this);
+        this.frm.btnDashboard.addActionListener(this);
         this.frm.tableDonatur.addMouseListener(this);
     }
 
@@ -151,6 +154,11 @@ public class DonaturController implements ActionListener, MouseListener {
             }
         } else if (ae.getSource() == frm.btnClear) {
             KosongFormDonatur();
+        } else if (ae.getSource() == frm.btnDashboard) {
+            Dashboard db = new Dashboard();
+            DashboardController ctrl = new DashboardController(db);
+            db.setVisible(true);
+            frm.dispose();
         }
     }
 

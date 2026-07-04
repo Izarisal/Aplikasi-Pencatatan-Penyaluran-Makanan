@@ -297,8 +297,7 @@ public class FrmPenerima extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldLokasiActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        new Dashboard().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_btnDashboardActionPerformed
 
     private void txtFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEmailActionPerformed
@@ -374,7 +373,7 @@ public class FrmPenerima extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCetak;
     public javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDashboard;
+    public javax.swing.JButton btnDashboard;
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnSimpan;
     public javax.swing.JButton btnUpdate;

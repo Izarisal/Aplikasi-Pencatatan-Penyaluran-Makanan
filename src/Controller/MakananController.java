@@ -7,6 +7,7 @@ package Controller;
 
 import Model.Connector;
 import Model.MakananModel;
+import View.Dashboard;
 import View.FrmMakanan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -32,7 +34,7 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author User
  */
-public class MakananController implements ActionListener, MouseListener {
+public class MakananController implements ActionListener, MouseListener, javax.swing.event.DocumentListener {
 
     private MakananModel data;
     private FrmMakanan frm;
@@ -46,11 +48,33 @@ public class MakananController implements ActionListener, MouseListener {
         this.frm.btnDelete.addActionListener(this);
         this.frm.btnClear.addActionListener(this);
         this.frm.btnCetak.addActionListener(this);
+        this.frm.btnDashboard.addActionListener(this);
         this.frm.tblMakanan.addMouseListener(this);
         
         loadComboDonatur();
         KosongFormMakanan();
         TampilDataMakanan();
+        
+        this.frm.txtFieldStok.getDocument().addDocumentListener(this);
+    }
+    
+    private void cekStatusStok() {
+        if (frm.txtFieldStok.getText().isEmpty()) {
+            frm.txtFieldStatus.setText("");
+            return;
+        }
+
+        try {
+            int stok = Integer.parseInt(frm.txtFieldStok.getText());
+
+            if (stok > 0) {
+                frm.txtFieldStatus.setText("Tersedia");
+            } else {
+                frm.txtFieldStatus.setText("Habis");
+            }
+        } catch (NumberFormatException e) {
+            frm.txtFieldStatus.setText("");
+        }
     }
     
     private void loadComboDonatur() {
@@ -201,6 +225,11 @@ public class MakananController implements ActionListener, MouseListener {
             }
         } else if (ae.getSource() == frm.btnClear) {
             KosongFormMakanan();
+        } else if (ae.getSource() == frm.btnDashboard) {
+            Dashboard db = new Dashboard();
+            DashboardController ctrl = new DashboardController(db);
+            db.setVisible(true);
+            frm.dispose();
         }
     }
 
@@ -254,5 +283,19 @@ public class MakananController implements ActionListener, MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         //
+    }
+
+    public void insertUpdate(javax.swing.event.DocumentEvent e) {
+        cekStatusStok();
+    }
+
+    @Override
+    public void removeUpdate(javax.swing.event.DocumentEvent e) {
+        cekStatusStok();
+    }
+
+    @Override
+    public void changedUpdate(javax.swing.event.DocumentEvent e) {
+        cekStatusStok();
     }
 }
