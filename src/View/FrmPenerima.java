@@ -38,7 +38,7 @@ public class FrmPenerima extends javax.swing.JFrame {
         lblStatus = new javax.swing.JLabel();
         txtFieldLokasi = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPenerima = new javax.swing.JTable();
         lblId1 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         cbJenis = new javax.swing.JComboBox<>();
@@ -82,7 +82,7 @@ public class FrmPenerima extends javax.swing.JFrame {
         lblJenis.setText("Email");
 
         lblStok.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblStok.setText("Stok");
+        lblStok.setText("Jenis");
 
         lblStatus.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblStatus.setText("Lokasi");
@@ -94,8 +94,8 @@ public class FrmPenerima extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPenerima.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblPenerima.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,7 +106,7 @@ public class FrmPenerima extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPenerima);
 
         lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblId1.setText("Data Penerima");
@@ -121,6 +121,11 @@ public class FrmPenerima extends javax.swing.JFrame {
 
         cbJenis.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bank Makanan", "Orang Kurang Mampu", "Panti Asuhan", "Lainnya" }));
+        cbJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbJenisActionPerformed(evt);
+            }
+        });
 
         txtFieldEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +329,10 @@ public class FrmPenerima extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCetakActionPerformed
 
+    private void cbJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbJenisActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,9 +378,8 @@ public class FrmPenerima extends javax.swing.JFrame {
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnSimpan;
     public javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cbJenis;
+    public javax.swing.JComboBox<String> cbJenis;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblFrmDonatur;
     private javax.swing.JLabel lblId;
@@ -381,10 +389,11 @@ public class FrmPenerima extends javax.swing.JFrame {
     private javax.swing.JLabel lblNama;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblStok;
-    private javax.swing.JTextField txtFieldEmail;
-    private javax.swing.JTextField txtFieldId;
-    private javax.swing.JTextField txtFieldLokasi;
-    private javax.swing.JTextField txtFieldNama;
-    private javax.swing.JTextField txtFieldNoHP;
+    public javax.swing.JTable tblPenerima;
+    public javax.swing.JTextField txtFieldEmail;
+    public javax.swing.JTextField txtFieldId;
+    public javax.swing.JTextField txtFieldLokasi;
+    public javax.swing.JTextField txtFieldNama;
+    public javax.swing.JTextField txtFieldNoHP;
     // End of variables declaration//GEN-END:variables
 }

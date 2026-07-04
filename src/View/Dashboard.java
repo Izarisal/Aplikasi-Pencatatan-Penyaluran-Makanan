@@ -7,6 +7,7 @@ package View;
 
 import Controller.DonaturController;
 import Controller.MakananController;
+import Controller.PenerimaController;
 import Controller.PenyaluranController;
 import Model.DonaturModel;
 import Model.MakananModel;
@@ -159,8 +160,8 @@ public class Dashboard extends javax.swing.JFrame {
     private void btnMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakananActionPerformed
         MakananModel data = new MakananModel();
         FrmMakanan frm = new FrmMakanan();
-//        MakananController ctrl = new MakananController(data, frm);
-//        ctrl.TampilDataMakanan();
+        MakananController ctrl = new MakananController(data, frm);
+        ctrl.TampilDataMakanan();
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMakananActionPerformed
@@ -168,8 +169,8 @@ public class Dashboard extends javax.swing.JFrame {
     private void btnPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaActionPerformed
         PenerimaModel data = new PenerimaModel();
         FrmPenerima frm = new FrmPenerima();
-//        PenerimaController ctrl = new PenerimaController(data, frm);
-//        ctrl.TampilDataPenerima();
+        PenerimaController ctrl = new PenerimaController(data, frm);
+        ctrl.TampilDataPenerima();
         frm.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPenerimaActionPerformed

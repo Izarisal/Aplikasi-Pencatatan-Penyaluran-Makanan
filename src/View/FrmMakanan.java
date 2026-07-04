@@ -62,29 +62,6 @@ public class FrmMakanan extends javax.swing.JFrame {
 
     public FrmMakanan() {
         initComponents();
-
-        loadComboDonatur();
-        controller = new MakananController(this);
-        controller.tampilData();
-    }
-
-    private void loadComboDonatur() {
-        try {
-            Connection conn = Connector.configDB();
-            String sql = "SELECT id_donatur, nama FROM donatur";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            cmbDonatur.removeAllItems();
-            while (rs.next()) {
-                cmbDonatur.addItem(
-                        rs.getString("id_donatur")
-                        + " - "
-                        + rs.getString("nama")
-                );
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
     }
 
 
@@ -265,9 +242,7 @@ public class FrmMakanan extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cmbDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNama)
@@ -385,7 +360,6 @@ public class FrmMakanan extends javax.swing.JFrame {
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
-        controller.simpan();
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -472,8 +446,8 @@ public class FrmMakanan extends javax.swing.JFrame {
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnSimpan;
     public javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbDonatur;
-    private com.toedter.calendar.JDateChooser dateKadaluarsa;
+    public javax.swing.JComboBox<String> cmbDonatur;
+    public com.toedter.calendar.JDateChooser dateKadaluarsa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblFrmDonatur;
@@ -484,10 +458,10 @@ public class FrmMakanan extends javax.swing.JFrame {
     private javax.swing.JLabel lblNama1;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblStok;
-    private javax.swing.JTable tblMakanan;
-    private javax.swing.JTextField txtFieldId;
-    private javax.swing.JTextField txtFieldNama;
-    private javax.swing.JTextField txtFieldStatus;
-    private javax.swing.JTextField txtFieldStok;
+    public javax.swing.JTable tblMakanan;
+    public javax.swing.JTextField txtFieldId;
+    public javax.swing.JTextField txtFieldNama;
+    public javax.swing.JTextField txtFieldStatus;
+    public javax.swing.JTextField txtFieldStok;
     // End of variables declaration//GEN-END:variables
 }
