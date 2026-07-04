@@ -5,6 +5,8 @@
  */
 package Main;
 
+import Controller.DashboardController;
+import Controller.DonaturController;
 import View.Dashboard;
 
 /**
@@ -14,6 +16,7 @@ import View.Dashboard;
 public class Main {
     public static void main(String[] args) {
         Dashboard db = new Dashboard();
+        DashboardController ctrl = new DashboardController(db);
         db.setVisible(true);
     }
 }

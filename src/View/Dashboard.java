@@ -149,39 +149,19 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDonaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonaturActionPerformed
-        DonaturModel data = new DonaturModel();
-        FrmDonatur frm = new FrmDonatur();
-        DonaturController ctrl = new DonaturController(data, frm);
-        ctrl.TampilDataDonatur();
-        frm.setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_btnDonaturActionPerformed
 
     private void btnMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakananActionPerformed
-        MakananModel data = new MakananModel();
-        FrmMakanan frm = new FrmMakanan();
-        MakananController ctrl = new MakananController(data, frm);
-        ctrl.TampilDataMakanan();
-        frm.setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_btnMakananActionPerformed
 
     private void btnPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaActionPerformed
-        PenerimaModel data = new PenerimaModel();
-        FrmPenerima frm = new FrmPenerima();
-        PenerimaController ctrl = new PenerimaController(data, frm);
-        ctrl.TampilDataPenerima();
-        frm.setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_btnPenerimaActionPerformed
 
     private void btnPenyaluranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyaluranActionPerformed
-        PenyaluranModel data = new PenyaluranModel();
-        FrmPenyaluran frm = new FrmPenyaluran();
-        PenyaluranController ctrl = new PenyaluranController(data, frm);
-        ctrl.TampilDataPenyaluran();
-        frm.setVisible(true);
-        dispose();
+       
     }//GEN-LAST:event_btnPenyaluranActionPerformed
 
     /**
@@ -221,10 +201,10 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDonatur;
-    private javax.swing.JButton btnMakanan;
-    private javax.swing.JButton btnPenerima;
-    private javax.swing.JButton btnPenyaluran;
+    public javax.swing.JButton btnDonatur;
+    public javax.swing.JButton btnMakanan;
+    public javax.swing.JButton btnPenerima;
+    public javax.swing.JButton btnPenyaluran;
     private javax.swing.JLabel lblDashboard;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblMakanan;
