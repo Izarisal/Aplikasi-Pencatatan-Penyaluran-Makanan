@@ -5,6 +5,9 @@
  */
 package View;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author User
@@ -16,6 +19,83 @@ public class FrmPenerima extends javax.swing.JFrame {
      */
     public FrmPenerima() {
         initComponents();
+        styleFormPenerima();
+    }
+    
+    private void styleFormPenerima() {
+        Color warnaBG = new Color(245, 247, 250); // Abu-abu
+        Color warnaNavIndigo = new Color(63, 114, 175);  // Biru Indigo
+        Color warnaSimpanHijau = new Color(46, 117, 89);   // Hijau gelap
+        Color warnaHapusMerah = new Color(186, 45, 50);   // Merah bata
+        Color warnaTeksGelap = new Color(17, 45, 78);    // Navy gelap
+        Color warnaTeksLabel = new Color(73, 80, 87);    // Abu-abu gelap
+
+        this.getContentPane().setBackground(warnaBG);
+
+        lblFrmPenerima.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        lblFrmPenerima.setForeground(warnaTeksGelap);
+        lblDataPenerima.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataPenerima.setForeground(warnaTeksGelap);
+
+        Font fontLabel = new Font("Segoe UI", Font.PLAIN, 14);
+        lblId.setFont(fontLabel);
+        lblId.setForeground(warnaTeksLabel);
+        lblNama.setFont(fontLabel);
+        lblNama.setForeground(warnaTeksLabel);
+        lblEmail.setFont(fontLabel);
+        lblEmail.setForeground(warnaTeksLabel);
+        lblJenis.setFont(fontLabel);
+        lblJenis.setForeground(warnaTeksLabel);
+        lblLokasi.setFont(fontLabel);
+        lblLokasi.setForeground(warnaTeksLabel);
+        lblEmail.setFont(fontLabel);
+        lblEmail.setForeground(warnaTeksLabel);
+        lblNoHP.setFont(fontLabel);
+        lblNoHP.setForeground(warnaTeksLabel);
+
+        Font fontInput = new Font("Segoe UI", Font.PLAIN, 14);
+        txtFieldId.setFont(fontInput);
+        txtFieldNama.setFont(fontInput);
+        txtFieldLokasi.setFont(fontInput);
+        txtFieldEmail.setFont(fontInput);
+        txtFieldNoHP.setFont(fontInput);
+        cbJenis.setFont(fontInput);
+
+        Font fontTombol = new Font("Segoe UI", Font.BOLD, 13);
+
+        btnSimpan.setFont(fontTombol);
+        btnSimpan.setBackground(warnaSimpanHijau);
+        btnSimpan.setForeground(Color.WHITE);
+        btnSimpan.setFocusPainted(false);
+
+        btnUpdate.setFont(fontTombol);
+        btnUpdate.setBackground(warnaSimpanHijau);
+        btnUpdate.setForeground(Color.WHITE);
+        btnUpdate.setFocusPainted(false);
+
+        btnDelete.setFont(fontTombol);
+        btnDelete.setBackground(warnaHapusMerah);
+        btnDelete.setForeground(Color.WHITE);
+        btnDelete.setFocusPainted(false);
+
+        btnClear.setFont(fontTombol);
+        btnClear.setBackground(warnaSimpanHijau);
+        btnClear.setForeground(Color.WHITE);
+        btnClear.setFocusPainted(false);
+
+        btnCetak.setFont(fontTombol);
+        btnCetak.setBackground(warnaNavIndigo);
+        btnCetak.setForeground(Color.WHITE);
+        btnCetak.setFocusPainted(false);
+
+        btnDashboard.setFont(fontTombol);
+        btnDashboard.setBackground(warnaNavIndigo);
+        btnDashboard.setForeground(Color.WHITE);
+        btnDashboard.setFocusPainted(false);
+
+        tblPenerima.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tblPenerima.setRowHeight(25);
+        tblPenerima.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
     }
 
     /**
@@ -27,23 +107,23 @@ public class FrmPenerima extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblFrmDonatur = new javax.swing.JLabel();
+        lblFrmPenerima = new javax.swing.JLabel();
         lblDonatur = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         txtFieldId = new javax.swing.JTextField();
         lblNama = new javax.swing.JLabel();
         txtFieldNama = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
         lblJenis = new javax.swing.JLabel();
-        lblStok = new javax.swing.JLabel();
-        lblStatus = new javax.swing.JLabel();
+        lblLokasi = new javax.swing.JLabel();
         txtFieldLokasi = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPenerima = new javax.swing.JTable();
-        lblId1 = new javax.swing.JLabel();
+        lblDataPenerima = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         cbJenis = new javax.swing.JComboBox<>();
         txtFieldEmail = new javax.swing.JTextField();
-        lblJenis1 = new javax.swing.JLabel();
+        lblNoHP = new javax.swing.JLabel();
         txtFieldNoHP = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         btnSimpan = new javax.swing.JButton();
@@ -53,8 +133,8 @@ public class FrmPenerima extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblFrmDonatur.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblFrmDonatur.setText("Form Penerima");
+        lblFrmPenerima.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblFrmPenerima.setText("Form Penerima");
 
         lblDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
@@ -78,14 +158,14 @@ public class FrmPenerima extends javax.swing.JFrame {
             }
         });
 
+        lblEmail.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblEmail.setText("Email");
+
         lblJenis.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblJenis.setText("Email");
+        lblJenis.setText("Jenis");
 
-        lblStok.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblStok.setText("Jenis");
-
-        lblStatus.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblStatus.setText("Lokasi");
+        lblLokasi.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblLokasi.setText("Lokasi");
 
         txtFieldLokasi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldLokasi.addActionListener(new java.awt.event.ActionListener() {
@@ -108,8 +188,8 @@ public class FrmPenerima extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblPenerima);
 
-        lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId1.setText("Data Penerima");
+        lblDataPenerima.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataPenerima.setText("Data Penerima");
 
         btnDashboard.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDashboard.setText("Dashboard");
@@ -134,8 +214,8 @@ public class FrmPenerima extends javax.swing.JFrame {
             }
         });
 
-        lblJenis1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblJenis1.setText("No HP");
+        lblNoHP.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblNoHP.setText("No HP");
 
         txtFieldNoHP.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldNoHP.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +271,7 @@ public class FrmPenerima extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblJenis1)
+                    .addComponent(lblNoHP)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtFieldId, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtFieldNama, javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,12 +281,12 @@ public class FrmPenerima extends javax.swing.JFrame {
                         .addComponent(txtFieldNoHP, javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblStatus)
-                                .addComponent(lblStok)
+                                .addComponent(lblLokasi)
+                                .addComponent(lblJenis)
                                 .addComponent(lblNama)
                                 .addComponent(lblId)
                                 .addComponent(lblDonatur)
-                                .addComponent(lblJenis))
+                                .addComponent(lblEmail))
                             .addGap(312, 312, 312)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnClear)
@@ -221,7 +301,7 @@ public class FrmPenerima extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblId1)
+                        .addComponent(lblDataPenerima)
                         .addGap(380, 380, 380))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -230,20 +310,20 @@ public class FrmPenerima extends javax.swing.JFrame {
                         .addGap(54, 54, 54))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(542, 542, 542)
-                .addComponent(lblFrmDonatur)
+                .addComponent(lblFrmPenerima)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(lblFrmDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFrmPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDonatur)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
-                    .addComponent(lblId1))
+                    .addComponent(lblDataPenerima))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -253,19 +333,19 @@ public class FrmPenerima extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFieldNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblStok)
+                        .addComponent(lblJenis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblStatus)
+                        .addComponent(lblLokasi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFieldLokasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblJenis)
+                        .addComponent(lblEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblJenis1)
+                        .addComponent(lblNoHP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFieldNoHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
@@ -379,15 +459,15 @@ public class FrmPenerima extends javax.swing.JFrame {
     public javax.swing.JButton btnUpdate;
     public javax.swing.JComboBox<String> cbJenis;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDataPenerima;
     private javax.swing.JLabel lblDonatur;
-    private javax.swing.JLabel lblFrmDonatur;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFrmPenerima;
     private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblJenis;
-    private javax.swing.JLabel lblJenis1;
+    private javax.swing.JLabel lblLokasi;
     private javax.swing.JLabel lblNama;
-    private javax.swing.JLabel lblStatus;
-    private javax.swing.JLabel lblStok;
+    private javax.swing.JLabel lblNoHP;
     public javax.swing.JTable tblPenerima;
     public javax.swing.JTextField txtFieldEmail;
     public javax.swing.JTextField txtFieldId;
