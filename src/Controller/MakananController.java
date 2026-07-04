@@ -6,145 +6,253 @@
 package Controller;
 
 import Model.Connector;
+import Model.MakananModel;
 import View.FrmMakanan;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
-import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author User
  */
-public class MakananController {
+public class MakananController implements ActionListener, MouseListener {
 
-    private FrmMakanan view;
+    private MakananModel data;
+    private FrmMakanan frm;
 
-    public MakananController(FrmMakanan view) {
-        this.view = view;
+    public MakananController(MakananModel data, FrmMakanan frm) {
+        this.data = data;
+        this.frm = frm;
+        
+        this.frm.btnSimpan.addActionListener(this);
+        this.frm.btnUpdate.addActionListener(this);
+        this.frm.btnDelete.addActionListener(this);
+        this.frm.btnClear.addActionListener(this);
+        this.frm.btnCetak.addActionListener(this);
+        this.frm.tblMakanan.addMouseListener(this);
+        
+        loadComboDonatur();
+        KosongFormMakanan();
+        TampilDataMakanan();
     }
-
-    public void simpan() {
-        if (view.getTxtFieldId().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "ID Makanan masih kosong");
-            return;
-        }
-        if (view.getCmbDonatur().getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Pilih donatur terlebih dahulu");
-            return;
-        }
-
-        if (view.getTxtFieldNama().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Nama masih kosong");
-            return;
-        }
-        if (view.getTxtFieldStok().getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Stok masih kosong");
-            return;
-        }
-        if (view.getDateKadaluarsa().getDate() == null) {
-            JOptionPane.showMessageDialog(null,
-                    "Tanggal kadaluarsa belum dipilih");
-            return;
-        }
-        String idMakanan = view.getTxtFieldId().getText();
-        String idDonatur
-                = view.getCmbDonatur()
-                        .getSelectedItem()
-                        .toString()
-                        .split(" - ")[0];
-        String nama = view.getTxtFieldNama().getText();
-        int stok
-                = Integer.parseInt(
-                        view.getTxtFieldStok().getText()
-                );
-        String status
-                = view.getTxtFieldStatus().getText();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-        String tanggalKadaluarsa
-                = sdf.format(
-                        view.getDateKadaluarsa().getDate()
-                );
+    
+    private void loadComboDonatur() {
         try {
             Connection conn = Connector.configDB();
-            String sql = "INSERT INTO makanan "
-                    + "(id_makanan, id_donatur, nama, stok, status, tgl_kadaluarsa) "
-                    + "VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "SELECT id_donatur, nama FROM donatur";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, idMakanan);
-            ps.setString(2, idDonatur);
-            ps.setString(3, nama);
-            ps.setInt(4, stok);
-            ps.setString(5, status);
-            ps.setString(6, tanggalKadaluarsa);
-
-            ps.executeUpdate();
-            tampilData();
-            JOptionPane.showMessageDialog(null, "Data makanan berhasil disimpan.");
-            view.clearForm();
-            ps.close();
-
+            ResultSet rs = ps.executeQuery();
+            frm.cmbDonatur.removeAllItems();
+            while (rs.next()) {
+                frm.cmbDonatur.addItem(
+                        rs.getString("id_donatur")
+                        + " - "
+                        + rs.getString("nama")
+                );
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
-
     }
 
-    public void tampilData() {
+    public void KosongFormMakanan() {
+        frm.txtFieldId.setText(null);
+        frm.cmbDonatur.setSelectedIndex(0);
+        frm.txtFieldNama.setText(null);
+        frm.txtFieldStok.setText(null);
+        frm.txtFieldStatus.setText(null);
+        frm.dateKadaluarsa.setDate(null);
+    }
+
+    public void TampilDataMakanan() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("ID Makanan");
-        model.addColumn("ID Donatur");
+        model.addColumn("No");
+        model.addColumn("Id Makanan");
+        model.addColumn("Id Donatur");
         model.addColumn("Nama");
         model.addColumn("Stok");
         model.addColumn("Status");
-        model.addColumn("Kadaluarsa");
+        model.addColumn("Tanggal Kadaluarsa");
+        
+        //Menampilkan data pada database ke dalam tabel
         try {
-            Connection conn = Connector.configDB();
+            int no = 1;
             String sql = "SELECT * FROM makanan";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            java.sql.Connection conn = (Connection) Connector.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+
+            while (res.next()) {
                 model.addRow(new Object[]{
-                    rs.getString("id_makanan"),
-                    rs.getString("id_donatur"),
-                    rs.getString("nama"),
-                    rs.getInt("stok"),
-                    rs.getString("status"),
-                    rs.getDate("tgl_kadaluarsa")
-                });
+                    no++,
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getString(6)});
             }
-            view.getTableMakanan().setModel(model);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            frm.tblMakanan.setModel(model);
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
         }
     }
 
-    public void pilihData() {
-        int baris = view.getTableMakanan().getSelectedRow();
-        if (baris == -1) {
-            return;
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == frm.btnSimpan) {
+            data.setIdMakanan(frm.txtFieldId.getText());
+            String comboDonatur = frm.cmbDonatur.getSelectedItem().toString();
+            String idDonaturSaja = comboDonatur.split(" - ")[0];
+            data.setIdDonatur(idDonaturSaja);
+            data.setNama(frm.txtFieldNama.getText());
+            data.setStok(Integer.parseInt(frm.txtFieldStok.getText()));
+            data.setStatus(frm.txtFieldStatus.getText());
+            
+            if (frm.dateKadaluarsa.getDate() != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String tanggal_penyaluran = sdf.format(frm.dateKadaluarsa.getDate());
+                data.setTanggalKadaluarsa(tanggal_penyaluran);
+            } else {
+                data.setTanggalKadaluarsa(null);
+            }
+
+            try {
+                if (data.SimpanMakanan(data)) {
+                    JOptionPane.showMessageDialog(null, "Simpan Data Baru Berhasil");
+                    KosongFormMakanan();
+                    TampilDataMakanan();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        } else if (ae.getSource() == frm.btnUpdate) {
+            data.setIdMakanan(frm.txtFieldId.getText());
+            String comboDonatur = frm.cmbDonatur.getSelectedItem().toString();
+            String idDonaturSaja = comboDonatur.split(" - ")[0];
+            data.setIdDonatur(idDonaturSaja);
+            data.setNama(frm.txtFieldNama.getText());
+            data.setStok(Integer.parseInt(frm.txtFieldStok.getText()));
+            data.setStatus(frm.txtFieldStatus.getText());
+            
+            if (frm.dateKadaluarsa.getDate() != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String tanggal_penyaluran = sdf.format(frm.dateKadaluarsa.getDate());
+                data.setTanggalKadaluarsa(tanggal_penyaluran);
+            } else {
+                data.setTanggalKadaluarsa(null);
+            }
+
+
+            try {
+                if (data.UpdateMakanan(data)) {
+                    JOptionPane.showMessageDialog(null, "Update Data Baru Berhasil");
+                    KosongFormMakanan();
+                    TampilDataMakanan();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        } else if (ae.getSource() == frm.btnDelete) {
+            data.setIdMakanan(frm.txtFieldId.getText());
+
+            try {
+                if (data.HapusMakanan(data)) {
+                    JOptionPane.showMessageDialog(null, "Hapus Data Baru Berhasil");
+                    KosongFormMakanan();
+                    TampilDataMakanan();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        } else if (ae.getSource() == frm.btnCetak) {
+            try {
+                java.sql.Connection MySQLConfig = (Connection) Connector.configDB();
+                
+                String reportPath = "src/Jasper/laporanMakanan.jasper";
+                
+                JasperPrint print = JasperFillManager.fillReport(reportPath, null, MySQLConfig);
+                
+                new JasperViewer(print, false).setVisible(true);
+                
+            } catch (JRException ex) {
+                JOptionPane.showMessageDialog(null, "Gagal Mencetak Laporan: " + ex.getMessage());
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Koneksi Database Gagal: " + ex.getMessage());
+            }
+        } else if (ae.getSource() == frm.btnClear) {
+            KosongFormMakanan();
         }
-        view.getTxtFieldId().setText(
-                view.getTableMakanan().getValueAt(baris, 0).toString());
-        String idDonatur
-                = view.getTableMakanan().getValueAt(baris, 1).toString();
-        for (int i = 0; i < view.getCmbDonatur().getItemCount(); i++) {
-            if (view.getCmbDonatur()
-                    .getItemAt(i)
-                    .startsWith(idDonatur)) {
-                view.getCmbDonatur()
-                        .setSelectedIndex(i);
-                break;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        if (me.getSource()==frm.tblMakanan) {
+            //frm.txtFieldId.setEditable(false);
+            
+            int baris=frm.tblMakanan.rowAtPoint(me.getPoint());
+            String idMakanan = frm.tblMakanan.getValueAt(baris, 1).toString();
+            frm.txtFieldId.setText(idMakanan);
+            String idDonatur=frm.tblMakanan.getValueAt(baris, 2).toString();
+            for (int i = 0; i < frm.cmbDonatur.getItemCount(); i++) {
+                if (frm.cmbDonatur.getItemAt(i).startsWith(idDonatur)) {
+                    frm.cmbDonatur.setSelectedIndex(i);
+                    break;
+                }
+            }
+            String nama=frm.tblMakanan.getValueAt(baris, 3).toString();
+            frm.txtFieldNama.setText(nama);
+            String stok=frm.tblMakanan.getValueAt(baris, 4).toString();
+            frm.txtFieldStok.setText(stok);
+            String status=frm.tblMakanan.getValueAt(baris, 5).toString();
+            frm.txtFieldStatus.setText(status);
+            try {
+                String tglTabel = frm.tblMakanan.getValueAt(baris, 6).toString();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date tanggal = sdf.parse(tglTabel);
+                frm.dateKadaluarsa.setDate(tanggal);
+            } catch (ParseException ex) {
+                Logger.getLogger(MakananController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        view.getTxtFieldNama().setText(
-                view.getTableMakanan().getValueAt(baris, 2).toString());
-        view.getTxtFieldStok().setText(
-                view.getTableMakanan().getValueAt(baris, 3).toString());
-        view.getTxtFieldStatus().setText(
-                view.getTableMakanan().getValueAt(baris, 4).toString());
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        //
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        //
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        //
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        //
     }
 }
