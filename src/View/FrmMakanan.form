@@ -25,43 +25,37 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="cmbDonatur" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblNama" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtFieldNama" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtFieldStok" alignment="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblStatus" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDonatur" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtFieldStatus" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="dateKadaluarsa" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="btnClear" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnCetak" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Component id="txtFieldId" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblNama" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFieldNama" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtFieldStok" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="lblStatus" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDonatur" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtFieldStatus" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dateKadaluarsa" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnClear" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnCetak" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblStok" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNama1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="txtFieldId" alignment="1" max="32767" attributes="0"/>
+                  <Component id="lblStok" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNama1" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbDonatur" alignment="0" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="lblId1" min="-2" max="-2" attributes="0"/>
