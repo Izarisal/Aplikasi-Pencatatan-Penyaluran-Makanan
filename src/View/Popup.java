@@ -5,17 +5,66 @@
  */
 package View;
 
+import Controller.LaporanController;
+import Model.Connector;
+import Model.DonaturModel;
+import Model.MakananModel;
+import Model.PenerimaModel;
+import Model.PenyaluranModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author User
  */
 public class Popup extends javax.swing.JFrame {
 
+    private Connection MySQLConfig;
+    private PreparedStatement pst;
+    private ResultSet rst;
+
     /**
      * Creates new form FrmDonatur
      */
+    public Popup(String input) throws SQLException {
+        initComponents();
+
+        Model.PenyaluranModel pm = new Model.PenyaluranModel();
+        Model.DonaturModel dm = new Model.DonaturModel();
+        Model.MakananModel mm = new Model.MakananModel();
+        Model.PenerimaModel pem = new Model.PenerimaModel();
+        Controller.LaporanController lc = new Controller.LaporanController(pm, dm, mm, pem, this);
+        MySQLConfig = Connector.configDB();
+
+        update_tabel_popup(input);
+        this.tablePenyaluran.addMouseListener(lc);
+    }
+
     public Popup() {
         initComponents();
+        PenyaluranModel pm = new PenyaluranModel();
+        DonaturModel dm = new DonaturModel();
+        MakananModel mm = new MakananModel();
+        PenerimaModel pem = new PenerimaModel();
+
+        LaporanController lc = new LaporanController(pm, dm, mm, pem, this);
+
+        this.tablePenyaluran.addMouseListener(lc);
+    }
+
+    public void update_tabel_popup(String sql) {
+        try {
+            pst = MySQLConfig.prepareStatement(sql);
+            rst = pst.executeQuery();
+            tablePenyaluran.setModel(DbUtils.resultSetToTableModel(rst));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**

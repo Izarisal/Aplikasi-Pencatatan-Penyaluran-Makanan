@@ -38,7 +38,6 @@ public class LaporanController implements ActionListener, MouseListener {
     private PenerimaModel penerimaData;
     private Popup frm;
 
-
     public LaporanController(PenyaluranModel penyaluranData, DonaturModel donaturData, MakananModel makananData, PenerimaModel penerimaData, Popup frm) {
         this.penyaluranData = penyaluranData;
         this.donaturData = donaturData;
@@ -128,7 +127,7 @@ public class LaporanController implements ActionListener, MouseListener {
         model.addColumn("Stok");
         model.addColumn("Status");
         model.addColumn("Tanggal Kadaluarsa");
-        
+
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
@@ -153,7 +152,7 @@ public class LaporanController implements ActionListener, MouseListener {
             System.out.println("Error " + e.getMessage());
         }
     }
-    
+
     public void TampilDataPenerima(String idPenerima) {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("No");
@@ -187,7 +186,7 @@ public class LaporanController implements ActionListener, MouseListener {
             System.out.println("Error " + e.getMessage());
         }
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == frm.btnCetak) {
@@ -220,10 +219,9 @@ public class LaporanController implements ActionListener, MouseListener {
         if (me.getSource() == frm.tablePenyaluran) {
 
             int baris = frm.tablePenyaluran.getSelectedRow();
-            String idPenyaluran = frm.tablePenyaluran.getValueAt(baris, 1).toString();
-            String idMakanan = frm.tablePenyaluran.getValueAt(baris, 2).toString();
-            String idPenerima = frm.tablePenyaluran.getValueAt(baris, 3).toString();
 
+            String idMakanan = frm.tablePenyaluran.getValueAt(baris, 1).toString();
+            String idPenerima = frm.tablePenyaluran.getValueAt(baris, 2).toString();
             String idDonatur = "";
             try {
                 String sqlCariDonatur = "SELECT id_donatur FROM makanan WHERE id_makanan = '" + idMakanan + "'";
@@ -236,7 +234,7 @@ public class LaporanController implements ActionListener, MouseListener {
             } catch (SQLException e) {
                 System.out.println("Gagal merelasikan ke donatur: " + e.getMessage());
             }
-
+            System.out.println(idDonatur);
             TampilDataDonatur(idDonatur);
             TampilDataMakanan(idMakanan);
             TampilDataPenerima(idPenerima);

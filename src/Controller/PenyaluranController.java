@@ -473,20 +473,47 @@ public class PenyaluranController implements ActionListener, MouseListener {
                 modelKeranjang.setValueAt(i + 1, i, 0);
             }
         } else if (ae.getSource() == frm.btnLaporan) {
-            Popup frmLaporan = new Popup();
-            PenyaluranModel penyaluranData = new PenyaluranModel();
-            DonaturModel donaturData = new DonaturModel();
-            MakananModel makananData = new MakananModel();
-            PenerimaModel penerimaData = new PenerimaModel();
-            LaporanController ctrl = new LaporanController(penyaluranData, donaturData, makananData, penerimaData, frmLaporan);
-            frmLaporan.setVisible(true);
+            try {
+                java.sql.Connection MySQLConfig = (Connection) Connector.configDB();
 
-            frm.dispose(); 
+                java.util.Date tglSebelum = frm.TanggalSebelum.getDate();
+                java.util.Date tglMulai = frm.TanggalAntaraAwal.getDate();
+                java.util.Date tglSampai = frm.TanggalAntaraAkhir.getDate();
+                java.util.Date tglSetelah = frm.TanggalSetelah.getDate();
+
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                String sql = "";
+
+                if (tglMulai != null && tglSampai != null) {
+                    String mulai = sdf.format(tglMulai);
+                    String sampai = sdf.format(tglSampai);
+                    sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran BETWEEN '" + mulai + "' AND '" + sampai + "'";
+                } else if (tglSebelum != null) {
+                    String sblm = sdf.format(tglSebelum);
+                    sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran < '" + sblm + "'";
+                } else if (tglSetelah != null) {
+                    String stlh = sdf.format(tglSetelah);
+                    sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran > '" + stlh + "'";
+                } else {
+                    JOptionPane.showMessageDialog(null, "Silakan masukkan tanggal filter terlebih dahulu!");
+                    return;
+                }
+
+                Popup pop = new Popup(sql); 
+                
+                pop.setVisible(true);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                ex.printStackTrace();
+            }
         } else if ((ae.getSource() == frm.btnDashboard) || (ae.getSource() == frm.btnDashboard2) || (ae.getSource() == frm.btnDashboard3)) {
             Dashboard db = new Dashboard();
             DashboardController ctrl = new DashboardController(db);
             db.setVisible(true);
             frm.dispose();
+        } else if (ae.getSource() == frm.btnCari) {
+            
         }
     }
 

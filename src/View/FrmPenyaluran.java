@@ -75,11 +75,11 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         btnLaporan = new javax.swing.JButton();
         lblFrmPenyaluran3 = new javax.swing.JLabel();
         TanggalSebelum = new com.toedter.calendar.JDateChooser();
-        TanggalAntara = new com.toedter.calendar.JDateChooser();
+        TanggalAntaraAwal = new com.toedter.calendar.JDateChooser();
         lblPenyaluran2 = new javax.swing.JLabel();
-        TanggalSebelum2 = new com.toedter.calendar.JDateChooser();
+        TanggalSetelah = new com.toedter.calendar.JDateChooser();
         lblPenyaluran3 = new javax.swing.JLabel();
-        TanggalAntara1 = new com.toedter.calendar.JDateChooser();
+        TanggalAntaraAkhir = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -518,17 +518,17 @@ public class FrmPenyaluran extends javax.swing.JFrame {
 
         TanggalSebelum.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        TanggalAntara.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        TanggalAntaraAwal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblPenyaluran2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblPenyaluran2.setText("Penyaluran Antara Tanggal");
 
-        TanggalSebelum2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        TanggalSetelah.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblPenyaluran3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblPenyaluran3.setText("Penyaluran Setelah Tanggal");
 
-        TanggalAntara1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        TanggalAntaraAkhir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -538,14 +538,14 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(TanggalAntara1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TanggalAntaraAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPenyaluran1)
                             .addComponent(TanggalSebelum, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblPenyaluran2)
-                            .addComponent(TanggalAntara, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TanggalAntaraAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblFrmPenyaluran3))
@@ -555,8 +555,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                                     .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(btnDashboard3))
-                                .addComponent(TanggalSebelum2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(609, Short.MAX_VALUE))))
+                                .addComponent(TanggalSetelah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(609, 609, 609))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,15 +570,15 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblPenyaluran2)
                 .addGap(18, 18, 18)
-                .addComponent(TanggalAntara, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TanggalAntaraAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(TanggalAntara1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TanggalAntaraAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblPenyaluran3)
                         .addGap(18, 18, 18)
-                        .addComponent(TanggalSebelum2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TanggalSetelah, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnDashboard3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -725,10 +725,10 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public com.toedter.calendar.JDateChooser TanggalAntara;
-    public com.toedter.calendar.JDateChooser TanggalAntara1;
+    public com.toedter.calendar.JDateChooser TanggalAntaraAkhir;
+    public com.toedter.calendar.JDateChooser TanggalAntaraAwal;
     public com.toedter.calendar.JDateChooser TanggalSebelum;
-    public com.toedter.calendar.JDateChooser TanggalSebelum2;
+    public com.toedter.calendar.JDateChooser TanggalSetelah;
     public javax.swing.JButton btnCari;
     public javax.swing.JButton btnClear;
     public javax.swing.JButton btnDashboard;

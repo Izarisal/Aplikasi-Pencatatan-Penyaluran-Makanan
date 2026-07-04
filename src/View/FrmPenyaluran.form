@@ -805,7 +805,7 @@
                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="TanggalAntara1" min="-2" pref="535" max="-2" attributes="0"/>
+                              <Component id="TanggalAntaraAkhir" min="-2" pref="535" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -813,7 +813,7 @@
                                   <Component id="lblPenyaluran1" min="-2" max="-2" attributes="0"/>
                                   <Component id="TanggalSebelum" min="-2" pref="535" max="-2" attributes="0"/>
                                   <Component id="lblPenyaluran2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TanggalAntara" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
+                                  <Component id="TanggalAntaraAwal" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace pref="174" max="-2" attributes="0"/>
                                       <Component id="lblFrmPenyaluran3" min="-2" max="-2" attributes="0"/>
@@ -825,10 +825,10 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnDashboard3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="TanggalSebelum2" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
+                                      <Component id="TanggalSetelah" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="609" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="609" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -846,15 +846,15 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lblPenyaluran2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="TanggalAntara" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="TanggalAntaraAwal" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace pref="27" max="32767" attributes="0"/>
-                      <Component id="TanggalAntara1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="TanggalAntaraAkhir" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblPenyaluran3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="TanggalSebelum2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="TanggalSetelah" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
@@ -922,7 +922,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="TanggalAntara">
+            <Component class="com.toedter.calendar.JDateChooser" name="TanggalAntaraAwal">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>
@@ -940,7 +940,7 @@
                 <Property name="text" type="java.lang.String" value="Penyaluran Antara Tanggal"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="TanggalSebelum2">
+            <Component class="com.toedter.calendar.JDateChooser" name="TanggalSetelah">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>
@@ -958,7 +958,7 @@
                 <Property name="text" type="java.lang.String" value="Penyaluran Setelah Tanggal"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="TanggalAntara1">
+            <Component class="com.toedter.calendar.JDateChooser" name="TanggalAntaraAkhir">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="0"/>
