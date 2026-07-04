@@ -5,18 +5,88 @@
  */
 package View;
 
+import Model.Connector;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import Controller.MakananController;
+
 /**
  *
  * @author User
  */
 public class FrmMakanan extends javax.swing.JFrame {
 
+    private MakananController controller;
     /**
      * Creates new form FrmDonatur
      */
+    public javax.swing.JTextField getTxtFieldId() {
+        return txtFieldId;
+    }
+
+    public javax.swing.JComboBox<String> getCmbDonatur() {
+        return cmbDonatur;
+    }
+
+    public javax.swing.JTextField getTxtFieldNama() {
+        return txtFieldNama;
+    }
+
+    public javax.swing.JTextField getTxtFieldStok() {
+        return txtFieldStok;
+    }
+
+    public javax.swing.JTextField getTxtFieldStatus() {
+        return txtFieldStatus;
+    }
+
+    public com.toedter.calendar.JDateChooser getDateKadaluarsa() {
+        return dateKadaluarsa;
+    }
+
+    public javax.swing.JTable getTableMakanan() {
+        return tblMakanan;
+    }
+
+    public void clearForm() {
+        txtFieldId.setText("");
+        txtFieldNama.setText("");
+        txtFieldStok.setText("");
+        txtFieldStatus.setText("");
+        dateKadaluarsa.setDate(null);
+        tblMakanan.clearSelection();
+        txtFieldId.requestFocus();
+    }
+
     public FrmMakanan() {
         initComponents();
+
+        loadComboDonatur();
+        controller = new MakananController(this);
+        controller.tampilData();
     }
+
+    private void loadComboDonatur() {
+        try {
+            Connection conn = Connector.configDB();
+            String sql = "SELECT id_donatur, nama FROM donatur";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            cmbDonatur.removeAllItems();
+            while (rs.next()) {
+                cmbDonatur.addItem(
+                        rs.getString("id_donatur")
+                        + " - "
+                        + rs.getString("nama")
+                );
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,9 +107,9 @@ public class FrmMakanan extends javax.swing.JFrame {
         lblStok = new javax.swing.JLabel();
         txtFieldStok = new javax.swing.JTextField();
         lblStatus = new javax.swing.JLabel();
-        txtFieldEmail = new javax.swing.JTextField();
+        txtFieldStatus = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblMakanan = new javax.swing.JTable();
         lblId1 = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         dateKadaluarsa = new com.toedter.calendar.JDateChooser();
@@ -48,6 +118,8 @@ public class FrmMakanan extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
+        cmbDonatur = new javax.swing.JComboBox<>();
+        lblNama1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +139,7 @@ public class FrmMakanan extends javax.swing.JFrame {
         });
 
         lblNama.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblNama.setText("Nama");
+        lblNama.setText("Id Donatur");
 
         txtFieldNama.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldNama.addActionListener(new java.awt.event.ActionListener() {
@@ -88,19 +160,24 @@ public class FrmMakanan extends javax.swing.JFrame {
                 txtFieldStokActionPerformed(evt);
             }
         });
+        txtFieldStok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFieldStokKeyReleased(evt);
+            }
+        });
 
         lblStatus.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblStatus.setText("Status");
 
-        txtFieldEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+        txtFieldStatus.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txtFieldStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldEmailActionPerformed(evt);
+                txtFieldStatusActionPerformed(evt);
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMakanan.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblMakanan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -111,7 +188,12 @@ public class FrmMakanan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblMakanan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMakananMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblMakanan);
 
         lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblId1.setText("Data Makanan");
@@ -166,37 +248,54 @@ public class FrmMakanan extends javax.swing.JFrame {
             }
         });
 
+        cmbDonatur.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbDonatur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDonaturActionPerformed(evt);
+            }
+        });
+
+        lblNama1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblNama1.setText("Nama");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtFieldNama, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFieldStok, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblStatus)
-                        .addComponent(lblStok)
-                        .addComponent(lblNama)
-                        .addComponent(lblId)
-                        .addComponent(lblDonatur)
-                        .addComponent(lblJenis)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtFieldEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateKadaluarsa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnClear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSimpan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDelete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCetak))))
-                    .addComponent(txtFieldId))
-                .addGap(0, 5, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmbDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNama)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtFieldNama, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtFieldStok, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblStatus)
+                                    .addComponent(lblId)
+                                    .addComponent(lblDonatur)
+                                    .addComponent(lblJenis)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtFieldStatus, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(dateKadaluarsa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(btnClear)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(btnSimpan)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(btnUpdate)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(btnDelete)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(btnCetak))))
+                                .addComponent(txtFieldId))
+                            .addComponent(lblStok)
+                            .addComponent(lblNama1))
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblId1)
@@ -229,6 +328,10 @@ public class FrmMakanan extends javax.swing.JFrame {
                         .addComponent(txtFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNama)
+                        .addGap(10, 10, 10)
+                        .addComponent(cmbDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNama1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFieldNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -238,12 +341,12 @@ public class FrmMakanan extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFieldStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblJenis)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dateKadaluarsa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +356,7 @@ public class FrmMakanan extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -271,9 +374,9 @@ public class FrmMakanan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldStokActionPerformed
 
-    private void txtFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEmailActionPerformed
+    private void txtFieldStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldStatusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldEmailActionPerformed
+    }//GEN-LAST:event_txtFieldStatusActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
         new Dashboard().setVisible(true);
@@ -282,6 +385,7 @@ public class FrmMakanan extends javax.swing.JFrame {
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
+        controller.simpan();
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -294,11 +398,36 @@ public class FrmMakanan extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
+        clearForm();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCetakActionPerformed
+
+    private void txtFieldStokKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFieldStokKeyReleased
+        // TODO add your handling code here:
+        if (txtFieldStok.getText().isEmpty()) {
+            txtFieldStatus.setText("");
+            return;
+        }
+
+        int stok = Integer.parseInt(txtFieldStok.getText());
+
+        if (stok > 0) {
+            txtFieldStatus.setText("Tersedia");
+        } else {
+            txtFieldStatus.setText("Habis");
+        }
+    }//GEN-LAST:event_txtFieldStokKeyReleased
+
+    private void cmbDonaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDonaturActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbDonaturActionPerformed
+
+    private void tblMakananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMakananMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblMakananMouseClicked
 
     /**
      * @param args the command line arguments
@@ -343,20 +472,22 @@ public class FrmMakanan extends javax.swing.JFrame {
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnSimpan;
     public javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cmbDonatur;
     private com.toedter.calendar.JDateChooser dateKadaluarsa;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblFrmDonatur;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblJenis;
     private javax.swing.JLabel lblNama;
+    private javax.swing.JLabel lblNama1;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblStok;
-    private javax.swing.JTextField txtFieldEmail;
+    private javax.swing.JTable tblMakanan;
     private javax.swing.JTextField txtFieldId;
     private javax.swing.JTextField txtFieldNama;
+    private javax.swing.JTextField txtFieldStatus;
     private javax.swing.JTextField txtFieldStok;
     // End of variables declaration//GEN-END:variables
 }
