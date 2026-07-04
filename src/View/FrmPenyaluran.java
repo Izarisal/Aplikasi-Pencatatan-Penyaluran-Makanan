@@ -5,6 +5,9 @@
  */
 package View;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author User
@@ -15,6 +18,162 @@ public class FrmPenyaluran extends javax.swing.JFrame {
      */
     public FrmPenyaluran() {
         initComponents();
+        styleFormPenyaluran();
+    }
+    
+    private void styleFormPenyaluran() {
+        Color warnaBG = new Color(245, 247, 250); // Abu-abu
+        Color warnaNavIndigo = new Color(63, 114, 175);  // Biru Indigo
+        Color warnaSimpanHijau = new Color(46, 117, 89);   // Hijau gelap
+        Color warnaHapusMerah = new Color(186, 45, 50);   // Merah bata
+        Color warnaTeksGelap = new Color(17, 45, 78);    // Navy gelap
+        Color warnaTeksLabel = new Color(73, 80, 87);    // Abu-abu gelap
+
+        this.getContentPane().setBackground(warnaBG);
+        
+        jPanel1.setBackground(warnaBG);
+        jPanel2.setBackground(warnaBG);
+        jPanel3.setBackground(warnaBG);
+        
+        jTabbedPane1.setBackground(warnaBG);
+        jTabbedPane1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        jTabbedPane1.setForeground(warnaTeksLabel);
+
+        lblFrmPenyaluran.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        lblFrmPenyaluran.setForeground(warnaTeksGelap);
+        
+        lblFrmDonatur.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        lblFrmDonatur.setForeground(warnaTeksGelap);
+        
+        lblFrmPenyaluran3.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        lblFrmPenyaluran3.setForeground(warnaTeksGelap);
+        
+        lblDataPenyaluran.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataPenyaluran.setForeground(warnaTeksGelap);
+        
+        lblDataMakanan.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataMakanan.setForeground(warnaTeksGelap);
+        
+        lblMakananDisalurkan.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblMakananDisalurkan.setForeground(warnaTeksGelap);
+        
+        lblTanggalSebelum.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblTanggalSebelum.setForeground(warnaTeksGelap);
+        
+        lblTanggalAntara.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblTanggalAntara.setForeground(warnaTeksGelap);
+        
+        lblTanggalSetelah.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblTanggalSetelah.setForeground(warnaTeksGelap);
+
+        Font fontLabel = new Font("Segoe UI", Font.PLAIN, 14);
+        lblNamaMakanan.setFont(fontLabel);
+        lblNamaMakanan.setForeground(warnaTeksLabel);
+        lblIdMakanan.setFont(fontLabel);
+        lblIdMakanan.setForeground(warnaTeksLabel);
+        lblIdPenerima.setFont(fontLabel);
+        lblIdPenerima.setForeground(warnaTeksLabel);
+        lblIdPenerima2.setFont(fontLabel);
+        lblIdPenerima2.setForeground(warnaTeksLabel);
+        lblTanggalPenyaluran.setFont(fontLabel);
+        lblTanggalPenyaluran.setForeground(warnaTeksLabel);
+        lblStok.setFont(fontLabel);
+        lblStok.setForeground(warnaTeksLabel);
+        lblStok2.setFont(fontLabel);
+        lblStok2.setForeground(warnaTeksLabel);
+        cbPenerimaPenyaluran.setFont(fontLabel);
+        cbPenerimaPenyaluran.setForeground(warnaTeksLabel);
+        lblIdPenyaluran.setFont(fontLabel);
+        lblIdPenyaluran.setForeground(warnaTeksLabel);
+        lblIdPenyaluran2.setFont(fontLabel);
+        lblIdPenyaluran2.setForeground(warnaTeksLabel);
+
+        Font fontInput = new Font("Segoe UI", Font.PLAIN, 14);
+        txtFieldIdPenyaluranCRUD.setFont(fontInput);
+        txtFieldIdPenyaluran.setFont(fontInput);
+        cbMakanan.setFont(fontInput);
+        cbPenerima.setFont(fontInput);
+        txtFieldStokCRUD.setFont(fontInput);
+        jDatePenyaluran.setFont(fontInput);
+        cbPenerimaPenyaluran.setFont(fontInput);
+        TanggalSebelum.setFont(fontInput);
+        TanggalAntaraAwal.setFont(fontInput);
+        TanggalAntaraAkhir.setFont(fontInput);
+        TanggalSetelah.setFont(fontInput);
+
+        Font fontTombol = new Font("Segoe UI", Font.BOLD, 13);
+
+        btnSimpan.setFont(fontTombol);
+        btnSimpan.setBackground(warnaSimpanHijau);
+        btnSimpan.setForeground(Color.WHITE);
+        btnSimpan.setFocusPainted(false);
+
+        btnUpdate.setFont(fontTombol);
+        btnUpdate.setBackground(warnaSimpanHijau);
+        btnUpdate.setForeground(Color.WHITE);
+        btnUpdate.setFocusPainted(false);
+
+        btnDelete.setFont(fontTombol);
+        btnDelete.setBackground(warnaHapusMerah);
+        btnDelete.setForeground(Color.WHITE);
+        btnDelete.setFocusPainted(false);
+
+        btnClear.setFont(fontTombol);
+        btnClear.setBackground(warnaSimpanHijau);
+        btnClear.setForeground(Color.WHITE);
+        btnClear.setFocusPainted(false);
+
+        btnCari.setFont(fontTombol);
+        btnCari.setBackground(warnaNavIndigo);
+        btnCari.setForeground(Color.WHITE);
+        btnCari.setFocusPainted(false);
+
+        btnDashboard.setFont(fontTombol);
+        btnDashboard.setBackground(warnaNavIndigo);
+        btnDashboard.setForeground(Color.WHITE);
+        btnDashboard.setFocusPainted(false);
+        
+        btnTambah.setFont(fontTombol);
+        btnTambah.setBackground(warnaNavIndigo);
+        btnTambah.setForeground(Color.WHITE);
+        btnTambah.setFocusPainted(false);
+        
+        btnDonasi.setFont(fontTombol);
+        btnDonasi.setBackground(warnaSimpanHijau);
+        btnDonasi.setForeground(Color.WHITE);
+        btnDonasi.setFocusPainted(false);
+        
+        btnHapus.setFont(fontTombol);
+        btnHapus.setBackground(warnaHapusMerah);
+        btnHapus.setForeground(Color.WHITE);
+        btnHapus.setFocusPainted(false);
+        
+        btnLaporan.setFont(fontTombol);
+        btnLaporan.setBackground(warnaNavIndigo);
+        btnLaporan.setForeground(Color.WHITE);
+        btnLaporan.setFocusPainted(false);
+        
+        btnDashboard2.setFont(fontTombol);
+        btnDashboard2.setBackground(warnaNavIndigo);
+        btnDashboard2.setForeground(Color.WHITE);
+        btnDashboard2.setFocusPainted(false);
+        
+        btnDashboard3.setFont(fontTombol);
+        btnDashboard3.setBackground(warnaNavIndigo);
+        btnDashboard3.setForeground(Color.WHITE);
+        btnDashboard3.setFocusPainted(false);
+
+        tablePenyaluran.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tablePenyaluran.setRowHeight(25);
+        tablePenyaluran.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
+        
+        tableProsesPenyaluran.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tableProsesPenyaluran.setRowHeight(25);
+        tableProsesPenyaluran.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
+        
+        tableMakanan.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tableMakanan.setRowHeight(25);
+        tableMakanan.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
     }
 
     /**
@@ -31,14 +190,14 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablePenyaluran = new javax.swing.JTable();
-        lblLokasi = new javax.swing.JLabel();
-        lblPenyaluran = new javax.swing.JLabel();
+        lblTanggalPenyaluran = new javax.swing.JLabel();
+        lblDataPenyaluran = new javax.swing.JLabel();
         btnDashboard2 = new javax.swing.JButton();
-        lblFrmPenyaluran2 = new javax.swing.JLabel();
-        lblId8 = new javax.swing.JLabel();
+        lblFrmPenyaluran = new javax.swing.JLabel();
+        lblIdPenyaluran2 = new javax.swing.JLabel();
         cbPenerima = new javax.swing.JComboBox<>();
-        lblNama = new javax.swing.JLabel();
-        lblJenis = new javax.swing.JLabel();
+        lblIdMakanan = new javax.swing.JLabel();
+        lblIdPenerima = new javax.swing.JLabel();
         jDatePenyaluran = new com.toedter.calendar.JDateChooser();
         cbMakanan = new javax.swing.JComboBox<>();
         txtFieldIdPenyaluranCRUD = new javax.swing.JTextField();
@@ -46,7 +205,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         btnSimpan = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        lblId9 = new javax.swing.JLabel();
+        lblStok2 = new javax.swing.JLabel();
         txtFieldStokCRUD = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         lblFrmDonatur = new javax.swing.JLabel();
@@ -56,29 +215,29 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         lblIdPenyaluran = new javax.swing.JLabel();
         txtFieldIdPenyaluran = new javax.swing.JTextField();
         btnDonasi = new javax.swing.JButton();
-        lblId = new javax.swing.JLabel();
+        lblNamaMakanan = new javax.swing.JLabel();
         txtFieldStok = new javax.swing.JTextField();
         btnCari = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMakanan = new javax.swing.JTable();
-        lblId1 = new javax.swing.JLabel();
+        lblMakananDisalurkan = new javax.swing.JLabel();
         lblStok = new javax.swing.JLabel();
         btnTambah = new javax.swing.JButton();
         txtFieldNamaMakanan = new javax.swing.JTextField();
-        lblId2 = new javax.swing.JLabel();
+        lblDataMakanan = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
-        lblStok1 = new javax.swing.JLabel();
+        lblIdPenerima2 = new javax.swing.JLabel();
         cbPenerimaPenyaluran = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        lblPenyaluran1 = new javax.swing.JLabel();
+        lblTanggalSebelum = new javax.swing.JLabel();
         btnDashboard3 = new javax.swing.JButton();
         btnLaporan = new javax.swing.JButton();
         lblFrmPenyaluran3 = new javax.swing.JLabel();
         TanggalSebelum = new com.toedter.calendar.JDateChooser();
         TanggalAntaraAwal = new com.toedter.calendar.JDateChooser();
-        lblPenyaluran2 = new javax.swing.JLabel();
+        lblTanggalAntara = new javax.swing.JLabel();
         TanggalSetelah = new com.toedter.calendar.JDateChooser();
-        lblPenyaluran3 = new javax.swing.JLabel();
+        lblTanggalSetelah = new javax.swing.JLabel();
         TanggalAntaraAkhir = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,11 +259,11 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         tablePenyaluran.setFocusable(false);
         jScrollPane3.setViewportView(tablePenyaluran);
 
-        lblLokasi.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblLokasi.setText("Tanggal Penyaluran");
+        lblTanggalPenyaluran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblTanggalPenyaluran.setText("Tanggal Penyaluran");
 
-        lblPenyaluran.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblPenyaluran.setText("Data Penyaluran");
+        lblDataPenyaluran.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataPenyaluran.setText("Data Penyaluran");
 
         btnDashboard2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDashboard2.setText("Dashboard");
@@ -114,11 +273,11 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
-        lblFrmPenyaluran2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblFrmPenyaluran2.setText("Form Penyaluran");
+        lblFrmPenyaluran.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblFrmPenyaluran.setText("Form Penyaluran");
 
-        lblId8.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblId8.setText("Id Penyaluran");
+        lblIdPenyaluran2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblIdPenyaluran2.setText("Id Penyaluran");
 
         cbPenerima.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbPenerima.addActionListener(new java.awt.event.ActionListener() {
@@ -127,11 +286,11 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
-        lblNama.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblNama.setText("Id Makanan");
+        lblIdMakanan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblIdMakanan.setText("Id Makanan");
 
-        lblJenis.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblJenis.setText("Id Penerima");
+        lblIdPenerima.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblIdPenerima.setText("Id Penerima");
 
         jDatePenyaluran.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -181,8 +340,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
-        lblId9.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblId9.setText("Stok");
+        lblStok2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblStok2.setText("Stok");
 
         txtFieldStokCRUD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldStokCRUD.addActionListener(new java.awt.event.ActionListener() {
@@ -200,20 +359,20 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblPenyaluran)
+                        .addComponent(lblDataPenyaluran)
                         .addGap(330, 330, 330))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblLokasi)
-                                    .addComponent(lblNama)
-                                    .addComponent(lblJenis)
+                                    .addComponent(lblTanggalPenyaluran)
+                                    .addComponent(lblIdMakanan)
+                                    .addComponent(lblIdPenerima)
                                     .addComponent(jDatePenyaluran, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                                     .addComponent(cbPenerima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbMakanan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtFieldIdPenyaluranCRUD)
-                                    .addComponent(lblId9)
+                                    .addComponent(lblStok2)
                                     .addComponent(txtFieldStokCRUD)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
@@ -232,39 +391,39 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(512, 512, 512)
-                .addComponent(lblFrmPenyaluran2)
+                .addComponent(lblFrmPenyaluran)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(lblId8)
+                    .addComponent(lblIdPenyaluran2)
                     .addContainerGap(1104, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(lblFrmPenyaluran2)
+                .addComponent(lblFrmPenyaluran)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPenyaluran)
+                .addComponent(lblDataPenyaluran)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(txtFieldIdPenyaluranCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblNama)
+                        .addComponent(lblIdMakanan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblJenis)
+                        .addComponent(lblIdPenerima)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblId9)
+                        .addComponent(lblStok2)
                         .addGap(2, 2, 2)
                         .addComponent(txtFieldStokCRUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(lblLokasi)
+                        .addComponent(lblTanggalPenyaluran)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDatePenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
@@ -280,7 +439,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(56, 56, 56)
-                    .addComponent(lblId8)
+                    .addComponent(lblIdPenyaluran2)
                     .addContainerGap(434, Short.MAX_VALUE)))
         );
 
@@ -319,8 +478,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         btnDonasi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDonasi.setText("Donasi");
 
-        lblId.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblId.setText("Masukkan Nama Makanan");
+        lblNamaMakanan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblNamaMakanan.setText("Masukkan Nama Makanan");
 
         txtFieldStok.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldStok.addActionListener(new java.awt.event.ActionListener() {
@@ -364,8 +523,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             tableMakanan.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId1.setText("Makanan Yang Akan Disalurkan");
+        lblMakananDisalurkan.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblMakananDisalurkan.setText("Makanan Yang Akan Disalurkan");
 
         lblStok.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblStok.setText("Jumlah Stok yang Ingin disalurkan");
@@ -380,8 +539,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
-        lblId2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId2.setText("Data Makanan");
+        lblDataMakanan.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataMakanan.setText("Data Makanan");
 
         btnDashboard.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDashboard.setText("Dashboard");
@@ -391,8 +550,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
-        lblStok1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblStok1.setText("ID Penerima (Yang akan Disalurkan)");
+        lblIdPenerima2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        lblIdPenerima2.setText("ID Penerima (Yang akan Disalurkan)");
 
         cbPenerimaPenyaluran.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbPenerimaPenyaluran.addActionListener(new java.awt.event.ActionListener() {
@@ -408,7 +567,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblId2)
+                    .addComponent(lblDataMakanan)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtFieldStok, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -417,7 +576,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                         .addComponent(txtFieldNamaMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblId)
+                    .addComponent(lblNamaMakanan)
                     .addComponent(lblStok)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -427,13 +586,13 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
-                        .addComponent(lblId1)
+                        .addComponent(lblMakananDisalurkan)
                         .addGap(187, 187, 187))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblStok1)
+                                .addComponent(lblIdPenerima2)
                                 .addGap(18, 18, 18)
                                 .addComponent(cbPenerimaPenyaluran, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
@@ -458,8 +617,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                 .addComponent(lblFrmDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblId)
-                    .addComponent(lblId1))
+                    .addComponent(lblNamaMakanan)
+                    .addComponent(lblMakananDisalurkan))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -470,7 +629,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                                 .addGap(4, 4, 4)
                                 .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(17, 17, 17)
-                        .addComponent(lblId2)
+                        .addComponent(lblDataMakanan)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -482,7 +641,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                     .addComponent(btnDonasi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStok)
-                    .addComponent(lblStok1)
+                    .addComponent(lblIdPenerima2)
                     .addComponent(cbPenerimaPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -494,8 +653,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Penyaluran", jPanel1);
 
-        lblPenyaluran1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblPenyaluran1.setText("Penyaluran Sebelum Tanggal");
+        lblTanggalSebelum.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblTanggalSebelum.setText("Penyaluran Sebelum Tanggal");
 
         btnDashboard3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDashboard3.setText("Dashboard");
@@ -514,19 +673,19 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         });
 
         lblFrmPenyaluran3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblFrmPenyaluran3.setText("Form Penyaluran");
+        lblFrmPenyaluran3.setText("Laporan Penyaluran");
 
         TanggalSebelum.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         TanggalAntaraAwal.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        lblPenyaluran2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblPenyaluran2.setText("Penyaluran Antara Tanggal");
+        lblTanggalAntara.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblTanggalAntara.setText("Penyaluran Antara Tanggal");
 
         TanggalSetelah.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        lblPenyaluran3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblPenyaluran3.setText("Penyaluran Setelah Tanggal");
+        lblTanggalSetelah.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblTanggalSetelah.setText("Penyaluran Setelah Tanggal");
 
         TanggalAntaraAkhir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
@@ -535,55 +694,55 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(TanggalAntaraAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(757, 757, 757)
+                        .addComponent(btnDashboard3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(325, 325, 325)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPenyaluran1)
-                            .addComponent(TanggalSebelum, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPenyaluran2)
-                            .addComponent(TanggalAntaraAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblFrmPenyaluran3))
-                            .addComponent(lblPenyaluran3)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnDashboard3))
-                                .addComponent(TanggalSetelah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(609, 609, 609))))
+                            .addComponent(TanggalAntaraAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTanggalSebelum)
+                                .addComponent(TanggalSebelum, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTanggalAntara)
+                                .addComponent(TanggalAntaraAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTanggalSetelah)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TanggalSetelah, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(349, 349, 349))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(483, 483, 483)
+                .addComponent(lblFrmPenyaluran3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(lblFrmPenyaluran3)
+                .addGap(27, 27, 27)
+                .addComponent(lblTanggalSebelum)
                 .addGap(18, 18, 18)
-                .addComponent(lblPenyaluran1)
-                .addGap(18, 18, 18)
-                .addComponent(TanggalSebelum, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblPenyaluran2)
-                .addGap(18, 18, 18)
-                .addComponent(TanggalAntaraAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(TanggalAntaraAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TanggalSebelum, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblPenyaluran3)
-                        .addGap(18, 18, 18)
-                        .addComponent(TanggalSetelah, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDashboard3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38))
+                .addComponent(lblTanggalAntara)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TanggalAntaraAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(TanggalAntaraAkhir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblTanggalSetelah)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TanggalSetelah, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDashboard3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Laporan", jPanel2);
@@ -610,6 +769,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -752,25 +913,25 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblDataMakanan;
+    private javax.swing.JLabel lblDataPenyaluran;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblFrmDonatur;
-    private javax.swing.JLabel lblFrmPenyaluran2;
+    private javax.swing.JLabel lblFrmPenyaluran;
     private javax.swing.JLabel lblFrmPenyaluran3;
-    private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblId1;
-    private javax.swing.JLabel lblId2;
-    private javax.swing.JLabel lblId8;
-    private javax.swing.JLabel lblId9;
+    private javax.swing.JLabel lblIdMakanan;
+    private javax.swing.JLabel lblIdPenerima;
+    private javax.swing.JLabel lblIdPenerima2;
     private javax.swing.JLabel lblIdPenyaluran;
-    private javax.swing.JLabel lblJenis;
-    private javax.swing.JLabel lblLokasi;
-    private javax.swing.JLabel lblNama;
-    private javax.swing.JLabel lblPenyaluran;
-    private javax.swing.JLabel lblPenyaluran1;
-    private javax.swing.JLabel lblPenyaluran2;
-    private javax.swing.JLabel lblPenyaluran3;
+    private javax.swing.JLabel lblIdPenyaluran2;
+    private javax.swing.JLabel lblMakananDisalurkan;
+    private javax.swing.JLabel lblNamaMakanan;
     private javax.swing.JLabel lblStok;
-    private javax.swing.JLabel lblStok1;
+    private javax.swing.JLabel lblStok2;
+    private javax.swing.JLabel lblTanggalAntara;
+    private javax.swing.JLabel lblTanggalPenyaluran;
+    private javax.swing.JLabel lblTanggalSebelum;
+    private javax.swing.JLabel lblTanggalSetelah;
     public javax.swing.JTable tableMakanan;
     public static javax.swing.JTable tablePenyaluran;
     public javax.swing.JTable tableProsesPenyaluran;

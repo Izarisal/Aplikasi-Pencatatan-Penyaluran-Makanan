@@ -11,6 +11,8 @@ import Model.DonaturModel;
 import Model.MakananModel;
 import Model.PenerimaModel;
 import Model.PenyaluranModel;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,6 +45,7 @@ public class Popup extends javax.swing.JFrame {
 
         update_tabel_popup(input);
         this.tablePenyaluran.addMouseListener(lc);
+        styleFormPopup();
     }
 
     public Popup() {
@@ -55,6 +58,7 @@ public class Popup extends javax.swing.JFrame {
         LaporanController lc = new LaporanController(pm, dm, mm, pem, this);
 
         this.tablePenyaluran.addMouseListener(lc);
+        styleFormPopup();
     }
 
     public void update_tabel_popup(String sql) {
@@ -65,6 +69,59 @@ public class Popup extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }
+    
+    private void styleFormPopup() {
+        Color warnaBG = new Color(245, 247, 250); // Abu-abu
+        Color warnaNavIndigo = new Color(63, 114, 175);  // Biru Indigo
+        Color warnaSimpanHijau = new Color(46, 117, 89);   // Hijau gelap
+        Color warnaHapusMerah = new Color(186, 45, 50);   // Merah bata
+        Color warnaTeksGelap = new Color(17, 45, 78);    // Navy gelap
+        Color warnaTeksLabel = new Color(73, 80, 87);    // Abu-abu gelap
+
+        this.getContentPane().setBackground(warnaBG);
+        
+        lblDataPenyaluran.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataPenyaluran.setForeground(warnaTeksGelap);
+        
+        lblDataDonatur.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataDonatur.setForeground(warnaTeksGelap);
+        
+        lblDataMakanan.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataMakanan.setForeground(warnaTeksGelap);
+        
+        lblDataPenerima.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataPenerima.setForeground(warnaTeksGelap);
+
+        Font fontInput = new Font("Segoe UI", Font.PLAIN, 14);
+
+        Font fontTombol = new Font("Segoe UI", Font.BOLD, 13);
+
+        btnCetak.setFont(fontTombol);
+        btnCetak.setBackground(warnaNavIndigo);
+        btnCetak.setForeground(Color.WHITE);
+        btnCetak.setFocusPainted(false);
+        
+        btnKembali.setFont(fontTombol);
+        btnKembali.setBackground(warnaNavIndigo);
+        btnKembali.setForeground(Color.WHITE);
+        btnKembali.setFocusPainted(false);
+        
+        tablePenyaluran.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tablePenyaluran.setRowHeight(25);
+        tablePenyaluran.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        
+        tableDonatur.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tableDonatur.setRowHeight(25);
+        tableDonatur.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        
+        tableMakanan.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tableMakanan.setRowHeight(25);
+        tableMakanan.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        
+        tablePenerima.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tablePenerima.setRowHeight(25);
+        tablePenerima.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
     }
 
     /**
@@ -79,16 +136,16 @@ public class Popup extends javax.swing.JFrame {
         lblDonatur = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePenyaluran = new javax.swing.JTable();
-        lblId1 = new javax.swing.JLabel();
+        lblDataPenyaluran = new javax.swing.JLabel();
         btnKembali = new javax.swing.JButton();
         btnCetak = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableDonatur = new javax.swing.JTable();
-        lblId2 = new javax.swing.JLabel();
+        lblDataDonatur = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableMakanan = new javax.swing.JTable();
-        lblId3 = new javax.swing.JLabel();
-        lblId4 = new javax.swing.JLabel();
+        lblDataMakanan = new javax.swing.JLabel();
+        lblDataPenerima = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablePenerima = new javax.swing.JTable();
 
@@ -110,8 +167,8 @@ public class Popup extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablePenyaluran);
 
-        lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId1.setText("Data Penyaluran");
+        lblDataPenyaluran.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataPenyaluran.setText("Data Penyaluran");
 
         btnKembali.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnKembali.setText("Kembali");
@@ -143,8 +200,8 @@ public class Popup extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableDonatur);
 
-        lblId2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId2.setText("Data Donatur");
+        lblDataDonatur.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataDonatur.setText("Data Donatur");
 
         tableMakanan.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tableMakanan.setModel(new javax.swing.table.DefaultTableModel(
@@ -160,11 +217,11 @@ public class Popup extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tableMakanan);
 
-        lblId3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId3.setText("Data Makanan");
+        lblDataMakanan.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataMakanan.setText("Data Makanan");
 
-        lblId4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId4.setText("Data Penerima");
+        lblDataPenerima.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataPenerima.setText("Data Penerima");
 
         tablePenerima.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tablePenerima.setModel(new javax.swing.table.DefaultTableModel(
@@ -188,7 +245,7 @@ public class Popup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(225, 225, 225)
-                        .addComponent(lblId1))
+                        .addComponent(lblDataPenyaluran))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(lblDonatur)
@@ -199,13 +256,13 @@ public class Popup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblId2)
+                        .addComponent(lblDataDonatur)
                         .addGap(238, 238, 238))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblId3)
+                        .addComponent(lblDataMakanan)
                         .addGap(239, 239, 239))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblId4)
+                        .addComponent(lblDataPenerima)
                         .addGap(237, 237, 237))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -228,19 +285,19 @@ public class Popup extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblId1)
-                                    .addComponent(lblId2))
+                                    .addComponent(lblDataPenyaluran)
+                                    .addComponent(lblDataDonatur))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblId3)
+                                .addComponent(lblDataMakanan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblId4)
+                                .addComponent(lblDataPenerima)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -366,11 +423,11 @@ public class Popup extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblDataDonatur;
+    private javax.swing.JLabel lblDataMakanan;
+    private javax.swing.JLabel lblDataPenerima;
+    private javax.swing.JLabel lblDataPenyaluran;
     private javax.swing.JLabel lblDonatur;
-    private javax.swing.JLabel lblId1;
-    private javax.swing.JLabel lblId2;
-    private javax.swing.JLabel lblId3;
-    private javax.swing.JLabel lblId4;
     public javax.swing.JTable tableDonatur;
     public javax.swing.JTable tableMakanan;
     public javax.swing.JTable tablePenerima;

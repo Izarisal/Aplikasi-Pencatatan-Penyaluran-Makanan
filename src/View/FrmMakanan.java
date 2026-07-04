@@ -5,6 +5,9 @@
  */
 package View;
 
+import java.awt.Color;
+import java.awt.Font;
+
 /**
  *
  * @author User
@@ -16,9 +19,82 @@ public class FrmMakanan extends javax.swing.JFrame {
 
     public FrmMakanan() {
         initComponents();
+        styleFormMakanan();
     }
 
+    private void styleFormMakanan() {
+        Color warnaBG = new Color(245, 247, 250); // Abu-abu
+        Color warnaNavIndigo = new Color(63, 114, 175);  // Biru Indigo
+        Color warnaSimpanHijau = new Color(46, 117, 89);   // Hijau gelap
+        Color warnaHapusMerah = new Color(186, 45, 50);   // Merah bata
+        Color warnaTeksGelap = new Color(17, 45, 78);    // Navy gelap
+        Color warnaTeksLabel = new Color(73, 80, 87);    // Abu-abu gelap
 
+        this.getContentPane().setBackground(warnaBG);
+
+        lblFrmMakanan.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        lblFrmMakanan.setForeground(warnaTeksGelap);
+        lblDataMakanan.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataMakanan.setForeground(warnaTeksGelap);
+
+        Font fontLabel = new Font("Segoe UI", Font.PLAIN, 14);
+        lblId.setFont(fontLabel);
+        lblId.setForeground(warnaTeksLabel);
+        lblNama.setFont(fontLabel);
+        lblNama.setForeground(warnaTeksLabel);
+        lblJenis.setFont(fontLabel);
+        lblJenis.setForeground(warnaTeksLabel);
+        lblStok.setFont(fontLabel);
+        lblStok.setForeground(warnaTeksLabel);
+        lblStatus.setFont(fontLabel);
+        lblStatus.setForeground(warnaTeksLabel);
+        dateKadaluarsa.setFont(fontLabel);
+        dateKadaluarsa.setForeground(warnaTeksLabel);
+
+        Font fontInput = new Font("Segoe UI", Font.PLAIN, 14);
+        txtFieldId.setFont(fontInput);
+        txtFieldNama.setFont(fontInput);
+        cmbDonatur.setFont(fontInput);
+        txtFieldStok.setFont(fontInput);
+        txtFieldStatus.setFont(fontInput);
+        dateKadaluarsa.setFont(fontInput);
+
+        Font fontTombol = new Font("Segoe UI", Font.BOLD, 13);
+
+        btnSimpan.setFont(fontTombol);
+        btnSimpan.setBackground(warnaSimpanHijau);
+        btnSimpan.setForeground(Color.WHITE);
+        btnSimpan.setFocusPainted(false);
+
+        btnUpdate.setFont(fontTombol);
+        btnUpdate.setBackground(warnaSimpanHijau);
+        btnUpdate.setForeground(Color.WHITE);
+        btnUpdate.setFocusPainted(false);
+
+        btnDelete.setFont(fontTombol);
+        btnDelete.setBackground(warnaHapusMerah);
+        btnDelete.setForeground(Color.WHITE);
+        btnDelete.setFocusPainted(false);
+
+        btnClear.setFont(fontTombol);
+        btnClear.setBackground(warnaSimpanHijau);
+        btnClear.setForeground(Color.WHITE);
+        btnClear.setFocusPainted(false);
+
+        btnCetak.setFont(fontTombol);
+        btnCetak.setBackground(warnaNavIndigo);
+        btnCetak.setForeground(Color.WHITE);
+        btnCetak.setFocusPainted(false);
+
+        btnDashboard.setFont(fontTombol);
+        btnDashboard.setBackground(warnaNavIndigo);
+        btnDashboard.setForeground(Color.WHITE);
+        btnDashboard.setFocusPainted(false);
+
+        tblMakanan.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tblMakanan.setRowHeight(25);
+        tblMakanan.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,7 +104,7 @@ public class FrmMakanan extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblFrmDonatur = new javax.swing.JLabel();
+        lblFrmMakanan = new javax.swing.JLabel();
         lblDonatur = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         txtFieldId = new javax.swing.JTextField();
@@ -41,7 +117,7 @@ public class FrmMakanan extends javax.swing.JFrame {
         txtFieldStatus = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMakanan = new javax.swing.JTable();
-        lblId1 = new javax.swing.JLabel();
+        lblDataMakanan = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         dateKadaluarsa = new com.toedter.calendar.JDateChooser();
         btnSimpan = new javax.swing.JButton();
@@ -54,8 +130,8 @@ public class FrmMakanan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblFrmDonatur.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lblFrmDonatur.setText("Form Makanan");
+        lblFrmMakanan.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblFrmMakanan.setText("Form Makanan");
 
         lblDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
@@ -126,8 +202,8 @@ public class FrmMakanan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblMakanan);
 
-        lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId1.setText("Data Makanan");
+        lblDataMakanan.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataMakanan.setText("Data Makanan");
 
         btnDashboard.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDashboard.setText("Dashboard");
@@ -221,33 +297,33 @@ public class FrmMakanan extends javax.swing.JFrame {
                     .addComponent(lblStok)
                     .addComponent(lblNama1)
                     .addComponent(cmbDonatur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 5, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblId1)
-                        .addGap(379, 379, 379))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(49, 54, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnDashboard)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 36, Short.MAX_VALUE))))
+                        .addGap(0, 36, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDataMakanan)
+                        .addGap(367, 367, 367))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(547, 547, 547)
-                .addComponent(lblFrmDonatur)
+                .addComponent(lblFrmMakanan)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lblFrmDonatur)
+                .addComponent(lblFrmMakanan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblDonatur)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
-                    .addComponent(lblId1))
+                    .addComponent(lblDataMakanan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -386,10 +462,10 @@ public class FrmMakanan extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> cmbDonatur;
     public com.toedter.calendar.JDateChooser dateKadaluarsa;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDataMakanan;
     private javax.swing.JLabel lblDonatur;
-    private javax.swing.JLabel lblFrmDonatur;
+    private javax.swing.JLabel lblFrmMakanan;
     private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblJenis;
     private javax.swing.JLabel lblNama;
     private javax.swing.JLabel lblNama1;

@@ -5,17 +5,8 @@
  */
 package View;
 
-import Controller.DonaturController;
-import Controller.MakananController;
-import Controller.PenerimaController;
-import Controller.PenyaluranController;
-import Model.DonaturModel;
-import Model.MakananModel;
-import Model.PenerimaModel;
-import Model.PenyaluranModel;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.awt.Color;
+import java.awt.Font;
 
 /**
  *
@@ -28,6 +19,55 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        styleKomponenManual();
+    }
+
+    private void styleKomponenManual() {
+        Color warnaBackgroundForm = new Color(245, 247, 250); // Abu-abu terang
+        Color warnaTombolUtama = new Color(63, 114, 175);  // Biru Indigo
+        Color warnaTeksTombol = Color.WHITE;
+        Color warnaTeksJudul = new Color(17, 45, 78);    // Navy Gelap
+        Color warnaTeksLabel = new Color(73, 80, 87);    // Abu-abu Gelap
+
+        this.getContentPane().setBackground(warnaBackgroundForm);
+
+        lblDashboard.setFont(new Font("Segoe UI", Font.BOLD, 28));
+        lblDashboard.setForeground(warnaTeksJudul);
+
+        Font fontLabel = new Font("Segoe UI", Font.PLAIN, 15);
+        lblDonatur.setFont(fontLabel);
+        lblDonatur.setForeground(warnaTeksLabel);
+
+        lblMakanan.setFont(fontLabel);
+        lblMakanan.setForeground(warnaTeksLabel);
+
+        lblPenerima.setFont(fontLabel);
+        lblPenerima.setForeground(warnaTeksLabel);
+
+        lblPenyaluran.setFont(fontLabel);
+        lblPenyaluran.setForeground(warnaTeksLabel);
+
+        Font fontTombol = new Font("Segoe UI", Font.BOLD, 15);
+
+        btnDonatur.setFont(fontTombol);
+        btnDonatur.setBackground(warnaTombolUtama);
+        btnDonatur.setForeground(warnaTeksTombol);
+        btnDonatur.setFocusPainted(false);
+
+        btnMakanan.setFont(fontTombol);
+        btnMakanan.setBackground(warnaTombolUtama);
+        btnMakanan.setForeground(warnaTeksTombol);
+        btnMakanan.setFocusPainted(false);
+
+        btnPenerima.setFont(fontTombol);
+        btnPenerima.setBackground(warnaTombolUtama);
+        btnPenerima.setForeground(warnaTeksTombol);
+        btnPenerima.setFocusPainted(false);
+
+        btnPenyaluran.setFont(fontTombol);
+        btnPenyaluran.setBackground(warnaTombolUtama);
+        btnPenyaluran.setForeground(warnaTeksTombol);
+        btnPenyaluran.setFocusPainted(false);
     }
 
     /**
@@ -48,12 +88,15 @@ public class Dashboard extends javax.swing.JFrame {
         lblMakanan = new javax.swing.JLabel();
         lblPenerima = new javax.swing.JLabel();
         lblPenyaluran = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(248, 249, 250));
 
         lblDashboard.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblDashboard.setText("Dashboard");
 
+        btnDonatur.setBackground(new java.awt.Color(219, 226, 239));
         btnDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnDonatur.setText("Data Donatur");
         btnDonatur.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +105,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btnMakanan.setBackground(new java.awt.Color(219, 226, 239));
         btnMakanan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnMakanan.setText("Data Makanan");
         btnMakanan.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +114,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btnPenerima.setBackground(new java.awt.Color(219, 226, 239));
         btnPenerima.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnPenerima.setText("Data Penerima");
         btnPenerima.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +123,7 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
+        btnPenyaluran.setBackground(new java.awt.Color(219, 226, 239));
         btnPenyaluran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnPenyaluran.setText("Data Penyaluran");
         btnPenyaluran.addActionListener(new java.awt.event.ActionListener() {
@@ -98,70 +144,76 @@ public class Dashboard extends javax.swing.JFrame {
         lblPenyaluran.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblPenyaluran.setText("Jumlah Penyaluran : ");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Logo.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMakanan)
-                    .addComponent(lblDonatur)
-                    .addComponent(lblPenerima)
-                    .addComponent(lblPenyaluran))
-                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPenyaluran))
-                .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDashboard)
-                .addGap(142, 142, 142))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPenyaluran)
+                            .addComponent(lblDonatur)
+                            .addComponent(lblMakanan)
+                            .addComponent(lblPenerima)
+                            .addComponent(lblPenyaluran)
+                            .addComponent(btnMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(349, 349, 349)
+                        .addComponent(lblDashboard)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDashboard)
-                .addGap(14, 14, 14)
-                .addComponent(lblDonatur)
-                .addGap(18, 18, 18)
-                .addComponent(lblMakanan)
-                .addGap(18, 18, 18)
-                .addComponent(lblPenerima)
-                .addGap(18, 18, 18)
-                .addComponent(lblPenyaluran)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDonatur)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblMakanan)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPenerima)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPenyaluran)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDonatur, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPenerima, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnMakanan, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPenyaluran, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDonaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonaturActionPerformed
-        
+
     }//GEN-LAST:event_btnDonaturActionPerformed
 
     private void btnMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMakananActionPerformed
-        
+
     }//GEN-LAST:event_btnMakananActionPerformed
 
     private void btnPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaActionPerformed
-        
+
     }//GEN-LAST:event_btnPenerimaActionPerformed
 
     private void btnPenyaluranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyaluranActionPerformed
-       
+
     }//GEN-LAST:event_btnPenyaluranActionPerformed
 
     /**
@@ -205,10 +257,11 @@ public class Dashboard extends javax.swing.JFrame {
     public javax.swing.JButton btnMakanan;
     public javax.swing.JButton btnPenerima;
     public javax.swing.JButton btnPenyaluran;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDashboard;
-    private javax.swing.JLabel lblDonatur;
-    private javax.swing.JLabel lblMakanan;
-    private javax.swing.JLabel lblPenerima;
-    private javax.swing.JLabel lblPenyaluran;
+    public javax.swing.JLabel lblDonatur;
+    public javax.swing.JLabel lblMakanan;
+    public javax.swing.JLabel lblPenerima;
+    public javax.swing.JLabel lblPenyaluran;
     // End of variables declaration//GEN-END:variables
 }

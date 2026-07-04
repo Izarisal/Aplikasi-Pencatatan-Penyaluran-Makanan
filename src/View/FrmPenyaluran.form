@@ -58,6 +58,9 @@
       </Properties>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -78,21 +81,21 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="lblPenyaluran" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDataPenyaluran" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblLokasi" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblNama" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTanggalPenyaluran" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblIdMakanan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblIdPenerima" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jDatePenyaluran" alignment="0" pref="413" max="32767" attributes="0"/>
                                           <Component id="cbPenerima" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cbMakanan" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtFieldIdPenyaluranCRUD" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lblId9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblStok2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtFieldStokCRUD" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -119,13 +122,13 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="512" max="-2" attributes="0"/>
-                      <Component id="lblFrmPenyaluran2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblFrmPenyaluran" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblId8" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblIdPenyaluran2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="1104" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -135,27 +138,27 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Component id="lblFrmPenyaluran2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblFrmPenyaluran" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblPenyaluran" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDataPenyaluran" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="txtFieldIdPenyaluranCRUD" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblNama" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblIdMakanan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cbMakanan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblJenis" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblIdPenerima" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cbPenerima" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblId9" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblStok2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="txtFieldStokCRUD" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="lblLokasi" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTanggalPenyaluran" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jDatePenyaluran" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -175,7 +178,7 @@
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Component id="lblId8" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblIdPenyaluran2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="434" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -211,7 +214,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblLokasi">
+            <Component class="javax.swing.JLabel" name="lblTanggalPenyaluran">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -219,7 +222,7 @@
                 <Property name="text" type="java.lang.String" value="Tanggal Penyaluran"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblPenyaluran">
+            <Component class="javax.swing.JLabel" name="lblDataPenyaluran">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="1"/>
@@ -241,7 +244,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblFrmPenyaluran2">
+            <Component class="javax.swing.JLabel" name="lblFrmPenyaluran">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="24" style="1"/>
@@ -249,7 +252,7 @@
                 <Property name="text" type="java.lang.String" value="Form Penyaluran"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblId8">
+            <Component class="javax.swing.JLabel" name="lblIdPenyaluran2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -274,7 +277,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNama">
+            <Component class="javax.swing.JLabel" name="lblIdMakanan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -282,7 +285,7 @@
                 <Property name="text" type="java.lang.String" value="Id Makanan"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblJenis">
+            <Component class="javax.swing.JLabel" name="lblIdPenerima">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -386,7 +389,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblId9">
+            <Component class="javax.swing.JLabel" name="lblStok2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -424,7 +427,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblId2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDataMakanan" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txtFieldStok" min="-2" pref="380" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -435,7 +438,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnCari" min="-2" pref="96" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="lblId" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNamaMakanan" min="-2" max="-2" attributes="0"/>
                           <Component id="lblStok" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="502" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -447,14 +450,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace pref="224" max="32767" attributes="0"/>
-                              <Component id="lblId1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMakananDisalurkan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="lblStok1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblIdPenerima2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="cbPenerimaPenyaluran" max="32767" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -488,8 +491,8 @@
                       <Component id="lblFrmDonatur" min="-2" pref="29" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblId1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNamaMakanan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMakananDisalurkan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -503,7 +506,7 @@
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              <Component id="lblId2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDataMakanan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="162" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -518,7 +521,7 @@
                           <Component id="btnDonasi" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="btnHapus" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="lblStok" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStok1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblIdPenerima2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbPenerimaPenyaluran" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
@@ -611,7 +614,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblId">
+            <Component class="javax.swing.JLabel" name="lblNamaMakanan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -700,7 +703,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblId1">
+            <Component class="javax.swing.JLabel" name="lblMakananDisalurkan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="1"/>
@@ -740,7 +743,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblId2">
+            <Component class="javax.swing.JLabel" name="lblDataMakanan">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="1"/>
@@ -762,7 +765,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblStok1">
+            <Component class="javax.swing.JLabel" name="lblIdPenerima2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
@@ -801,36 +804,39 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="TanggalAntaraAkhir" min="-2" pref="535" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="757" max="-2" attributes="0"/>
+                              <Component id="btnDashboard3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="325" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblPenyaluran1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TanggalSebelum" min="-2" pref="535" max="-2" attributes="0"/>
-                                  <Component id="lblPenyaluran2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TanggalAntaraAwal" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace pref="174" max="-2" attributes="0"/>
-                                      <Component id="lblFrmPenyaluran3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblPenyaluran3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="btnLaporan" min="-2" pref="81" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnDashboard3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TanggalAntaraAkhir" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                      <Component id="lblTanggalSebelum" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TanggalSebelum" min="-2" pref="535" max="-2" attributes="0"/>
+                                      <Component id="lblTanggalAntara" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="TanggalAntaraAwal" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
+                                      <Component id="lblTanggalSetelah" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="TanggalSetelah" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <Component id="btnLaporan" min="-2" pref="81" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Component id="TanggalSetelah" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="609" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
+                      <Component id="lblFrmPenyaluran3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -839,36 +845,31 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="lblFrmPenyaluran3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="lblTanggalSebelum" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblPenyaluran1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="TanggalSebelum" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblPenyaluran2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="TanggalAntaraAwal" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
-                      <Component id="TanggalAntaraAkhir" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="TanggalSebelum" min="-2" pref="32" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblPenyaluran3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="TanggalSetelah" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="btnDashboard3" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="btnLaporan" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="lblTanggalAntara" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="TanggalAntaraAwal" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="TanggalAntaraAkhir" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblTanggalSetelah" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="TanggalSetelah" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnLaporan" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnDashboard3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblPenyaluran1">
+            <Component class="javax.swing.JLabel" name="lblTanggalSebelum">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="1"/>
@@ -909,7 +910,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Form Penyaluran"/>
+                <Property name="text" type="java.lang.String" value="Laporan Penyaluran"/>
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="TanggalSebelum">
@@ -932,7 +933,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblPenyaluran2">
+            <Component class="javax.swing.JLabel" name="lblTanggalAntara">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="1"/>
@@ -950,7 +951,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblPenyaluran3">
+            <Component class="javax.swing.JLabel" name="lblTanggalSetelah">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="1"/>

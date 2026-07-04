@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package View;
+
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author User
@@ -15,8 +20,83 @@ public class FrmDonatur extends javax.swing.JFrame {
      *
      * @throws java.sql.SQLException
      */
-    public FrmDonatur()  {
+    public FrmDonatur() {
         initComponents();
+        styleFormDonatur();
+    }
+
+    private void styleFormDonatur() {
+        Color warnaBG = new Color(245, 247, 250); // Abu-abu
+        Color warnaNavIndigo = new Color(63, 114, 175);  // Biru Indigo
+        Color warnaSimpanHijau = new Color(46, 117, 89);   // Hijau gelap
+        Color warnaHapusMerah = new Color(186, 45, 50);   // Merah bata
+        Color warnaTeksGelap = new Color(17, 45, 78);    // Navy gelap
+        Color warnaTeksLabel = new Color(73, 80, 87);    // Abu-abu gelap
+
+        this.getContentPane().setBackground(warnaBG);
+
+        lblFrmDonatur.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        lblFrmDonatur.setForeground(warnaTeksGelap);
+        lblDataDonatur.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        lblDataDonatur.setForeground(warnaTeksGelap);
+
+        Font fontLabel = new Font("Segoe UI", Font.PLAIN, 14);
+        lblId.setFont(fontLabel);
+        lblId.setForeground(warnaTeksLabel);
+        lblNama.setFont(fontLabel);
+        lblNama.setForeground(warnaTeksLabel);
+        lblJenis.setFont(fontLabel);
+        lblJenis.setForeground(warnaTeksLabel);
+        lblLokasi.setFont(fontLabel);
+        lblLokasi.setForeground(warnaTeksLabel);
+        lblEmail.setFont(fontLabel);
+        lblEmail.setForeground(warnaTeksLabel);
+        lblNoHP.setFont(fontLabel);
+        lblNoHP.setForeground(warnaTeksLabel);
+
+        Font fontInput = new Font("Segoe UI", Font.PLAIN, 14);
+        txtFieldId.setFont(fontInput);
+        txtFieldNama.setFont(fontInput);
+        txtFieldLokasi.setFont(fontInput);
+        txtFieldEmail.setFont(fontInput);
+        txtFieldNoHP.setFont(fontInput);
+        cbJenis.setFont(fontInput);
+
+        Font fontTombol = new Font("Segoe UI", Font.BOLD, 13);
+
+        btnSimpan.setFont(fontTombol);
+        btnSimpan.setBackground(warnaSimpanHijau);
+        btnSimpan.setForeground(Color.WHITE);
+        btnSimpan.setFocusPainted(false);
+
+        btnUpdate.setFont(fontTombol);
+        btnUpdate.setBackground(warnaSimpanHijau);
+        btnUpdate.setForeground(Color.WHITE);
+        btnUpdate.setFocusPainted(false);
+
+        btnDelete.setFont(fontTombol);
+        btnDelete.setBackground(warnaHapusMerah);
+        btnDelete.setForeground(Color.WHITE);
+        btnDelete.setFocusPainted(false);
+
+        btnClear.setFont(fontTombol);
+        btnClear.setBackground(warnaSimpanHijau);
+        btnClear.setForeground(Color.WHITE);
+        btnClear.setFocusPainted(false);
+
+        btnCetak.setFont(fontTombol);
+        btnCetak.setBackground(warnaNavIndigo);
+        btnCetak.setForeground(Color.WHITE);
+        btnCetak.setFocusPainted(false);
+
+        btnDashboard.setFont(fontTombol);
+        btnDashboard.setBackground(warnaNavIndigo);
+        btnDashboard.setForeground(Color.WHITE);
+        btnDashboard.setFocusPainted(false);
+
+        tableDonatur.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tableDonatur.setRowHeight(25);
+        tableDonatur.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
     }
 
     /**
@@ -45,7 +125,7 @@ public class FrmDonatur extends javax.swing.JFrame {
         btnSimpan = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDonatur = new javax.swing.JTable();
-        lblId1 = new javax.swing.JLabel();
+        lblDataDonatur = new javax.swing.JLabel();
         btnDashboard = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -138,8 +218,8 @@ public class FrmDonatur extends javax.swing.JFrame {
         tableDonatur.setFocusable(false);
         jScrollPane1.setViewportView(tableDonatur);
 
-        lblId1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        lblId1.setText("Data Donatur");
+        lblDataDonatur.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        lblDataDonatur.setText("Data Donatur");
 
         btnDashboard.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnDashboard.setText("Dashboard");
@@ -214,16 +294,17 @@ public class FrmDonatur extends javax.swing.JFrame {
                             .addComponent(lblId)
                             .addComponent(lblDonatur))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnDashboard)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblId1)
-                        .addGap(386, 386, 386))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDataDonatur)
+                        .addGap(368, 368, 368))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(558, 558, 558)
                 .addComponent(lblFrmDonatur)
@@ -239,7 +320,7 @@ public class FrmDonatur extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
-                    .addComponent(lblId1))
+                    .addComponent(lblDataDonatur))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -274,7 +355,7 @@ public class FrmDonatur extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -301,7 +382,7 @@ public class FrmDonatur extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldNoHPActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        
+
     }//GEN-LAST:event_btnDashboardActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
@@ -376,11 +457,11 @@ public class FrmDonatur extends javax.swing.JFrame {
     public javax.swing.JButton btnUpdate;
     public javax.swing.JComboBox<String> cbJenis;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDataDonatur;
     private javax.swing.JLabel lblDonatur;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFrmDonatur;
     private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblJenis;
     private javax.swing.JLabel lblLokasi;
     private javax.swing.JLabel lblNama;

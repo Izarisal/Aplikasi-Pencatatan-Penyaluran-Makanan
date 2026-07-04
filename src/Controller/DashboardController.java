@@ -32,8 +32,48 @@ public class DashboardController implements ActionListener {
         this.frm.btnPenerima.addActionListener(this);
         this.frm.btnMakanan.addActionListener(this);
         this.frm.btnPenyaluran.addActionListener(this);
+        
+        hitungDanTampilkanTotal();
     }
 
+    private void hitungDanTampilkanTotal() {
+        try {
+            java.sql.Connection conn = (java.sql.Connection) Model.Connector.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res;
+
+            res = stm.executeQuery("SELECT COUNT(*) AS total FROM donatur");
+            if (res.next()) {
+                int totalDonatur = res.getInt("total");
+                frm.lblDonatur.setText("Jumlah Donatur : " + totalDonatur);
+            }
+
+            res = stm.executeQuery("SELECT COUNT(*) AS total FROM makanan");
+            if (res.next()) {
+                int totalMakanan = res.getInt("total");
+                frm.lblMakanan.setText("Jumlah Makanan : " + totalMakanan);
+            }
+
+            res = stm.executeQuery("SELECT COUNT(*) AS total FROM penerima");
+            if (res.next()) {
+                int totalPenerima = res.getInt("total");
+                frm.lblPenerima.setText("Jumlah Penerima : " + totalPenerima);
+            }
+
+            res = stm.executeQuery("SELECT COUNT(*) AS total FROM penyaluran");
+            if (res.next()) {
+                int totalPenyaluran = res.getInt("total");
+                frm.lblPenyaluran.setText("Jumlah Penyaluran : " + totalPenyaluran);
+            }
+
+            res.close();
+            stm.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println("Gagal menghitung jumlah baris tabel: " + e.getMessage());
+        }
+    }
+    
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == frm.btnDonatur) {
             DonaturModel data = new DonaturModel();
@@ -65,4 +105,6 @@ public class DashboardController implements ActionListener {
             frm.dispose();
         }
     }
+
+    
 }

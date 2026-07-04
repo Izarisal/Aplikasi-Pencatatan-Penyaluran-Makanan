@@ -26,7 +26,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblJenis1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNoHP" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="txtFieldId" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtFieldNama" alignment="0" max="32767" attributes="0"/>
@@ -36,12 +36,12 @@
                       <Component id="txtFieldNoHP" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblStatus" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblStok" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLokasi" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblNama" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblId" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblDonatur" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblJenis" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="312" max="-2" attributes="0"/>
                       </Group>
@@ -61,7 +61,7 @@
               <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblId1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDataPenerima" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="380" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -75,7 +75,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="542" max="-2" attributes="0"/>
-              <Component id="lblFrmDonatur" min="-2" max="-2" attributes="0"/>
+              <Component id="lblFrmPenerima" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -84,13 +84,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="lblFrmDonatur" min="-2" pref="29" max="-2" attributes="0"/>
+              <Component id="lblFrmPenerima" min="-2" pref="29" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblDonatur" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblId" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblId1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDataPenerima" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -101,19 +101,19 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtFieldNama" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblStok" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblJenis" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cbJenis" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLokasi" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtFieldLokasi" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblJenis" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtFieldEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblJenis1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNoHP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtFieldNoHP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="37" max="32767" attributes="0"/>
@@ -135,7 +135,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblFrmDonatur">
+    <Component class="javax.swing.JLabel" name="lblFrmPenerima">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="24" style="1"/>
@@ -192,7 +192,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblJenis">
+    <Component class="javax.swing.JLabel" name="lblEmail">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
@@ -200,7 +200,7 @@
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblStok">
+    <Component class="javax.swing.JLabel" name="lblJenis">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
@@ -208,7 +208,7 @@
         <Property name="text" type="java.lang.String" value="Jenis"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblStatus">
+    <Component class="javax.swing.JLabel" name="lblLokasi">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
@@ -256,7 +256,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblId1">
+    <Component class="javax.swing.JLabel" name="lblDataPenerima">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="1"/>
@@ -313,7 +313,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblJenis1">
+    <Component class="javax.swing.JLabel" name="lblNoHP">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="16" style="0"/>
