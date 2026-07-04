@@ -5,60 +5,14 @@
  */
 package View;
 
-import Model.Connector;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import Controller.MakananController;
-
 /**
  *
  * @author User
  */
 public class FrmMakanan extends javax.swing.JFrame {
-
-    private MakananController controller;
     /**
      * Creates new form FrmDonatur
      */
-    public javax.swing.JTextField getTxtFieldId() {
-        return txtFieldId;
-    }
-
-    public javax.swing.JComboBox<String> getCmbDonatur() {
-        return cmbDonatur;
-    }
-
-    public javax.swing.JTextField getTxtFieldNama() {
-        return txtFieldNama;
-    }
-
-    public javax.swing.JTextField getTxtFieldStok() {
-        return txtFieldStok;
-    }
-
-    public javax.swing.JTextField getTxtFieldStatus() {
-        return txtFieldStatus;
-    }
-
-    public com.toedter.calendar.JDateChooser getDateKadaluarsa() {
-        return dateKadaluarsa;
-    }
-
-    public javax.swing.JTable getTableMakanan() {
-        return tblMakanan;
-    }
-
-    public void clearForm() {
-        txtFieldId.setText("");
-        txtFieldNama.setText("");
-        txtFieldStok.setText("");
-        txtFieldStatus.setText("");
-        dateKadaluarsa.setDate(null);
-        tblMakanan.clearSelection();
-        txtFieldId.requestFocus();
-    }
 
     public FrmMakanan() {
         initComponents();
@@ -351,8 +305,7 @@ public class FrmMakanan extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldStatusActionPerformed
 
     private void btnDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashboardActionPerformed
-        new Dashboard().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_btnDashboardActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
@@ -369,7 +322,6 @@ public class FrmMakanan extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-        clearForm();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakActionPerformed
@@ -378,18 +330,6 @@ public class FrmMakanan extends javax.swing.JFrame {
 
     private void txtFieldStokKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFieldStokKeyReleased
         // TODO add your handling code here:
-        if (txtFieldStok.getText().isEmpty()) {
-            txtFieldStatus.setText("");
-            return;
-        }
-
-        int stok = Integer.parseInt(txtFieldStok.getText());
-
-        if (stok > 0) {
-            txtFieldStatus.setText("Tersedia");
-        } else {
-            txtFieldStatus.setText("Habis");
-        }
     }//GEN-LAST:event_txtFieldStokKeyReleased
 
     private void cmbDonaturActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDonaturActionPerformed
@@ -439,7 +379,7 @@ public class FrmMakanan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCetak;
     public javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDashboard;
+    public javax.swing.JButton btnDashboard;
     public javax.swing.JButton btnDelete;
     public javax.swing.JButton btnSimpan;
     public javax.swing.JButton btnUpdate;

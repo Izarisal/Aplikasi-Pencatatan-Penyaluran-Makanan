@@ -38,9 +38,6 @@ public class LaporanController implements ActionListener, MouseListener {
     private PenerimaModel penerimaData;
     private Popup frm;
 
-    public LaporanController() {
-
-    }
 
     public LaporanController(PenyaluranModel penyaluranData, DonaturModel donaturData, MakananModel makananData, PenerimaModel penerimaData, Popup frm) {
         this.penyaluranData = penyaluranData;
@@ -122,8 +119,75 @@ public class LaporanController implements ActionListener, MouseListener {
         }
     }
 
-    //tampil data makanan
-    //tampil data penerima
+    public void TampilDataMakanan(String idMakanan) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No");
+        model.addColumn("Id Makanan");
+        model.addColumn("Id Donatur");
+        model.addColumn("Nama");
+        model.addColumn("Stok");
+        model.addColumn("Status");
+        model.addColumn("Tanggal Kadaluarsa");
+        
+        //Menampilkan data pada database ke dalam tabel
+        try {
+            int no = 1;
+            String sql = "SELECT * FROM makanan WHERE id_makanan = '" + idMakanan + "'";
+            java.sql.Connection conn = (Connection) Connector.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+
+            while (res.next()) {
+                model.addRow(new Object[]{
+                    no++,
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getString(6)});
+            }
+            frm.tableMakanan.setModel(model);
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
+    
+    public void TampilDataPenerima(String idPenerima) {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("No");
+        model.addColumn("Id");
+        model.addColumn("Nama");
+        model.addColumn("Jenis");
+        model.addColumn("Lokasi");
+        model.addColumn("Email");
+        model.addColumn("No HP");
+        //Menampilkan data pada database ke dalam tabel
+        try {
+            int no = 1;
+            String sql = "SELECT * FROM penerima WHERE id_penerima = '" + idPenerima + "'";
+            java.sql.Connection conn = (Connection) Connector.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+
+            while (res.next()) {
+                model.addRow(new Object[]{
+                    no++,
+                    res.getString(1),
+                    res.getString(2),
+                    res.getString(3),
+                    res.getString(4),
+                    res.getString(5),
+                    res.getString(6)});
+            }
+            frm.tablePenerima.setModel(model);
+
+        } catch (SQLException e) {
+            System.out.println("Error " + e.getMessage());
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == frm.btnCetak) {
@@ -154,17 +218,28 @@ public class LaporanController implements ActionListener, MouseListener {
     @Override
     public void mouseClicked(MouseEvent me) {
         if (me.getSource() == frm.tablePenyaluran) {
-            //frm.txtFieldId.setEditable(false);
 
             int baris = frm.tablePenyaluran.getSelectedRow();
             String idPenyaluran = frm.tablePenyaluran.getValueAt(baris, 1).toString();
             String idMakanan = frm.tablePenyaluran.getValueAt(baris, 2).toString();
             String idPenerima = frm.tablePenyaluran.getValueAt(baris, 3).toString();
 
-            // get id donatur
-            String idDonatur = frm.tablePenyaluran.getValueAt(baris, 1).toString();
-            TampilDataDonatur(idDonatur);
+            String idDonatur = "";
+            try {
+                String sqlCariDonatur = "SELECT id_donatur FROM makanan WHERE id_makanan = '" + idMakanan + "'";
+                java.sql.Connection conn = (Connection) Connector.configDB();
+                java.sql.Statement stm = conn.createStatement();
+                java.sql.ResultSet resCari = stm.executeQuery(sqlCariDonatur);
+                if (resCari.next()) {
+                    idDonatur = resCari.getString("id_donatur");
+                }
+            } catch (SQLException e) {
+                System.out.println("Gagal merelasikan ke donatur: " + e.getMessage());
+            }
 
+            TampilDataDonatur(idDonatur);
+            TampilDataMakanan(idMakanan);
+            TampilDataPenerima(idPenerima);
         }
     }
 

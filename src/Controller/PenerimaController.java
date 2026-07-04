@@ -8,6 +8,7 @@ package Controller;
 import Model.Connector;
 import Model.DonaturModel;
 import Model.PenerimaModel;
+import View.Dashboard;
 import View.FrmPenerima;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,6 +41,7 @@ public class PenerimaController implements ActionListener, MouseListener {
         this.frm.btnDelete.addActionListener(this);
         this.frm.btnClear.addActionListener(this);
         this.frm.btnCetak.addActionListener(this);
+        this.frm.btnDashboard.addActionListener(this);
         this.frm.tblPenerima.addMouseListener(this);
         
         KosongFormPenerima();
@@ -157,6 +159,11 @@ public class PenerimaController implements ActionListener, MouseListener {
             }
         } else if (ae.getSource() == frm.btnClear) {
             KosongFormPenerima();
+        } else if (ae.getSource() == frm.btnDashboard) {
+            Dashboard db = new Dashboard();
+            DashboardController ctrl = new DashboardController(db);
+            db.setVisible(true);
+            frm.dispose();
         }
     }
 

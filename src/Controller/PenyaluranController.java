@@ -10,6 +10,7 @@ import Model.DonaturModel;
 import Model.MakananModel;
 import Model.PenerimaModel;
 import Model.PenyaluranModel;
+import View.Dashboard;
 import View.FrmPenyaluran;
 import View.Popup;
 import java.awt.event.ActionEvent;
@@ -57,6 +58,9 @@ public class PenyaluranController implements ActionListener, MouseListener {
         this.frm.btnHapus.addActionListener(this);
         this.frm.btnDonasi.addActionListener(this);
         this.frm.btnLaporan.addActionListener(this);
+        this.frm.btnDashboard.addActionListener(this);
+        this.frm.btnDashboard2.addActionListener(this);
+        this.frm.btnDashboard3.addActionListener(this);
 
         this.frm.tablePenyaluran.addMouseListener(this);
         this.frm.tableMakanan.addMouseListener(this);
@@ -410,8 +414,10 @@ public class PenyaluranController implements ActionListener, MouseListener {
                 java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
                 String tgl_penyaluran = sdf.format(tanggalSekarang);
 
-                String id_penyaluran = frm.txtFieldIdPenyaluran.getText();
+                String id_penyaluran_awal = frm.txtFieldIdPenyaluran.getText();
                 String id_penerima = "" + frm.cbPenerimaPenyaluran.getSelectedItem();
+
+                int angkaBase = Integer.parseInt(id_penyaluran_awal.substring(2));
 
                 String sqlInsert = "INSERT INTO penyaluran (id_penyaluran, id_makanan, id_penerima, stok, tgl_penyaluran) VALUES (?, ?, ?, ?, ?)";
                 String sqlUpdateStok = "UPDATE makanan SET stok = stok - ? WHERE id_makanan = ?";
@@ -420,6 +426,8 @@ public class PenyaluranController implements ActionListener, MouseListener {
                 PreparedStatement pstUpdate = MySQLConfig.prepareStatement(sqlUpdateStok);
 
                 for (int i = 0; i < totalBaris; i++) {
+                    String id_penyaluran_unik = String.format("PL%04d", angkaBase + i);
+
                     String id_makanan = modelKeranjang.getValueAt(i, 1).toString();
                     int jumlahSalur = Integer.parseInt(modelKeranjang.getValueAt(i, 4).toString());
 
@@ -427,7 +435,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     pstUpdate.setString(2, id_makanan);
                     pstUpdate.execute();
 
-                    pstInsert.setString(1, id_penyaluran);
+                    pstInsert.setString(1, id_penyaluran_unik);
                     pstInsert.setString(2, id_makanan);
                     pstInsert.setString(3, id_penerima);
                     pstInsert.setInt(4, jumlahSalur);
@@ -473,6 +481,11 @@ public class PenyaluranController implements ActionListener, MouseListener {
             LaporanController ctrl = new LaporanController(penyaluranData, donaturData, makananData, penerimaData, frmLaporan);
             frmLaporan.setVisible(true);
 
+            frm.dispose(); 
+        } else if ((ae.getSource() == frm.btnDashboard) || (ae.getSource() == frm.btnDashboard2) || (ae.getSource() == frm.btnDashboard3)) {
+            Dashboard db = new Dashboard();
+            DashboardController ctrl = new DashboardController(db);
+            db.setVisible(true);
             frm.dispose();
         }
     }
