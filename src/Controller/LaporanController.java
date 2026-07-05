@@ -53,7 +53,6 @@ public class LaporanController implements ActionListener, MouseListener {
 
     public void TampilDataPenyaluran() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
         model.addColumn("Id Penyaluran");
         model.addColumn("Id Makanan");
         model.addColumn("Id Penerima");
@@ -70,7 +69,6 @@ public class LaporanController implements ActionListener, MouseListener {
 
             while (res.next()) {
                 model.addRow(new Object[]{
-                    no++,
                     res.getString(1),
                     res.getString(2),
                     res.getString(3),
@@ -221,7 +219,9 @@ public class LaporanController implements ActionListener, MouseListener {
             int baris = frm.tablePenyaluran.getSelectedRow();
 
             String idMakanan = frm.tablePenyaluran.getValueAt(baris, 1).toString();
+            System.out.println(idMakanan);
             String idPenerima = frm.tablePenyaluran.getValueAt(baris, 2).toString();
+            System.out.println(idPenerima);
             String idDonatur = "";
             try {
                 String sqlCariDonatur = "SELECT id_donatur FROM makanan WHERE id_makanan = '" + idMakanan + "'";
