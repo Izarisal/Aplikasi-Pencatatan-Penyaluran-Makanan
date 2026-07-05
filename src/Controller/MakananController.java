@@ -106,15 +106,8 @@ public class MakananController implements ActionListener, MouseListener, javax.s
     }
 
     public void TampilDataMakanan() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id Makanan");
-        model.addColumn("Id Donatur");
-        model.addColumn("Nama");
-        model.addColumn("Stok");
-        model.addColumn("Status");
-        model.addColumn("Tanggal Kadaluarsa");
-        
+        String[] kolomMakanan = {"No", "Id Makanan", "Id Donatur", "Nama", "Stok", "Status", "Tanggal Kadaluarsa"};
+        DefaultTableModel model = new DefaultTableModel(kolomMakanan, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;

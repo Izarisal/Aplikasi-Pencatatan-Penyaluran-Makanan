@@ -52,13 +52,8 @@ public class LaporanController implements ActionListener, MouseListener {
     }
 
     public void TampilDataPenyaluran() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Id Penyaluran");
-        model.addColumn("Id Makanan");
-        model.addColumn("Id Penerima");
-        model.addColumn("Stok");
-        model.addColumn("Tanggal Penyaluran");
-
+        String[] kolomPenyaluran = {"Id Penyaluran", "Id Makanan", "Id Penerima", "Stok", "Tanggal Penyaluran"};
+        DefaultTableModel model = new DefaultTableModel(kolomPenyaluran, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
@@ -83,14 +78,8 @@ public class LaporanController implements ActionListener, MouseListener {
     }
 
     public void TampilDataDonatur(String idDonatur) {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id");
-        model.addColumn("Nama");
-        model.addColumn("Jenis");
-        model.addColumn("Lokasi");
-        model.addColumn("Email");
-        model.addColumn("No HP");
+        String[] kolomDonatur = {"No", "Id", "Nama", "Jenis", "Lokasi", "Email", "No HP"};
+        DefaultTableModel model = new DefaultTableModel(kolomDonatur, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
@@ -117,14 +106,8 @@ public class LaporanController implements ActionListener, MouseListener {
     }
 
     public void TampilDataMakanan(String idMakanan) {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id Makanan");
-        model.addColumn("Id Donatur");
-        model.addColumn("Nama");
-        model.addColumn("Stok");
-        model.addColumn("Status");
-        model.addColumn("Tanggal Kadaluarsa");
+        String[] kolomMakanan = {"No", "Id Makanan", "Id Donatur", "Nama", "Stok", "Status", "Tanggal Kadaluarsa"};
+        DefaultTableModel model = new DefaultTableModel(kolomMakanan, 0);
 
         //Menampilkan data pada database ke dalam tabel
         try {
@@ -152,14 +135,8 @@ public class LaporanController implements ActionListener, MouseListener {
     }
 
     public void TampilDataPenerima(String idPenerima) {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id");
-        model.addColumn("Nama");
-        model.addColumn("Jenis");
-        model.addColumn("Lokasi");
-        model.addColumn("Email");
-        model.addColumn("No HP");
+        String[] kolomPenerima = {"No", "Id", "Nama", "Jenis", "Lokasi", "Email", "No HP"};
+        DefaultTableModel model = new DefaultTableModel(kolomPenerima, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
