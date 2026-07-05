@@ -204,10 +204,6 @@ public class LaporanController implements ActionListener, MouseListener {
                 JOptionPane.showMessageDialog(null, "Koneksi Database Gagal: " + ex.getMessage());
             }
         } else if (ae.getSource() == frm.btnKembali) {
-            FrmPenyaluran frmPenyaluran = new FrmPenyaluran();
-            PenyaluranModel data = new PenyaluranModel();
-            PenyaluranController ctrl = new PenyaluranController(data, frmPenyaluran);
-            frmPenyaluran.setVisible(true);
             frm.dispose();
         }
     }
