@@ -42,6 +42,8 @@ public class FrmMakanan extends javax.swing.JFrame {
         lblId.setForeground(warnaTeksLabel);
         lblNama.setFont(fontLabel);
         lblNama.setForeground(warnaTeksLabel);
+        lblNama1.setFont(fontLabel);
+        lblNama1.setForeground(warnaTeksLabel);
         lblJenis.setFont(fontLabel);
         lblJenis.setForeground(warnaTeksLabel);
         lblStok.setFont(fontLabel);
