@@ -14,61 +14,7 @@ import java.sql.SQLException;
  *
  * @author User
  */
-public class DonaturModel {
-    private String id;
-    private String nama;
-    private String jenis;
-    private String lokasi;
-    private String email;
-    private String no_hp;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public String getJenis() {
-        return jenis;
-    }
-
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
-    }
-
-    public String getLokasi() {
-        return lokasi;
-    }
-
-    public void setLokasi(String lokasi) {
-        this.lokasi = lokasi;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNo_hp() {
-        return no_hp;
-    }
-
-    public void setNo_hp(String no_hp) {
-        this.no_hp = no_hp;
-    }
+public class DonaturModel extends AktorModel {
     
     public boolean SimpanDonatur(DonaturModel data) throws SQLException{
         PreparedStatement pstm=null;
