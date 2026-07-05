@@ -133,6 +133,7 @@ public class FrmDonatur extends javax.swing.JFrame {
         btnCetak = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 250));
 
         lblFrmDonatur.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblFrmDonatur.setText("Form Donatur");

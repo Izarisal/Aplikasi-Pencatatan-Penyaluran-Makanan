@@ -241,6 +241,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         TanggalAntaraAkhir = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 250));
 
         lblDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 

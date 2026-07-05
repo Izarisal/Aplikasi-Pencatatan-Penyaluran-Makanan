@@ -42,6 +42,8 @@ public class FrmMakanan extends javax.swing.JFrame {
         lblId.setForeground(warnaTeksLabel);
         lblNama.setFont(fontLabel);
         lblNama.setForeground(warnaTeksLabel);
+        lblNama1.setFont(fontLabel);
+        lblNama1.setForeground(warnaTeksLabel);
         lblJenis.setFont(fontLabel);
         lblJenis.setForeground(warnaTeksLabel);
         lblStok.setFont(fontLabel);
@@ -129,6 +131,7 @@ public class FrmMakanan extends javax.swing.JFrame {
         lblNama1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 250));
 
         lblFrmMakanan.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblFrmMakanan.setText("Form Makanan");
@@ -358,7 +361,7 @@ public class FrmMakanan extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
