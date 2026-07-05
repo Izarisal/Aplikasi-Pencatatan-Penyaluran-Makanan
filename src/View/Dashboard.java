@@ -92,6 +92,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(248, 249, 250));
+        setLocation(new java.awt.Point(500, 250));
 
         lblDashboard.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lblDashboard.setText("Dashboard");

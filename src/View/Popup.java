@@ -149,7 +149,8 @@ public class Popup extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tablePenerima = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 250));
 
         lblDonatur.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
