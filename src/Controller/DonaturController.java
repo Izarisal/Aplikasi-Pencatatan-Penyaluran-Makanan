@@ -53,14 +53,9 @@ public class DonaturController implements ActionListener, MouseListener {
     }
 
     public void TampilDataDonatur() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id");
-        model.addColumn("Nama");
-        model.addColumn("Jenis");
-        model.addColumn("Lokasi");
-        model.addColumn("Email");
-        model.addColumn("No HP");
+        String[] kolomDonatur = {"No", "Id", "Nama", "Jenis", "Lokasi", "Email", "No HP"};
+        DefaultTableModel model = new DefaultTableModel(kolomDonatur, 0);
+        
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;

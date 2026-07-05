@@ -50,17 +50,15 @@ public class PenyaluranController implements ActionListener, MouseListener {
         this.data = data;
         this.frm = frm;
 
-        this.frm.btnSimpan.addActionListener(this);
-        this.frm.btnUpdate.addActionListener(this);
-        this.frm.btnDelete.addActionListener(this);
-        this.frm.btnCari.addActionListener(this);
-        this.frm.btnTambah.addActionListener(this);
-        this.frm.btnHapus.addActionListener(this);
-        this.frm.btnDonasi.addActionListener(this);
-        this.frm.btnLaporan.addActionListener(this);
-        this.frm.btnDashboard.addActionListener(this);
-        this.frm.btnDashboard2.addActionListener(this);
-        this.frm.btnDashboard3.addActionListener(this);
+        javax.swing.JButton[] tombolPenyaluran = {
+            frm.btnSimpan, frm.btnUpdate, frm.btnDelete, frm.btnCari, 
+            frm.btnTambah, frm.btnHapus, frm.btnDonasi, frm.btnLaporan, 
+            frm.btnDashboard, frm.btnDashboard2, frm.btnDashboard3, frm.btnClear
+        };
+        
+        for (javax.swing.JButton btn : tombolPenyaluran) {
+            btn.addActionListener(this);
+        }
 
         this.frm.tablePenyaluran.addMouseListener(this);
         this.frm.tableMakanan.addMouseListener(this);
@@ -239,17 +237,13 @@ public class PenyaluranController implements ActionListener, MouseListener {
         frm.txtFieldIdPenyaluranCRUD.setText(null);
         frm.cbMakanan.setSelectedItem(null);
         frm.cbPenerima.setSelectedItem(null);
+        frm.txtFieldStokCRUD.setText(null);
         frm.jDatePenyaluran.setDate(null);
     }
 
     public void TampilDataPenyaluran() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id Penyaluran");
-        model.addColumn("Id Makanan");
-        model.addColumn("Id Penerima");
-        model.addColumn("Stok");
-        model.addColumn("Tanggal Penyaluran");
+        String[] kolomPenyaluran = {"No", "Id Penyaluran", "Id Makanan", "Id Penerima", "Stok", "Tanggal Penyaluran"};
+        DefaultTableModel model = new DefaultTableModel(kolomPenyaluran, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
@@ -275,14 +269,8 @@ public class PenyaluranController implements ActionListener, MouseListener {
     }
 
     public void TampilDataMakanan() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id Makanan");
-        model.addColumn("Id Donatur");
-        model.addColumn("Nama");
-        model.addColumn("Stok");
-        model.addColumn("Status");
-        model.addColumn("Tanggal Kadaluarsa");
+        String[] kolomMakanan = {"No", "Id Makanan", "Id Donatur", "Nama", "Stok", "Status", "Tanggal Kadaluarsa"};
+        DefaultTableModel model = new DefaultTableModel(kolomMakanan, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;

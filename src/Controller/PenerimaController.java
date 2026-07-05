@@ -58,14 +58,8 @@ public class PenerimaController implements ActionListener, MouseListener {
     }
 
     public void TampilDataPenerima() {
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
-        model.addColumn("Id");
-        model.addColumn("Nama");
-        model.addColumn("Jenis");
-        model.addColumn("Lokasi");
-        model.addColumn("Email");
-        model.addColumn("No HP");
+        String[] kolomPenerima = {"No", "Id", "Nama", "Jenis", "Lokasi", "Email", "No HP"};
+        DefaultTableModel model = new DefaultTableModel(kolomPenerima, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
