@@ -215,9 +215,7 @@ public class LaporanController implements ActionListener, MouseListener {
             int baris = frm.tablePenyaluran.getSelectedRow();
 
             String idMakanan = frm.tablePenyaluran.getValueAt(baris, 1).toString();
-            System.out.println(idMakanan);
             String idPenerima = frm.tablePenyaluran.getValueAt(baris, 2).toString();
-            System.out.println(idPenerima);
             String idDonatur = "";
             try {
                 String sqlCariDonatur = "SELECT id_donatur FROM makanan WHERE id_makanan = '" + idMakanan + "'";
@@ -230,7 +228,6 @@ public class LaporanController implements ActionListener, MouseListener {
             } catch (SQLException e) {
                 System.out.println("Gagal merelasikan ke donatur: " + e.getMessage());
             }
-            System.out.println(idDonatur);
             TampilDataDonatur(idDonatur);
             TampilDataMakanan(idMakanan);
             TampilDataPenerima(idPenerima);
