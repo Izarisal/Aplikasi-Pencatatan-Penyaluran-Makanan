@@ -488,21 +488,23 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     String mulai = sdf.format(tglMulai);
                     String sampai = sdf.format(tglSampai);
                     sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran BETWEEN '" + mulai + "' AND '" + sampai + "'";
+                    Popup pop = new Popup(sql); 
+                    pop.setVisible(true);
                 } else if (tglSebelum != null) {
                     String sblm = sdf.format(tglSebelum);
                     sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran < '" + sblm + "'";
+                    Popup pop = new Popup(sql); 
+                    pop.setVisible(true);
                 } else if (tglSetelah != null) {
                     String stlh = sdf.format(tglSetelah);
                     sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran > '" + stlh + "'";
+                    Popup pop = new Popup(sql); 
+                    pop.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Silakan masukkan tanggal filter terlebih dahulu!");
-                    return;
+                    Popup pop = new Popup(); 
+                    pop.setVisible(true);
                 }
-
-                Popup pop = new Popup(sql); 
                 
-                pop.setVisible(true);
-
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                 ex.printStackTrace();
