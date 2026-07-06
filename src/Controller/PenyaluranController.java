@@ -412,17 +412,17 @@ public class PenyaluranController implements ActionListener, MouseListener {
 
                 PreparedStatement pstInsert = MySQLConfig.prepareStatement(sqlInsert);
                 PreparedStatement pstUpdate = MySQLConfig.prepareStatement(sqlUpdateStok);
-
+                // jalankan query
                 for (int i = 0; i < totalBaris; i++) {
                     String id_penyaluran_unik = String.format("PL%04d", angkaBase + i);
 
                     String id_makanan = modelKeranjang.getValueAt(i, 1).toString();
                     int jumlahSalur = Integer.parseInt(modelKeranjang.getValueAt(i, 4).toString());
-
+                    // update makanan
                     pstUpdate.setInt(1, jumlahSalur);
                     pstUpdate.setString(2, id_makanan);
                     pstUpdate.execute();
-
+                    // insert penyaluran
                     pstInsert.setString(1, id_penyaluran_unik);
                     pstInsert.setString(2, id_makanan);
                     pstInsert.setString(3, id_penerima);
