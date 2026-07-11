@@ -49,7 +49,9 @@ public class PenyaluranController implements ActionListener, MouseListener {
     public PenyaluranController(PenyaluranModel data, FrmPenyaluran frm) {
         this.data = data;
         this.frm = frm;
-
+        
+        frm.jDatePenyaluran.setMaxSelectableDate(new java.util.Date());
+        
         javax.swing.JButton[] tombolPenyaluran = {
             frm.btnSimpan, frm.btnUpdate, frm.btnDelete, frm.btnCari,
             frm.btnTambah, frm.btnHapus, frm.btnDonasi, frm.btnLaporan,
