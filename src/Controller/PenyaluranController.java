@@ -49,9 +49,9 @@ public class PenyaluranController implements ActionListener, MouseListener {
     public PenyaluranController(PenyaluranModel data, FrmPenyaluran frm) {
         this.data = data;
         this.frm = frm;
-        
+
         frm.jDatePenyaluran.setMaxSelectableDate(new java.util.Date());
-        
+
         javax.swing.JButton[] tombolPenyaluran = {
             frm.btnSimpan, frm.btnUpdate, frm.btnDelete, frm.btnCari,
             frm.btnTambah, frm.btnHapus, frm.btnDonasi, frm.btnLaporan,
@@ -324,8 +324,18 @@ public class PenyaluranController implements ActionListener, MouseListener {
             data.setStok(frm.txtFieldStokCRUD.getText());
 
             if (frm.jDatePenyaluran.getDate() != null) {
+                java.util.Date tanggalDipilih = frm.jDatePenyaluran.getDate();
+                java.util.Date tanggalSekarang = new java.util.Date();
+                if (tanggalDipilih.after(tanggalSekarang)) {
+                    javax.swing.JOptionPane.showMessageDialog(frm,
+                            "Tanggal penyaluran tidak boleh di masa depan!",
+                            "Peringatan",
+                            javax.swing.JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String tanggal_penyaluran = sdf.format(frm.jDatePenyaluran.getDate());
+                String tanggal_penyaluran = sdf.format(tanggalDipilih);
                 data.setTgl_penyaluran(tanggal_penyaluran);
             } else {
                 data.setTgl_penyaluran(null);
@@ -343,7 +353,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
             }
         } else if (ae.getSource() == frm.btnUpdate) {
             data.setId_penyaluran(frm.txtFieldIdPenyaluranCRUD.getText());
-            
+
             String id_makanan = "" + frm.cbMakanan.getSelectedItem();
             String idMakananSaja = id_makanan.split(" - ")[0];
             data.setId_makanan(idMakananSaja);
@@ -514,22 +524,22 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     String mulai = sdf.format(tglMulai);
                     String sampai = sdf.format(tglSampai);
                     sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
-                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
+                            + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
                             + "AND tgl_penyaluran BETWEEN '" + mulai + "' AND '" + sampai + "'";
                     Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else if (tglSebelum != null) {
                     String sblm = sdf.format(tglSebelum);
                     sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
-                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
-                    + "AND tgl_penyaluran < '" + sblm + "'";
+                            + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
+                            + "AND tgl_penyaluran < '" + sblm + "'";
                     Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else if (tglSetelah != null) {
                     String stlh = sdf.format(tglSetelah);
                     sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
-                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
-                    + "AND tgl_penyaluran > '" + stlh + "'";
+                            + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
+                            + "AND tgl_penyaluran > '" + stlh + "'";
                     Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else {
@@ -559,7 +569,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
             int baris = frm.tablePenyaluran.rowAtPoint(me.getPoint());
             String id_penyaluran = frm.tablePenyaluran.getValueAt(baris, 1).toString();
             frm.txtFieldIdPenyaluranCRUD.setText(id_penyaluran);
-            
+
             String id_makanan = frm.tablePenyaluran.getValueAt(baris, 2).toString();
             for (int i = 0; i < frm.cbMakanan.getItemCount(); i++) {
                 if (frm.cbMakanan.getItemAt(i).startsWith(id_makanan)) {
@@ -567,7 +577,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     break;
                 }
             }
-            
+
             String id_penerima = frm.tablePenyaluran.getValueAt(baris, 3).toString();
             for (int i = 0; i < frm.cbPenerima.getItemCount(); i++) {
                 if (frm.cbPenerima.getItemAt(i).startsWith(id_penerima)) {
