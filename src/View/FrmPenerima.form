@@ -37,7 +37,6 @@
                           <Component id="txtFieldEmail" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtFieldNoHP" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               <Component id="lblDonatur" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="396" max="-2" attributes="0"/>
                           </Group>
@@ -83,7 +82,7 @@
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="542" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="616" max="-2" attributes="0"/>
               <Component id="lblFrmPenerima" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>

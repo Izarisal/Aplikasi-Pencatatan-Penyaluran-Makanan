@@ -280,7 +280,6 @@ public class FrmPenerima extends javax.swing.JFrame {
                             .addComponent(txtFieldEmail)
                             .addComponent(txtFieldNoHP)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
                                 .addComponent(lblDonatur)
                                 .addGap(396, 396, 396))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -314,7 +313,7 @@ public class FrmPenerima extends javax.swing.JFrame {
                         .addComponent(lblDataPenerima)
                         .addGap(448, 448, 448))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(542, 542, 542)
+                .addGap(616, 616, 616)
                 .addComponent(lblFrmPenerima)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
