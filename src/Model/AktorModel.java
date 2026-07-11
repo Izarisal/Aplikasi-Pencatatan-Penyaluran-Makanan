@@ -16,6 +16,15 @@ public class AktorModel {
     protected String lokasi;
     protected String email;
     protected String no_hp;
+    protected String jk;
+
+    public String getJk() {
+        return jk;
+    }
+
+    public void setJk(String jk) {
+        this.jk = jk;
+    }
 
     public String getId() {
         return id;

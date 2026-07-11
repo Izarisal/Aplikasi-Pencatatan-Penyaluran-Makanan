@@ -53,7 +53,7 @@ public class DonaturController implements ActionListener, MouseListener {
     }
 
     public void TampilDataDonatur() {
-        String[] kolomDonatur = {"No", "Id", "Nama", "Jenis", "Lokasi", "Email", "No HP"};
+        String[] kolomDonatur = {"No", "Id", "Nama", "Jenis", "Lokasi", "Email", "No HP", "Jenis Kelamin"};
         DefaultTableModel model = new DefaultTableModel(kolomDonatur, 0);
         
         //Menampilkan data pada database ke dalam tabel
@@ -72,7 +72,8 @@ public class DonaturController implements ActionListener, MouseListener {
                     res.getString(3),
                     res.getString(4),
                     res.getString(5),
-                    res.getString(6)});
+                    res.getString(6),
+                    res.getString(7)});
             }
             FrmDonatur.tableDonatur.setModel(model);
 
@@ -91,6 +92,8 @@ public class DonaturController implements ActionListener, MouseListener {
             data.setLokasi(frm.txtFieldLokasi.getText());
             data.setEmail(frm.txtFieldEmail.getText());
             data.setNo_hp(frm.txtFieldNoHP.getText());
+            String jk = "" + frm.cbJenisKelamin.getSelectedItem();
+            data.setJk(jk);
 
             try {
                 if (data.SimpanDonatur(data)) {
@@ -109,6 +112,7 @@ public class DonaturController implements ActionListener, MouseListener {
             data.setLokasi(frm.txtFieldLokasi.getText());
             data.setEmail(frm.txtFieldEmail.getText());
             data.setNo_hp(frm.txtFieldNoHP.getText());
+            
 
             try {
                 if (data.UpdateDonatur(data)) {

@@ -199,7 +199,6 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         lblIdMakanan = new javax.swing.JLabel();
         lblIdPenerima = new javax.swing.JLabel();
         jDatePenyaluran = new com.toedter.calendar.JDateChooser();
-        cbMakanan = new javax.swing.JComboBox<>();
         txtFieldIdPenyaluranCRUD = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         btnSimpan = new javax.swing.JButton();
@@ -207,6 +206,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         lblStok2 = new javax.swing.JLabel();
         txtFieldStokCRUD = new javax.swing.JTextField();
+        cbMakanan = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         lblFrmDonatur = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -288,19 +288,12 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         });
 
         lblIdMakanan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblIdMakanan.setText("Id Makanan");
+        lblIdMakanan.setText("Nama Makanan");
 
         lblIdPenerima.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         lblIdPenerima.setText("Id Penerima");
 
         jDatePenyaluran.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-
-        cbMakanan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cbMakanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbMakananActionPerformed(evt);
-            }
-        });
 
         txtFieldIdPenyaluranCRUD.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldIdPenyaluranCRUD.addActionListener(new java.awt.event.ActionListener() {
@@ -351,6 +344,13 @@ public class FrmPenyaluran extends javax.swing.JFrame {
             }
         });
 
+        cbMakanan.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cbMakanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMakananActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -371,7 +371,6 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                                     .addComponent(lblIdPenerima)
                                     .addComponent(jDatePenyaluran, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                                     .addComponent(cbPenerima, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbMakanan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtFieldIdPenyaluranCRUD)
                                     .addComponent(lblStok2)
                                     .addComponent(txtFieldStokCRUD)
@@ -383,7 +382,8 @@ public class FrmPenyaluran extends javax.swing.JFrame {
                                         .addGap(26, 26, 26)
                                         .addComponent(btnUpdate)
                                         .addGap(26, 26, 26)
-                                        .addComponent(btnDelete)))
+                                        .addComponent(btnDelete))
+                                    .addComponent(cbMakanan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -552,7 +552,7 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         });
 
         lblIdPenerima2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        lblIdPenerima2.setText("ID Penerima (Yang akan Disalurkan)");
+        lblIdPenerima2.setText("ID Penerima");
 
         cbPenerimaPenyaluran.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbPenerimaPenyaluran.addActionListener(new java.awt.event.ActionListener() {
@@ -824,10 +824,6 @@ public class FrmPenyaluran extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldIdPenyaluranCRUDActionPerformed
 
-    private void cbMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMakananActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbMakananActionPerformed
-
     private void cbPenerimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPenerimaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbPenerimaActionPerformed
@@ -843,6 +839,10 @@ public class FrmPenyaluran extends javax.swing.JFrame {
     private void btnLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLaporanActionPerformed
+
+    private void cbMakananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMakananActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMakananActionPerformed
 
     /**
      * @param args the command line arguments

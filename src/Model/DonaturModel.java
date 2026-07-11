@@ -20,7 +20,7 @@ public class DonaturModel extends AktorModel {
         PreparedStatement pstm=null;
         Connection conn=(Connection)Connector.configDB();
         
-        String sql="INSERT INTO donatur (id_donatur, nama, jenis, lokasi, email, no_hp) VALUES (?,?,?,?,?,?)";
+        String sql="INSERT INTO donatur (id_donatur, nama, jenis, lokasi, email, no_hp, jk) VALUES (?,?,?,?,?,?,?)";
         
         try{
             pstm=conn.prepareStatement(sql);
@@ -30,6 +30,7 @@ public class DonaturModel extends AktorModel {
             pstm.setString(4, data.getLokasi());
             pstm.setString(5, data.getEmail());
             pstm.setString(6, data.getNo_hp());
+            pstm.setString(7, data.getJk());
             pstm.execute();
             return true;
         }catch(HeadlessException | SQLException e){
@@ -42,7 +43,7 @@ public class DonaturModel extends AktorModel {
         PreparedStatement pstm=null;
         Connection conn=(Connection)Connector.configDB();
         
-        String sql="UPDATE donatur set id_donatur=?, nama=?, jenis=?, lokasi=?, email=?, no_hp=? WHERE id_donatur=?";
+        String sql="UPDATE donatur set id_donatur=?, nama=?, jenis=?, lokasi=?, email=?, no_hp=?, jk=? WHERE id_donatur=?";
         
         try{
             pstm=conn.prepareStatement(sql);
@@ -52,7 +53,8 @@ public class DonaturModel extends AktorModel {
             pstm.setString(4, data.getLokasi());
             pstm.setString(5, data.getEmail());
             pstm.setString(6, data.getNo_hp());
-            pstm.setString(7, data.getId());
+            pstm.setString(7, data.getJk());
+            pstm.setString(8, data.getId());
             pstm.execute();
             return true;
         }catch(HeadlessException | SQLException e){
