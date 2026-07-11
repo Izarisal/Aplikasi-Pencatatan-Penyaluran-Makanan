@@ -257,7 +257,8 @@ public class PenyaluranController implements ActionListener, MouseListener {
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
-            String sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran FROM penyaluran p, makanan m WHERE p.id_makanan = m.id_makanan";
+            String sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
+                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima";
             java.sql.Connection conn = (Connection) Connector.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
@@ -266,8 +267,8 @@ public class PenyaluranController implements ActionListener, MouseListener {
                 model.addRow(new Object[]{
                     no++,
                     res.getString(1),
-                    res.getString(2),
-                    res.getString(3),
+                    res.getString(2) + " - " + res.getString(6),
+                    res.getString(3) + " - " + res.getString(7),
                     res.getString(4),
                     res.getString(5)});
             }
@@ -510,17 +511,23 @@ public class PenyaluranController implements ActionListener, MouseListener {
                 if (tglMulai != null && tglSampai != null) {
                     String mulai = sdf.format(tglMulai);
                     String sampai = sdf.format(tglSampai);
-                    sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran BETWEEN '" + mulai + "' AND '" + sampai + "'";
+                    sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
+                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
+                            + "AND tgl_penyaluran BETWEEN '" + mulai + "' AND '" + sampai + "'";
                     Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else if (tglSebelum != null) {
                     String sblm = sdf.format(tglSebelum);
-                    sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran < '" + sblm + "'";
+                    sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
+                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
+                    + "AND tgl_penyaluran < '" + sblm + "'";
                     Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else if (tglSetelah != null) {
                     String stlh = sdf.format(tglSetelah);
-                    sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran > '" + stlh + "'";
+                    sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
+                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima "
+                    + "AND tgl_penyaluran > '" + stlh + "'";
                     Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else {

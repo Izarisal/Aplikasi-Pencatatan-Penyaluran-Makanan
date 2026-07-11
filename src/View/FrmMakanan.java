@@ -93,9 +93,9 @@ public class FrmMakanan extends javax.swing.JFrame {
         btnDashboard.setForeground(Color.WHITE);
         btnDashboard.setFocusPainted(false);
 
-        tblMakanan.setFont(new Font("Segoe UI", Font.PLAIN, 13));
+        tblMakanan.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         tblMakanan.setRowHeight(25);
-        tblMakanan.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 13));
+        tblMakanan.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -302,15 +302,15 @@ public class FrmMakanan extends javax.swing.JFrame {
                     .addComponent(cmbDonatur, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 54, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnDashboard)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 36, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(32, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblDataMakanan)
-                        .addGap(367, 367, 367))))
+                        .addGap(413, 413, 413))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(547, 547, 547)
                 .addComponent(lblFrmMakanan)
@@ -359,9 +359,9 @@ public class FrmMakanan extends javax.swing.JFrame {
                             .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();

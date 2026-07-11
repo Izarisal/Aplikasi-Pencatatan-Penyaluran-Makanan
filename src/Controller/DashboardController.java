@@ -42,32 +42,32 @@ public class DashboardController implements ActionListener {
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res;
 
+            int totalDonatur = 0;
+            int totalMakanan = 0;
+            int totalPenerima = 0;
+            int totalPenyaluran = 0;
+
             res = stm.executeQuery("SELECT COUNT(*) AS total FROM donatur");
-            if (res.next()) {
-                int totalDonatur = res.getInt("total");
-                frm.lblDonatur.setText("Jumlah Donatur : " + totalDonatur);
-            }
+            if (res.next()) { totalDonatur = res.getInt("total"); }
 
             res = stm.executeQuery("SELECT COUNT(*) AS total FROM makanan");
-            if (res.next()) {
-                int totalMakanan = res.getInt("total");
-                frm.lblMakanan.setText("Jumlah Makanan : " + totalMakanan);
-            }
+            if (res.next()) { totalMakanan = res.getInt("total"); }
 
             res = stm.executeQuery("SELECT COUNT(*) AS total FROM penerima");
-            if (res.next()) {
-                int totalPenerima = res.getInt("total");
-                frm.lblPenerima.setText("Jumlah Penerima : " + totalPenerima);
-            }
+            if (res.next()) { totalPenerima = res.getInt("total"); }
 
             res = stm.executeQuery("SELECT COUNT(*) AS total FROM penyaluran");
-            if (res.next()) {
-                int totalPenyaluran = res.getInt("total");
-                frm.lblPenyaluran.setText("Jumlah Penyaluran : " + totalPenyaluran);
-            }
+            if (res.next()) { totalPenyaluran = res.getInt("total"); }
 
             res.close();
             stm.close();
+
+            frm.updateTeksDashboard(
+                String.valueOf(totalDonatur),
+                String.valueOf(totalPenerima),
+                String.valueOf(totalMakanan),
+                String.valueOf(totalPenyaluran)
+            );
 
         } catch (java.sql.SQLException e) {
             System.out.println("Gagal menghitung jumlah baris tabel: " + e.getMessage());

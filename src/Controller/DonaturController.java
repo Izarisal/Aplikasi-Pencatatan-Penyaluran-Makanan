@@ -112,7 +112,8 @@ public class DonaturController implements ActionListener, MouseListener {
             data.setLokasi(frm.txtFieldLokasi.getText());
             data.setEmail(frm.txtFieldEmail.getText());
             data.setNo_hp(frm.txtFieldNoHP.getText());
-            
+            String jk = "" + frm.cbJenisKelamin.getSelectedItem();
+            data.setJk(jk);
 
             try {
                 if (data.UpdateDonatur(data)) {
