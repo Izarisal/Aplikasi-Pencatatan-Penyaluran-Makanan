@@ -52,21 +52,23 @@ public class LaporanController implements ActionListener, MouseListener {
     }
 
     public void TampilDataPenyaluran() {
-        String[] kolomPenyaluran = {"Id Penyaluran", "Id Makanan", "Id Penerima", "Stok", "Tanggal Penyaluran"};
+        String[] kolomPenyaluran = {"No", "Id Penyaluran", "Id Makanan", "Id Penerima", "Stok", "Tanggal Penyaluran"};
         DefaultTableModel model = new DefaultTableModel(kolomPenyaluran, 0);
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
-            String sql = "SELECT * FROM penyaluran";
+            String sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran, m.nama, t.nama FROM penyaluran p, makanan m, penerima t "
+                    + "WHERE p.id_makanan = m.id_makanan AND p.id_penerima = t.id_penerima";
             java.sql.Connection conn = (Connection) Connector.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
 
             while (res.next()) {
                 model.addRow(new Object[]{
+                    no++,
                     res.getString(1),
-                    res.getString(2),
-                    res.getString(3),
+                    res.getString(2) + " - " + res.getString(6),
+                    res.getString(3) + " - " + res.getString(7),
                     res.getString(4),
                     res.getString(5)});
             }
@@ -191,8 +193,8 @@ public class LaporanController implements ActionListener, MouseListener {
 
             int baris = frm.tablePenyaluran.getSelectedRow();
 
-            String idMakanan = frm.tablePenyaluran.getValueAt(baris, 1).toString();
-            String idPenerima = frm.tablePenyaluran.getValueAt(baris, 2).toString();
+            String idMakanan = (frm.tablePenyaluran.getValueAt(baris, 2).toString()).substring(0,5);
+            String idPenerima = (frm.tablePenyaluran.getValueAt(baris, 3).toString()).substring(0,5);
             String idDonatur = "";
             try {
                 String sqlCariDonatur = "SELECT id_donatur FROM makanan WHERE id_makanan = '" + idMakanan + "'";

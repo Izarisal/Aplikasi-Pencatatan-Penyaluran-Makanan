@@ -81,58 +81,58 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="lblDataPenyaluran" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblTanggalPenyaluran" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblIdMakanan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblIdPenerima" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jDatePenyaluran" alignment="0" pref="413" max="32767" attributes="0"/>
+                                  <Component id="cbPenerima" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFieldIdPenyaluranCRUD" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblStok2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFieldStokCRUD" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="btnClear" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="cbMakanan" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" pref="929" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblTanggalPenyaluran" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblIdMakanan" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblIdPenerima" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jDatePenyaluran" alignment="0" pref="413" max="32767" attributes="0"/>
-                                          <Component id="cbPenerima" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtFieldIdPenyaluranCRUD" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lblStok2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtFieldStokCRUD" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                              <Component id="btnClear" min="-2" pref="73" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="cbMakanan" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="18" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane3" min="-2" pref="754" max="-2" attributes="0"/>
+                                      <Component id="lblDataPenyaluran" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="btnDashboard2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="512" max="-2" attributes="0"/>
                       <Component id="lblFrmPenyaluran" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="694" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblIdPenyaluran2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="1104" max="32767" attributes="0"/>
+                          <EmptySpace pref="1297" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -431,52 +431,52 @@
                       <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblDataMakanan" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtFieldStok" min="-2" pref="380" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="txtFieldStok" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnTambah" min="-2" pref="96" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtFieldNamaMakanan" min="-2" pref="380" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="txtFieldNamaMakanan" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnCari" min="-2" pref="96" max="-2" attributes="0"/>
                           </Group>
                           <Component id="lblNamaMakanan" min="-2" max="-2" attributes="0"/>
                           <Component id="lblStok" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="502" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="txtFieldIdPenyaluran" min="-2" pref="144" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="lblIdPenyaluran" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="609" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="224" max="32767" attributes="0"/>
-                              <Component id="lblMakananDisalurkan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="lblIdPenerima2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="cbPenerimaPenyaluran" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                      <Component id="cbPenerimaPenyaluran" min="-2" pref="300" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnHapus" min="-2" pref="84" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnDonasi" min="-2" pref="84" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jScrollPane2" min="-2" pref="642" max="-2" attributes="0"/>
                                           <Component id="btnDashboard" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane2" min="-2" pref="562" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lblMakananDisalurkan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -495,20 +495,16 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblNamaMakanan" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblMakananDisalurkan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMakananDisalurkan" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" min="-2" pref="290" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtFieldNamaMakanan" min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                      <Component id="btnCari" min="-2" pref="34" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtFieldNamaMakanan" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="btnCari" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="lblDataMakanan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="162" max="-2" attributes="0"/>
@@ -517,6 +513,10 @@
                                   <Component id="txtFieldIdPenyaluran" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                   <Component id="lblIdPenyaluran" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" min="-2" pref="290" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
@@ -807,29 +807,30 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="757" max="-2" attributes="0"/>
+                              <EmptySpace min="757" pref="950" max="32767" attributes="0"/>
                               <Component id="btnDashboard3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="325" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TanggalAntaraAkhir" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Component id="lblTanggalSebelum" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TanggalSebelum" min="-2" pref="535" max="-2" attributes="0"/>
-                                      <Component id="lblTanggalAntara" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TanggalAntaraAwal" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
-                                      <Component id="lblTanggalSetelah" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="TanggalSetelah" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="btnLaporan" min="-2" pref="81" max="-2" attributes="0"/>
-                                          </Group>
+                                  <Component id="TanggalAntaraAwal" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="TanggalSebelum" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="TanggalSetelah" alignment="0" pref="728" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="btnLaporan" min="-2" pref="81" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="TanggalAntaraAkhir" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblTanggalSebelum" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTanggalAntara" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTanggalSetelah" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -837,7 +838,7 @@
                       <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="483" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="585" max="-2" attributes="0"/>
                       <Component id="lblFrmPenyaluran3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -846,9 +847,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="lblFrmPenyaluran3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lblTanggalSebelum" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="TanggalSebelum" min="-2" pref="32" max="-2" attributes="0"/>

@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -28,7 +29,7 @@ public class Popup extends javax.swing.JFrame {
 
     private Connection MySQLConfig;
     private PreparedStatement pst;
-    private ResultSet rst;
+    private ResultSet res;
 
     /**
      * Creates new form FrmDonatur
@@ -62,10 +63,22 @@ public class Popup extends javax.swing.JFrame {
     }
 
     public void update_tabel_popup(String sql) {
+        String[] kolomPenyaluran = {"No", "Id Penyaluran", "Id Makanan", "Id Penerima", "Stok", "Tanggal Penyaluran"};
+        DefaultTableModel model = new DefaultTableModel(kolomPenyaluran, 0);
         try {
+            int no = 1;
             pst = MySQLConfig.prepareStatement(sql);
-            rst = pst.executeQuery();
-            tablePenyaluran.setModel(DbUtils.resultSetToTableModel(rst));
+            res = pst.executeQuery();
+            while (res.next()) {
+                model.addRow(new Object[]{
+                    no++,
+                    res.getString(1),
+                    res.getString(2) + " - " + res.getString(6),
+                    res.getString(3) + " - " + res.getString(7),
+                    res.getString(4),
+                    res.getString(5)});
+            }
+            this.tablePenyaluran.setModel(model);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -107,21 +120,21 @@ public class Popup extends javax.swing.JFrame {
         btnKembali.setForeground(Color.WHITE);
         btnKembali.setFocusPainted(false);
         
-        tablePenyaluran.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tablePenyaluran.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         tablePenyaluran.setRowHeight(25);
-        tablePenyaluran.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tablePenyaluran.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         
-        tableDonatur.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tableDonatur.setFont(new Font("Segoe UI", Font.PLAIN, 11));
         tableDonatur.setRowHeight(25);
-        tableDonatur.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tableDonatur.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 11));
         
-        tableMakanan.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tableMakanan.setFont(new Font("Segoe UI", Font.PLAIN, 11));
         tableMakanan.setRowHeight(25);
-        tableMakanan.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tableMakanan.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 11));
         
-        tablePenerima.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tablePenerima.setFont(new Font("Segoe UI", Font.PLAIN, 11));
         tablePenerima.setRowHeight(25);
-        tablePenerima.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        tablePenerima.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 11));
     }
 
     /**
@@ -245,16 +258,16 @@ public class Popup extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(lblDataPenyaluran))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(lblDonatur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(368, 368, 368)
+                        .addComponent(lblDataPenyaluran)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblDataDonatur)

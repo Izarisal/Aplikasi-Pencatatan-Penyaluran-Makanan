@@ -111,7 +111,7 @@ public class MakananController implements ActionListener, MouseListener, javax.s
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
-            String sql = "SELECT * FROM makanan";
+            String sql = "SELECT m.*, d.nama FROM makanan m, donatur d WHERE m.id_donatur = d.id_donatur";
             java.sql.Connection conn = (Connection) Connector.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
@@ -120,7 +120,7 @@ public class MakananController implements ActionListener, MouseListener, javax.s
                 model.addRow(new Object[]{
                     no++,
                     res.getString(1),
-                    res.getString(2),
+                    res.getString(2) + " - " + res.getString(7),
                     res.getString(3),
                     res.getString(4),
                     res.getString(5),
