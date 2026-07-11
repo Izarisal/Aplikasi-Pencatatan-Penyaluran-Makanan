@@ -51,11 +51,11 @@ public class PenyaluranController implements ActionListener, MouseListener {
         this.frm = frm;
 
         javax.swing.JButton[] tombolPenyaluran = {
-            frm.btnSimpan, frm.btnUpdate, frm.btnDelete, frm.btnCari, 
-            frm.btnTambah, frm.btnHapus, frm.btnDonasi, frm.btnLaporan, 
+            frm.btnSimpan, frm.btnUpdate, frm.btnDelete, frm.btnCari,
+            frm.btnTambah, frm.btnHapus, frm.btnDonasi, frm.btnLaporan,
             frm.btnDashboard, frm.btnDashboard2, frm.btnDashboard3, frm.btnClear
         };
-        
+
         for (javax.swing.JButton btn : tombolPenyaluran) {
             btn.addActionListener(this);
         }
@@ -63,7 +63,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
         this.frm.tablePenyaluran.addMouseListener(this);
         this.frm.tableMakanan.addMouseListener(this);
         this.frm.tableProsesPenyaluran.addMouseListener(this);
-        
+
         TampilDataPenyaluran();
         cari();
         LoadComboMakanan();
@@ -85,13 +85,17 @@ public class PenyaluranController implements ActionListener, MouseListener {
     public final void LoadComboMakanan() {
         frm.cbMakanan.removeAllItems();
         try {
-            String sql = "SELECT id_makanan FROM makanan";
+            String sql = "SELECT id_makanan, nama FROM makanan";
             java.sql.Connection conn = (Connection) Connector.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
 
             while (res.next()) {
-                frm.cbMakanan.addItem(res.getString(1));
+                frm.cbMakanan.addItem(
+                        res.getString("id_makanan")
+                        + " - "
+                        + res.getString("nama")
+                );
             }
         } catch (SQLException e) {
             System.out.println("Gagal load combo makanan: " + e.getMessage());
@@ -103,14 +107,22 @@ public class PenyaluranController implements ActionListener, MouseListener {
         frm.cbPenerimaPenyaluran.removeAllItems();
         try {
 
-            String sql = "SELECT id_penerima FROM penerima";
+            String sql = "SELECT id_penerima, nama FROM penerima";
             java.sql.Connection conn = (Connection) Connector.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
 
             while (res.next()) {
-                frm.cbPenerima.addItem(res.getString(1));
-                frm.cbPenerimaPenyaluran.addItem(res.getString(1));
+                frm.cbPenerima.addItem(
+                        res.getString("id_penerima")
+                        + " - "
+                        + res.getString("nama")
+                );
+                frm.cbPenerimaPenyaluran.addItem(
+                        res.getString("id_penerima")
+                        + " - "
+                        + res.getString("nama")
+                );
             }
         } catch (SQLException e) {
             System.out.println("Gagal load combo penerima: " + e.getMessage());
@@ -143,10 +155,9 @@ public class PenyaluranController implements ActionListener, MouseListener {
 
     public void cari() {
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("No");
         model.addColumn("Id Makanan");
-        model.addColumn("Id Donatur");
-        model.addColumn("Nama");
+        model.addColumn("Nama Makanan");
+        model.addColumn("Nama Donatur");
         model.addColumn("Stok");
         model.addColumn("Status");
         model.addColumn("Tanggal Kadaluarsa");
@@ -154,10 +165,10 @@ public class PenyaluranController implements ActionListener, MouseListener {
         String namaMakanan = frm.txtFieldNamaMakanan.getText();
 
         try {
-            int no = 1;
 
-            String sql = "SELECT * FROM makanan WHERE "
-                    + "nama LIKE '%" + namaMakanan + "%'";
+            String sql = "SELECT m.id_makanan, m.nama, d.nama, m.stok, m.status, m.tgl_kadaluarsa FROM makanan m, donatur d WHERE "
+                    + "m.id_donatur = d.id_donatur AND "
+                    + "m.nama LIKE '%" + namaMakanan + "%'";
 
             java.sql.Connection conn = (Connection) Connector.configDB();
             java.sql.Statement stm = conn.createStatement();
@@ -165,13 +176,12 @@ public class PenyaluranController implements ActionListener, MouseListener {
 
             while (res.next()) {
                 model.addRow(new Object[]{
-                    no++,
-                    res.getString(1),
-                    res.getString(2),
-                    res.getString(3),
-                    res.getString(4),
-                    res.getString(5),
-                    res.getString(6)});
+                    res.getString("m.id_makanan"),
+                    res.getString("m.nama"),
+                    res.getString("d.nama"),
+                    res.getString("m.stok"),
+                    res.getString("m.status"),
+                    res.getString("m.tgl_kadaluarsa")});
             }
             frm.tableMakanan.setModel(model);
 
@@ -229,7 +239,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
             nama_donatur,
             jumlahDisalurkan
         });
-        frm.tableMakanan.setValueAt(stokSekarang - jumlahDisalurkan, baris, 4);
+        frm.tableMakanan.setValueAt(stokSekarang - jumlahDisalurkan, baris, 3);
         frm.txtFieldStok.setText("");
     }
 
@@ -247,7 +257,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
         //Menampilkan data pada database ke dalam tabel
         try {
             int no = 1;
-            String sql = "SELECT * FROM penyaluran";
+            String sql = "SELECT p.id_penyaluran, p.id_makanan, p.id_penerima, p.stok, p.tgl_penyaluran FROM penyaluran p, makanan m WHERE p.id_makanan = m.id_makanan";
             java.sql.Connection conn = (Connection) Connector.configDB();
             java.sql.Statement stm = conn.createStatement();
             java.sql.ResultSet res = stm.executeQuery(sql);
@@ -301,9 +311,12 @@ public class PenyaluranController implements ActionListener, MouseListener {
         if (ae.getSource() == frm.btnSimpan) {
             data.setId_penyaluran(frm.txtFieldIdPenyaluranCRUD.getText());
             String id_makanan = "" + frm.cbMakanan.getSelectedItem();
-            data.setId_makanan(id_makanan);
+            String idMakananSaja = id_makanan.split(" - ")[0];
+            data.setId_makanan(idMakananSaja);
+
             String id_penerima = "" + frm.cbPenerima.getSelectedItem();
-            data.setId_penerima(id_penerima);
+            String idPenerimaSaja = id_penerima.split(" - ")[0];
+            data.setId_penerima(idPenerimaSaja);
 
             data.setStok(frm.txtFieldStokCRUD.getText());
 
@@ -327,10 +340,15 @@ public class PenyaluranController implements ActionListener, MouseListener {
             }
         } else if (ae.getSource() == frm.btnUpdate) {
             data.setId_penyaluran(frm.txtFieldIdPenyaluranCRUD.getText());
+            
             String id_makanan = "" + frm.cbMakanan.getSelectedItem();
-            data.setId_makanan(id_makanan);
+            String idMakananSaja = id_makanan.split(" - ")[0];
+            data.setId_makanan(idMakananSaja);
+
             String id_penerima = "" + frm.cbPenerima.getSelectedItem();
-            data.setId_penerima(id_penerima);
+            String idPenerimaSaja = id_penerima.split(" - ")[0];
+            data.setId_penerima(idPenerimaSaja);
+
             data.setStok(frm.txtFieldStokCRUD.getText());
 
             if (frm.jDatePenyaluran.getDate() != null) {
@@ -369,20 +387,36 @@ public class PenyaluranController implements ActionListener, MouseListener {
         } else if (ae.getSource() == frm.btnCari) {
             cari();
         } else if (ae.getSource() == frm.btnTambah) {
+            String idMakanan = null;
+            String idDonatur = null;
+            String namaMakanan = null;
+            String namaDonatur = null;
             int baris = frm.tableMakanan.getSelectedRow();
+            try {
+                namaMakanan = frm.tableMakanan.getValueAt(baris, 1).toString();
+                String sql = "SELECT m.id_makanan, m.id_donatur FROM makanan m WHERE m.nama = '" + namaMakanan + "'";
+                java.sql.Connection conn = (Connection) Connector.configDB();
+                java.sql.Statement stm = conn.createStatement();
+                java.sql.ResultSet res = stm.executeQuery(sql);
 
-            String id_makanan = frm.tableMakanan.getValueAt(baris, 1).toString();
-            String id_donatur = frm.tableMakanan.getValueAt(baris, 2).toString();
-            String nama_makanan = frm.tableMakanan.getValueAt(baris, 3).toString();
-            int stokSekarang = Integer.parseInt(frm.tableMakanan.getValueAt(baris, 4).toString());
+                while (res.next()) {
+                    idMakanan = res.getString("m.id_makanan");
+                    idDonatur = res.getString("m.id_donatur");
+                }
+
+            } catch (SQLException e) {
+                System.out.println("Error " + e.getMessage());
+            }
+
+            namaDonatur = frm.tableMakanan.getValueAt(baris, 2).toString();
+            int stokSekarang = Integer.parseInt(frm.tableMakanan.getValueAt(baris, 3).toString());
 
             if (!isInputValid(stokSekarang)) {
                 return;
             }
 
-            String nama_donatur = getNamaDonaturByID(id_donatur);
             int jumlahDisalurkan = Integer.parseInt(frm.txtFieldStok.getText());
-            tambahKeKeranjang(baris, id_makanan, nama_makanan, nama_donatur, jumlahDisalurkan, stokSekarang);
+            tambahKeKeranjang(baris, idMakanan, namaMakanan, namaDonatur, jumlahDisalurkan, stokSekarang);
         } else if (ae.getSource() == frm.btnDonasi) {
             int totalBaris = modelKeranjang.getRowCount();
             if (totalBaris == 0) {
@@ -403,7 +437,8 @@ public class PenyaluranController implements ActionListener, MouseListener {
                 String tgl_penyaluran = sdf.format(tanggalSekarang);
 
                 String id_penyaluran_awal = frm.txtFieldIdPenyaluran.getText();
-                String id_penerima = "" + frm.cbPenerimaPenyaluran.getSelectedItem();
+                String text_penerima = "" + frm.cbPenerimaPenyaluran.getSelectedItem();
+                String id_penerima = text_penerima.substring(0, 5);
 
                 int angkaBase = Integer.parseInt(id_penyaluran_awal.substring(2));
 
@@ -443,14 +478,14 @@ public class PenyaluranController implements ActionListener, MouseListener {
             }
         } else if (ae.getSource() == frm.btnHapus) {
             int barisTerpilih = frm.tableProsesPenyaluran.getSelectedRow();
+            String idMakanan = modelKeranjang.getValueAt(barisTerpilih, 1).toString();
 
-            String idMakananBatal = modelKeranjang.getValueAt(barisTerpilih, 1).toString();
             int jmlKembali = Integer.parseInt(modelKeranjang.getValueAt(barisTerpilih, 4).toString());
 
             for (int i = 0; i < frm.tableMakanan.getRowCount(); i++) {
-                if (frm.tableMakanan.getValueAt(i, 1).toString().equals(idMakananBatal)) {
-                    int stokTabelKiri = Integer.parseInt(frm.tableMakanan.getValueAt(i, 4).toString());
-                    frm.tableMakanan.setValueAt(stokTabelKiri + jmlKembali, i, 4);
+                if (frm.tableMakanan.getValueAt(i, 0).toString().equals(idMakanan)) {
+                    int stokTabelKiri = Integer.parseInt(frm.tableMakanan.getValueAt(i, 3).toString());
+                    frm.tableMakanan.setValueAt(stokTabelKiri + jmlKembali, i, 3);
                     break;
                 }
             }
@@ -476,23 +511,23 @@ public class PenyaluranController implements ActionListener, MouseListener {
                     String mulai = sdf.format(tglMulai);
                     String sampai = sdf.format(tglSampai);
                     sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran BETWEEN '" + mulai + "' AND '" + sampai + "'";
-                    Popup pop = new Popup(sql); 
+                    Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else if (tglSebelum != null) {
                     String sblm = sdf.format(tglSebelum);
                     sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran < '" + sblm + "'";
-                    Popup pop = new Popup(sql); 
+                    Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else if (tglSetelah != null) {
                     String stlh = sdf.format(tglSetelah);
                     sql = "SELECT * FROM penyaluran WHERE tgl_penyaluran > '" + stlh + "'";
-                    Popup pop = new Popup(sql); 
+                    Popup pop = new Popup(sql);
                     pop.setVisible(true);
                 } else {
-                    Popup pop = new Popup(); 
+                    Popup pop = new Popup();
                     pop.setVisible(true);
                 }
-                
+
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                 ex.printStackTrace();
@@ -503,7 +538,7 @@ public class PenyaluranController implements ActionListener, MouseListener {
             db.setVisible(true);
             frm.dispose();
         } else if (ae.getSource() == frm.btnCari) {
-            
+
         }
     }
 
@@ -515,22 +550,18 @@ public class PenyaluranController implements ActionListener, MouseListener {
             int baris = frm.tablePenyaluran.rowAtPoint(me.getPoint());
             String id_penyaluran = frm.tablePenyaluran.getValueAt(baris, 1).toString();
             frm.txtFieldIdPenyaluranCRUD.setText(id_penyaluran);
-
+            
             String id_makanan = frm.tablePenyaluran.getValueAt(baris, 2).toString();
             for (int i = 0; i < frm.cbMakanan.getItemCount(); i++) {
-                String itemCombo = frm.cbMakanan.getItemAt(i);
-
-                if (id_makanan.equalsIgnoreCase(itemCombo)) {
+                if (frm.cbMakanan.getItemAt(i).startsWith(id_makanan)) {
                     frm.cbMakanan.setSelectedIndex(i);
                     break;
                 }
             }
-
+            
             String id_penerima = frm.tablePenyaluran.getValueAt(baris, 3).toString();
             for (int i = 0; i < frm.cbPenerima.getItemCount(); i++) {
-                String itemCombo = frm.cbPenerima.getItemAt(i);
-
-                if (id_penerima.equalsIgnoreCase(itemCombo)) {
+                if (frm.cbPenerima.getItemAt(i).startsWith(id_penerima)) {
                     frm.cbPenerima.setSelectedIndex(i);
                     break;
                 }

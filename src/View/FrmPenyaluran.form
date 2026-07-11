@@ -96,7 +96,6 @@
                                           <Component id="lblIdPenerima" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jDatePenyaluran" alignment="0" pref="413" max="32767" attributes="0"/>
                                           <Component id="cbPenerima" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cbMakanan" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtFieldIdPenyaluranCRUD" alignment="0" max="32767" attributes="0"/>
                                           <Component id="lblStok2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtFieldStokCRUD" max="32767" attributes="0"/>
@@ -110,6 +109,7 @@
                                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                               <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="cbMakanan" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="18" max="32767" attributes="0"/>
                                       <Component id="jScrollPane3" min="-2" pref="754" max="-2" attributes="0"/>
@@ -285,7 +285,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Id Makanan"/>
+                <Property name="text" type="java.lang.String" value="Nama Makanan"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblIdPenerima">
@@ -303,23 +303,6 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cbMakanan">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="14" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMakananActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
@@ -410,6 +393,23 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldStokCRUDActionPerformed"/>
               </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbMakanan">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMakananActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
@@ -773,7 +773,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ID Penerima (Yang akan Disalurkan)"/>
+                <Property name="text" type="java.lang.String" value="ID Penerima"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbPenerimaPenyaluran">
